@@ -1,36 +1,3 @@
-# Event
-
-## Spec Harness Instructions (For Instructors)
-
-In order to run the spec harness, first create a directory with a `students.txt` file.
-
-In `students.txt`, put a list of your students Github handles.  For example:
-
-```
-aziobrow
-dionew1
-memcmahon
-s-espinosa
-```
-
-From the command line, run the following script, replacing `<repository_name` with the name of the challenge repo:
-
-```
-for i in `cat students.txt`; do
-  git clone git@github.com:$i/<repository_name> $i
-  cd $i
-  git pull origin spec # this will cause a merge commit message
-  rspec harness
-  echo
-  echo
-  read -p 'Press Enter to continue'
-  cd ..
-done
-```
-
-For each student, you will need to create or `:q` out of a merge commit message!
-
-
 ## Instructions
 
 * Fork this Repository
@@ -190,7 +157,7 @@ Add a method to your `Event` class called `sorted_item_list` that returns a list
 
 Additionally, your `Event` class should have a method called `total_inventory` that reports the quantities of all items sold at the event. Specifically, it should return a hash with items as keys and hash as values - this sub-hash should have two key/value pairs: quantity pointing to total inventory for that item and food_trucks pointing to an array of the food trucks that sell that item.
 
-You `Event` will also be able to identify `overstocked_items`.  An item is overstocked if it is sold by more than 1 food truck AND the total quantity is greater than 50.
+Your `Event` will also be able to identify `overstocked_items`.  An item is overstocked if it is sold by more than 1 food truck AND the total quantity is greater than 50.
 
 Use TDD to update your `Event` class so that it responds to the following interaction pattern:
 
