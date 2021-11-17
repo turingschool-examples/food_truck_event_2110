@@ -28,5 +28,26 @@ class Event
     end
   end
 
+  # Fat comment in this one, will probably
+  # remove in time
 
+  # Also I know I can use =begin || =end, it just looks ugly
+  def sorted_item_list
+
+    item_array = []
+    # Go through each Truck in @food_trucks[]
+    @food_trucks.each do |truck|
+      # Go through each Truck's inventory{}
+      truck.inventory.each do |item_obj|
+        # We use item_obj[0] because the inventory
+        # is a hash, and without calling two pipe vars,
+        # one for key and one for value, it's returned
+        # as an array of [key, value], and we need the
+        # key.name (or item_obj name technically)
+        item_array << item_obj[0].name
+      end
+    end
+
+    item_array.uniq.sort
+  end
 end
