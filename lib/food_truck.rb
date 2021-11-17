@@ -21,6 +21,6 @@ class FoodTruck
   end
 
   def in_stock
-    @inventory.map {|item, quantity| item.name if quantity > 0}
+    @inventory.map {|item, quantity| item if quantity > 0}
   end
 end
