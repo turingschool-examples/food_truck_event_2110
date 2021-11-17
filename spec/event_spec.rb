@@ -78,20 +78,28 @@ RSpec.describe Event do
     end
 
     it 'can return #total_inventory' do
+      @event.add_food_truck(@food_truck)
+      @event.add_food_truck(@food_truck2)
+      @event.add_food_truck(@food_truck3)
+
       expected_hash = {
 
         @item1 => {quantity: 100, food_trucks: [@food_truck, @food_truck3]},
         @item2 => {quantity: 7, food_trucks: [@food_truck]},
-        @item3 => {quantity: 25, food_trucks: [@food_truck2]},
-        @item4 => {quantity: 50, food_trucks: [@food_truck2]}
+        @item4 => {quantity: 50, food_trucks: [@food_truck2]},
+        @item3 => {quantity: 25, food_trucks: [@food_truck2]}
 
 
       }
-
+      
       expect(@event.total_inventory).to eq(expected_hash)
     end
 
     it 'can return #overstocked_items' do
+      @event.add_food_truck(@food_truck)
+      @event.add_food_truck(@food_truck2)
+      @event.add_food_truck(@food_truck3)
+
       expected_array = [@item1]
       expect(@event.overstocked_items).to eq(expected_array)
     end
