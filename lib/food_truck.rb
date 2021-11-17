@@ -13,6 +13,14 @@ class FoodTruck
       return @inventory[item]
     else
       return 0
-    end 
+    end
+  end
+
+  def stock(item, qty)
+    if @inventory.include?(item)
+      @inventory[item] += qty
+    else
+      @inventory.store(item, qty)
+    end  
   end
 end
