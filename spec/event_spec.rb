@@ -21,7 +21,7 @@ RSpec.describe Event do
     expect(event.food_trucks).to eq([])
   end
 
-  xit 'can add food trucks' do
+  it 'can add food trucks' do
     event = Event.new("South Pearl Street Farmers Market")
     food_truck1 = FoodTruck.new("Rocky Mountain Pies")
     food_truck2 = FoodTruck.new("Ba-Nom-a-Nom")
@@ -33,14 +33,12 @@ RSpec.describe Event do
     expect(event.food_trucks).to eq([food_truck1, food_truck2, food_truck3])
   end
 
-  xit 'can list food trucks by name' do
+  it 'can list food trucks by name' do
     event = Event.new("South Pearl Street Farmers Market")
     food_truck1 = FoodTruck.new("Rocky Mountain Pies")
-    #=> #<FoodTruck:0x00007fe1348a1160...>
     food_truck2 = FoodTruck.new("Ba-Nom-a-Nom")
-    #=> #<FoodTruck:0x00007fe1349bed40...>
     food_truck3 = FoodTruck.new("Palisade Peach Shack")
-    #=> #<FoodTruck:0x00007fe134910650...>
+
     event.add_food_truck(food_truck1)
     event.add_food_truck(food_truck2)
     event.add_food_truck(food_truck3)
@@ -48,22 +46,16 @@ RSpec.describe Event do
     expect(event.food_truck_names).to eq(["Rocky Mountain Pies", "Ba-Nom-a-Nom", "Palisade Peach Shack"])
   end
 
-  xit 'can list food trucks that sell an item' do
+  it 'can list food trucks that sell an item' do
     event = Event.new("South Pearl Street Farmers Market")
     food_truck1 = FoodTruck.new("Rocky Mountain Pies")
-    #=> #<FoodTruck:0x00007fe1348a1160...>
     food_truck2 = FoodTruck.new("Ba-Nom-a-Nom")
-    #=> #<FoodTruck:0x00007fe1349bed40...>
     food_truck3 = FoodTruck.new("Palisade Peach Shack")
-    #=> #<FoodTruck:0x00007fe134910650...>
     item1 = Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})
-    #=> #<Item:0x007f9c56740d48...>
     item2 = Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})
-    #=> #<Item:0x007f9c565c0ce8...>
     item3 = Item.new({name: "Peach-Raspberry Nice Cream", price: "$5.30"})
-    #=> #<Item:0x007f9c562a5f18...>
     item4 = Item.new({name: "Banana Nice Cream", price: "$4.25"})
-    #=> #<Item:0x007f9c56343038...>
+
     event.add_food_truck(food_truck1)
     event.add_food_truck(food_truck2)
     event.add_food_truck(food_truck3)
