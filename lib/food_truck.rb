@@ -20,4 +20,5 @@ class FoodTruck
       item[-1] * item[0].price.to_f
     end.sum
   end
+
 end
