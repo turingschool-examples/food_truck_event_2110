@@ -81,7 +81,7 @@ RSpec.describe Event do
     expect(event.total_inventory).to eq(expected)
   end
 
-  xit 'can return a sorted list of all items in stock by strucks' do
+  it 'can return a sorted list of all items in stock by strucks' do
     stock_items
     add_trucks
     expected = ["Apple Pie (Slice)", "Banana Nice Cream", "Peach Pie (Slice)", "Peach-Raspberry Nice Cream"]
@@ -89,7 +89,7 @@ RSpec.describe Event do
     expect(event.sorted_item_list).to eq(expected)
   end
 
-  xit 'can identify overstocked items' do
+  it 'can identify overstocked items' do
     stock_items
     add_trucks
 
