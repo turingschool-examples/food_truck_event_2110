@@ -1,4 +1,4 @@
-require './item'
+require './lib/item'
 
 class FoodTruck
   attr_reader :name, :inventory
