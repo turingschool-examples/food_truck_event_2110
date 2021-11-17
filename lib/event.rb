@@ -41,4 +41,19 @@ class Event
     hash[:food_trucks] = food_trucks_that_sell(item)
     hash
   end
+
+  def total_inventory
+    inventory_hash = Hash.new
+    total_items.each do |item|
+      inventory_hash[item] = item_details(item)
+    end
+    inventory_hash
+  end
+
+  def overstocked_items
+    total_items.select do |item|
+      total_inventory[item][:quantity] > 50 && total_inventory[item][:food_trucks].count > 1
+    end
+  end
+
 end
