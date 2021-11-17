@@ -23,9 +23,17 @@ class Event
     end
   end
 
+  def all_items
+    items_array = @food_trucks.map do |truck|
+      truck.inventory.keys.each do |key|
+        key
+      end
+    end
+    items_array.flatten.uniq
+  end
+
   def total_inventory
     total_inventory_hash = Hash.new(0)
-    require "pry"; binding.pry
     total_inventory_hash_keys
   end
 end
