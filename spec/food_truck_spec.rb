@@ -34,4 +34,12 @@ describe FoodTruck do
     end
   end
 
+  describe '#potential_revenue' do
+    it 'returns the sum of all their items price * quantity.' do
+      @food_truck.stock(@item1, 30)
+      @food_truck.stock(@item2, 15)
+      expect(@food_truck.potential_revenue).to eq(150.00)
+    end
+  end
+
 end
