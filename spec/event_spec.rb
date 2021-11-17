@@ -17,4 +17,8 @@ RSpec.describe "Event" do
     @item4       = Item.new({name: "Banana Nice Cream",
                              price: "$4.25"})
   end
+
+  it "exists" do
+    expect(@event).to be_a Event
+  end
 end
