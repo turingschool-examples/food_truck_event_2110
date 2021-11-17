@@ -82,17 +82,6 @@ xit "can list total inventory as a hash" do
                                           })
   end
 
-  it "can tell how many food trucks sell a certain item" do
-    @food_truck1.stock(@item1, 35)
-    @food_truck1.stock(@item2, 7)
-    @food_truck2.stock(@item4, 50)
-    @food_truck2.stock(@item3, 25)
-    @food_truck3.stock(@item1, 65)
-    @food_truck3.stock(@item3, 10)
-
-    expect(@event.how_many_trucks_sell_this(@item1)).to eq 2
-    expect(@event.how_many_trucks_sell_this(@item4)).to eq 1
-  end
 
   xit "can tell if an item is overstocked" do
     @food_truck1.stock(@item1, 35)
