@@ -31,22 +31,18 @@ class Event
   # Fat comment in the method below will probably remove
   # Also I know I can use =begin || =end, it just looks ugly
   def sorted_item_list
-
-    item_array = []
     # Go through each Truck in @food_trucks[]
-    @food_trucks.each do |truck|
+    @food_trucks.map do |truck|
       # Go through each Truck's inventory{}
-      truck.inventory.each do |item_obj|
+      truck.inventory.map do |item_obj|
         # We use item_obj[0] because the inventory
         # is a hash, and without calling two pipe vars,
         # one for key and one for value, it's returned
         # as an array of [key, value], and we need the
         # key.name (or item_obj name technically)
-        item_array << item_obj[0].name
+        item_obj[0].name
       end
-    end
-    # Make sure there's no duplicates, sort alphabetically
-    item_array.uniq.sort
+    end.flatten.uniq.sort
   end
 
   # Basically the same thing as above but with entire objects
