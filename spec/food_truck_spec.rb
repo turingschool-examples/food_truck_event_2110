@@ -21,6 +21,10 @@ RSpec.describe FoodTruck do
     expect(food_truck.inventory).to eq({})
   end
 
+  # it 'checks item price' do
+  #   expect(food_truck.get_item_price_as_float(item1)).to eq 3.75
+  # end
+
   it 'checks stock of specific item' do
     expect(food_truck.check_stock(item1)).to eq 0
   end
