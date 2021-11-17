@@ -53,4 +53,19 @@ class Event
     items
   end
 
+  def total_inventory
+    collection = {}
+    @food_trucks.each do |truck|
+      truck.inventory.each do |item|
+          collection[item] ||= {quantity: 0, food_trucks: [] }
+          collection[item][:quantity] += item[1]
+          collection[item][:food_trucks] << truck
+      end
+    end
+    collection
+  end
+
+  def overstocked_items
+    
+  end
 end
