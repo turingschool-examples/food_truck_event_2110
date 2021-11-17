@@ -16,4 +16,8 @@ class Event
       food_truck.name
     end
   end
+
+  def food_trucks_that_sell(item)
+
+  end
 end
