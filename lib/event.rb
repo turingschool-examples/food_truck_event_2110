@@ -45,4 +45,8 @@ class Event
   def overstocked_items
     total_inventory.select{|item, sub_hash|sub_hash[:quantity] > 50 && sub_hash[:food_trucks].count > 1}.keys
   end
+
+  def sell(item, quantity)
+    return false if total_inventory[item].quantity < quantity
+  end
 end
