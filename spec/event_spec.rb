@@ -192,5 +192,26 @@ describe Event do
         expect(@event.sorted_items).to eq(expected)
       end
     end
+
+    describe ' #overstocked_items' do
+      before(:each) do
+        @food_truck3.stock(@item3, 10)
+        @event.add_food_truck(@food_truck1)
+        @event.add_food_truck(@food_truck2)
+        @event.add_food_truck(@food_truck3)
+      end
+
+      it 'returns an array' do
+        expect(@event.overstocked_items).to be_a(Array)
+      end
+
+      it 'returns an array of items' do
+        expect(@event.overstocked_items.all?{|item|item.class == Item}).to eq(true)
+      end
+
+      it 'returns an array of items with a total quantity greater than 50 and that are sold by more than 1 food truck' do
+        expect(@event.overstocked_items).to eq(@item1)
+      end
+    end
   end
 end
