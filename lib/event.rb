@@ -11,6 +11,7 @@ class Event
     @food_trucks << food_truck_obj
   end
 
+  # Return all truck names as an array
   def food_truck_names
     @food_trucks.map do |truck|
       truck.name

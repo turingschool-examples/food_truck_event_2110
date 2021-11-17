@@ -7,6 +7,9 @@ class FoodTruck
     @inventory = {}
   end
 
+  # Check if item exists in hash
+  # If it doesn't, create it,
+  # if it does, only add to its value
   def stock(item_obj, quantity)
     if @inventory[item_obj] == nil
       @inventory[item_obj] = quantity
@@ -15,6 +18,9 @@ class FoodTruck
     end
    end
 
+  # If item exists, return its value
+  # if it doesn't exist, create a key value pair where
+  # the value is 0
   def check_stock(item_obj)
     if @inventory.key?(item_obj)
       @inventory[item_obj]
@@ -23,6 +29,9 @@ class FoodTruck
     end
   end
 
+  # Loop through all key/value pairs in our inventory{}
+  # Multiply quantity of an object by its value
+  # Return value
   def potential_revenue
     possible_revenue = 0
 
