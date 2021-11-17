@@ -71,6 +71,10 @@ describe Event do
       expect(event.items_list).to eq([item1, item2, item4, item3, item1, item3])
     end
 
+    it 'items' do 
+      expect(event.items_list).to eq([item1, item2, item4, item3])
+    end
+
     xit '#total inventory' do 
       expected = {
       item1 => {
