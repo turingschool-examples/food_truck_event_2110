@@ -52,7 +52,7 @@ class Event
     end
     overstocked
   end
-  
+
   def sorted_item_list
     sorted_items = []
     food_trucks.each do |food_truck|
@@ -62,4 +62,4 @@ class Event
     end
     sorted_items
   end
-end
+end 
