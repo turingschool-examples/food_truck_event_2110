@@ -1,9 +1,12 @@
+require 'date'
 class Event
   attr_reader :name,
-              :food_trucks
+              :food_trucks,
+              :date
   def initialize(name)
     @name = name
     @food_trucks = []
+    @date = Date.today.strftime("%d/%m/%Y")
   end
 
   def add_food_truck(truck)
@@ -56,4 +59,4 @@ class Event
     total_inventory_hash
   end
 
-  end
+end

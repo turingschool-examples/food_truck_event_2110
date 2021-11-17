@@ -125,6 +125,13 @@ RSpec.describe Event do
       })
   end
 
+  it "date" do
+    event = Event.new("South Pearl Street Farmers Market")
+    allow(Date).to receive(:today).and_return Date.new(2020-24-02)
+    #not sure how to approach the stub but I think this might be close?
+  end
+
+
 end
 
 
