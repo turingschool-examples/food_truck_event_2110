@@ -7,6 +7,8 @@ RSpec.describe Event do
     @event = Event.new("South Pearl Street Farmers Market")
 
     @food_truck1 = FoodTruck.new("Rocky Mountain Pies")
+    @food_truck2 = FoodTruck.new("Ba-Nom-a-Nom")
+    @food_truck3 = FoodTruck.new("Palisade Peach Shack")
 
     @item1 = Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})
     @item2 = Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})
@@ -20,6 +22,20 @@ RSpec.describe Event do
 
   it 'has attributes' do
     expect(@event.name).to eq('South Pearl Street Farmers Market')
+  end
+
+  it '#food_trucks' do
     expect(@event.food_trucks).to eq([])
+  end
+
+  it '#add_food_truck' do
+    @event.add_food_truck(@food_truck1)
+    @event.add_food_truck(@food_truck2)
+    @event.add_food_truck(@food_truck3)
+
+    expect(@event.food_trucks).to eq([@food_truck1, @food_truck2, @food_truck3])
+  end
+
+  xit '#food_truck_names' do
   end
 end
