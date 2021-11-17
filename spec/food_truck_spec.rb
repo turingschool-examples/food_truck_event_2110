@@ -75,9 +75,25 @@ describe FoodTruck do
       it 'returns an array' do
         expect(@food_truck.inventory_list).to be_a(Array)
       end
-      
+
       it 'returns a sorted list of all item names' do
         expected = ['Apple Pie (Slice)', 'Peach Pie (Slice)']
+        expect(@food_truck.inventory_list).to eq(expected)
+      end
+    end
+
+    def inventory_items
+      before(:each) do
+        @food_truck.stock(@item1, 35)
+        @food_truck.stock(@item2, 7)
+      end
+
+      it 'returns an array' do
+        expect(@food_truck.inventory_list).to be_a(Array)
+      end
+
+      it 'returns a sorted list of items' do
+        expected = [@item2, @item1]
         expect(@food_truck.inventory_list).to eq(expected)
       end
     end
