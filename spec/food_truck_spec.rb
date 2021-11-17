@@ -1,7 +1,6 @@
 require './lib/item'
 require './lib/food_truck'
 
-
 describe FoodTruck do
   it 'exists' do
     food_truck = FoodTruck.new("Rocky Mountain Pies")
@@ -32,13 +31,9 @@ describe FoodTruck do
   end
 
   it 'adds up potential revenue' do
-    # event = Event.new("South Pearl Street Farmers Market")
     food_truck1 = FoodTruck.new("Rocky Mountain Pies")
     food_truck2 = FoodTruck.new("Ba-Nom-a-Nom")
     food_truck3 = FoodTruck.new("Palisade Peach Shack")
-    # event.add_food_truck(food_truck1)
-    # event.add_food_truck(food_truck2)
-    # event.add_food_truck(food_truck3)
     item1 = Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})
     item2 = Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})
     item3 = Item.new({name: "Peach-Raspberry Nice Cream", price: "$5.30"})
