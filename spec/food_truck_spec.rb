@@ -75,7 +75,7 @@ RSpec.describe FoodTruck do
 
     expect(food_truck.check_stock(item1)).to eq(5)
 
-    food_truck.sell(item1, 5)
+    food_truck.sell(item1, 10)
 
     expect(food_truck.check_stock(item1)).to eq(0)
   end
