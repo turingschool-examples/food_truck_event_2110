@@ -1,12 +1,14 @@
 require './lib/item'
 require './lib/food_truck'
+require 'date'
 
 class Event
-  attr_reader :name, :food_trucks
+  attr_reader :name, :food_trucks, :date
 
   def initialize(name)
     @name = name
     @food_trucks = []
+    @date = Date.today
   end
 
   def add_food_truck(food_truck)
