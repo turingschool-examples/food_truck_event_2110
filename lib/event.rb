@@ -5,6 +5,9 @@ class Event
   def initialize(name)
     @name = name
     @food_trucks = []
-  end 
+  end
 
+  def add_food_truck(food_truck_obj)
+    @food_trucks << food_truck_obj
+  end
 end
