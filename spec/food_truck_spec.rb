@@ -10,7 +10,7 @@ RSpec.describe FoodTruck do
   let(:item3) { Item.new({ name: 'Peach-Raspberry Nice Cream', price: '$5.30' }) }
   let(:item4) { Item.new({ name: 'Banana Nice Cream', price: '$4.25' }) }
   it 'exists' do
-    actual = food_truck
+    actual = food_truck1
     expected = FoodTruck
 
     expect(actual).to be_a(expected)
@@ -18,7 +18,7 @@ RSpec.describe FoodTruck do
   describe '#attributes' do
     it 'has a name' do
       actual = food_truck1.name
-      expected = 'Peach Pie (Slice)'
+      expected = 'Rocky Mountain Pies'
 
       expect(actual).to eq(expected)
     end
@@ -37,7 +37,7 @@ RSpec.describe FoodTruck do
 
       expect(actual).to eq(expected)
 
-      food_truck.stock(item2, 12)
+      food_truck1.stock(item2, 12)
       actual = food_truck1.inventory
       expected =
         {
@@ -79,7 +79,7 @@ RSpec.describe FoodTruck do
       food_truck2.stock(item3, 25)
 
       actual = food_truck2.potential_revenue
-      expected = 142.50
+      expected = 345.0
       expect(actual).to eq(expected)
     end
   end
