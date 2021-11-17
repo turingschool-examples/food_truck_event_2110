@@ -25,7 +25,8 @@ class FoodTruck
     if @inventory.key?(item_obj)
       @inventory[item_obj]
     else
-      @inventory[item_obj] = 0
+      # This shouldn't be making a key pair value
+      0
     end
   end
 
