@@ -42,4 +42,17 @@ class Event
     end
     overstock
   end
+
+  def total_inventory
+    total_hash = Hash.new(0)
+    inner_hash = Hash.new(0)
+    @food_trucks.each do |truck|
+      truck.inventory.each do |item, quantity|
+        inner_hash[:quantity] = truck.check_stock(item)
+        inner_hash[:food_trucks] = food_trucks_that_sell(item)
+        total_hash[item] = inner_hash
+      end
+    end
+    total_hash
+  end
 end
