@@ -1,3 +1,5 @@
+require 'date' 
+
 class Event
   attr_reader :name, 
               :food_trucks
@@ -62,5 +64,13 @@ class Event
     items.map do |item|
       item.name
     end.sort
+  end
+
+  def date(date = Date.today)
+    if date.class == Date
+      date.strftime('%d-%m-%Y').gsub(/[-]/, "/")
+    else 
+      "#{date.slice(6..7)}/#{date.slice(4..5)}/#{date.slice(0..3)}"
+    end 
   end
 end
