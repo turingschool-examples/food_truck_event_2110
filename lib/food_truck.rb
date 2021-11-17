@@ -11,8 +11,8 @@ class FoodTruck
     @inventory.values_at(item).join.to_i
   end
 
-  def stock(item, quantity)
-    @inventory[item] += quantity
+  def stock(item, amount)
+    @inventory[item] += amount
   end
 
 end
