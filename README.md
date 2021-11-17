@@ -69,7 +69,7 @@ A FoodTruck will be able to calculate their `potential_revenue` - the sum of all
 
 A Event is responsible for keeping track of FoodTrucks. It should have a method called `food_truck_names` that returns an array of all the FoodTruck's names.
 
-Additionally, the Event should have a method called `food_trucks_that_sell` that takes an argument of an item represented as a String. It will return a list of FoodTrucks that have that item in stock.
+Additionally, the Event should have a method called `food_trucks_that_sell` that takes an argument of an item represented as an object. It will return a list of FoodTrucks that have that item in stock.
 
 Use TDD to create a `Event` class that responds to the following interaction pattern:
 
