@@ -26,5 +26,12 @@ describe FoodTruck do
     it 'returns number in stock by item' do
       expect(@food_truck.check_stock(@item1)).to eq(0)
     end
+  end
+
+  describe '#stock' do
+    it 'adds item to inventory or adds qty to existing item' do
+      @food_truck.stock(@item1, 30)
+      expect(@food_truck.check_stock(@item1)).to eq(30)
+    end
   end 
 end
