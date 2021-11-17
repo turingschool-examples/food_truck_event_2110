@@ -67,7 +67,7 @@ class Event
       truck.inventory.values.each do |q|
         if q >= quantity
           can_sell = true
-          quantity - q
+          q - quantity
         else
           can_sell = false
         end
