@@ -87,7 +87,7 @@ describe Event do
       end
     end
 
-    describe ' #sorted_item_list' do
+    describe ' #sorted_items_list' do
       before(:each) do
         @food_truck3.stock(@item3, 10)
         @event.add_food_truck(@food_truck1)
