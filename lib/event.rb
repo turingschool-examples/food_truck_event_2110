@@ -52,7 +52,7 @@ class Event
 
     end
     hash
-    require 'pry'; binding.pry
+    # require 'pry'; binding.pry
   end
 
   def overstocked_items
