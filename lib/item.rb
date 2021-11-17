@@ -3,11 +3,6 @@ class Item
 
   def initialize(attributes)
     @name = attributes[:name]
-    @price = item_price(attributes[:price])
-  end
-
-  def item_price(price)
-    price.slice!(0)
-    price.to_f.round(2)
+    @price = attributes[:price].delete('$').to_f
   end
 end
