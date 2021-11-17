@@ -18,7 +18,7 @@ RSpec.describe Item do
   end
 
   it 'has a price' do
-    expect(@item1.price).to eq("$3.75")
-    expect(@item2.price).to eq('$2.50')
+    expect(@item1.price).to eq(3.75)
+    expect(@item2.price).to eq(2.50)
   end
 end
