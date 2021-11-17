@@ -23,4 +23,8 @@ class FoodTruck
   def in_stock
     @inventory.map {|item, quantity| item if quantity > 0}
   end
+
+  def sell(item, quantity)
+    @inventory[item] -= quantity
+  end
 end
