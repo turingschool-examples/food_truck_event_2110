@@ -170,5 +170,27 @@ describe Event do
         expect(@event.item_from_item_name("Apple Pie (Slice)")).to eq(@item2)
       end
     end
+
+    describe ' #sorted_items' do
+      before(:each) do
+        @food_truck3.stock(@item3, 10)
+        @event.add_food_truck(@food_truck1)
+        @event.add_food_truck(@food_truck2)
+        @event.add_food_truck(@food_truck3)
+      end
+
+      it 'returns an Array' do
+        expect(@event.sorted_items).to be_a(Array)
+      end
+
+      it 'returns an array of items' do
+        expect(@event.sorted_items.all?{|item| item.class == Item}).to eq(true)
+      end
+
+      it 'returns the correct sorted array of unique items' do
+        expected = [@item2, @item4, @item3, @item1]
+        expect(@event.sorted_items).to eq(expected)
+      end
+    end
   end
 end
