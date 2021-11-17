@@ -17,6 +17,10 @@ class FoodTruck
   def potential_revenue
     inventory.map do |item, qty|
       item.price.sub('$', '').to_f * qty
-    end.sum
+    end.sum.round(2)
+  end
+
+  def menu_list
+    inventory.keys
   end
 end

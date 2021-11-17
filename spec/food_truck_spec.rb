@@ -79,8 +79,16 @@ RSpec.describe FoodTruck do
       food_truck2.stock(item3, 25)
 
       actual = food_truck2.potential_revenue
-      expected = 345.0
+      expected = 345.00
       expect(actual).to eq(expected)
+    end
+  end
+  describe 'menu_list' do
+    it 'reads the menu' do
+      food_truck1.stock(item1, 30)
+      food_truck1.stock(item2, 12)
+      actual = food_truck1.menu_list
+      expected = [item1, item2]
     end
   end
 end
