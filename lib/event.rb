@@ -26,4 +26,8 @@ class Event
     end
     truck_by_item
   end
+
+  def sorted_item_list
+
+  end
 end
