@@ -213,5 +213,11 @@ describe Event do
         expect(@event.overstocked_items).to eq([@item1])
       end
     end
+
+    describe ' #sell' do
+      it 'returns false if the event does not have enough of the item' do
+        expect(@event.sell(@item1, 1000)).to eq(false)
+      end
+    end
   end
 end
