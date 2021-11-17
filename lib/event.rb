@@ -35,6 +35,30 @@ class Event
     items_list.sort.uniq!
   end
 
+  def total_inventory
+    all_inventory = {}
+
+    @food_trucks.each do |truck|
+
+      truck.inventory.each do |k, v|
+
+      if not all_inventory.keys.include?(k)
+        all_inventory[k] = {quantity: v, food_trucks: food_trucks_that_sell(k)}
+      elsif all_inventory.keys.include? (k)
+        num = all_inventory[k][:quantity]
+        num += v
+        all_inventory[k][:quantity] = num
+      end
+
+      all_inventory[k][:food_trucks] = food_trucks_that_sell(k)
+      end
+    end
+    all_inventory
+  end
+
+  def overstocked_items
+    skip
+  end
 
 
 end

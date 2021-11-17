@@ -21,7 +21,6 @@ class FoodTruck
       total += (k.price[1..-1].to_f * v.to_i)
     end
     total
-
   end
 
 end

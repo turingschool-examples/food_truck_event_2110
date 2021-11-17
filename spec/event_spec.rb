@@ -63,7 +63,7 @@ RSpec.describe Event do
     expect(@event.sorted_item_list).to eq(["Apple Pie (Slice)", "Banana Nice Cream", "Peach Pie (Slice)", "Peach-Raspberry Nice Cream"])
   end
 
-  xit '#total_inventory' do
+  it '#total_inventory' do
     @food_truck1.stock(@item1, 35)
     @food_truck1.stock(@item2, 7)
     @food_truck2.stock(@item4, 50)
@@ -79,7 +79,7 @@ RSpec.describe Event do
                                           @item4 => {quantity: 50, food_trucks: [@food_truck2]}})
   end
 
-  xit '#overstocked_items' do
+  it '#overstocked_items' do
     @food_truck1.stock(@item1, 35)
     @food_truck1.stock(@item2, 7)
     @food_truck2.stock(@item4, 50)
