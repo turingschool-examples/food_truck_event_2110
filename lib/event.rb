@@ -30,4 +30,15 @@ class Event
     trucks_that_sell_it
   end
 
+  def sorted_items_list
+    list_of_items_at_event = []
+    @food_trucks.each do |truck|
+      truck.inventory.each do |item, amount|
+        list_of_items_at_event << item.name
+
+      end
+    end
+    list_of_items_at_event.uniq.sort
+  end
+
 end
