@@ -75,7 +75,7 @@ RSpec.describe Event do
 
     it 'checks all items available at event' do
       expect(@event.sorted_items_list).to be_a Array
-      expect(@event.sorted_items_list).to eq([@item1.name, @item2.name, @item3.name, @item4.name])
+      expect(@event.sorted_items_list).to eq([@item2.name, @item4.name, @item1.name, @item3.name])
     end
   end
 end
