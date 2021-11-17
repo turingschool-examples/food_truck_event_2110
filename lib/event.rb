@@ -59,4 +59,17 @@ class Event
     total_inventory_hash
   end
 
+  def sell(items, amount)
+    @food_trucks.each do |truck|
+      truck.inventory.each do |item, quant|
+        if truck.inventory.include?(items) && quant >= amount
+          quant -= amount
+          return true
+        else
+          return false
+        end
+      end
+    end
+  end
+
 end
