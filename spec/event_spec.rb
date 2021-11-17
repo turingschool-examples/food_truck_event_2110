@@ -79,7 +79,7 @@ describe Event do
       expect(event.total_quantity_per_item(item1)).to eq(100)
     end
 
-    xit '#total inventory' do 
+    it '#total inventory' do 
       expected = {
       item1 => {
       quantity: 100,

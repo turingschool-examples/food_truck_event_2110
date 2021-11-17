@@ -44,9 +44,11 @@ class Event
   end
 
   def total_inventory 
-    @items.reduce({}) do |hash, item|
+    items.reduce({}) do |hash, item|
       hash[item] = {} if !hash[item].is_a?(Hash)
-      hash[item][:quantity] 
+      hash[item][:quantity] = total_quantity_per_item(item)
+      hash[item][:food_trucks] = food_trucks_that_sell(item)
+      hash
     end
   end
 end
