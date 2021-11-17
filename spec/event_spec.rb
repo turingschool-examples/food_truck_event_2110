@@ -67,6 +67,33 @@ RSpec.describe Event do
       expect(@event.food_trucks_that_sell(@item4)).to eq([@food_truck2])
     end
 
-    
+    it 'can return #sorted_item_list' do
+      @event.add_food_truck(@food_truck)
+      @event.add_food_truck(@food_truck2)
+      @event.add_food_truck(@food_truck3)
+
+      expected_array = ["Apple Pie (Slice)", "Banana Nice Cream", "Peach Pie (Slice)", "Peach-Raspberry Nice Cream"]
+
+      expect(@event.sorted_item_list).to eq(expected_array)
+    end
+
+    it 'can return #total_inventory' do
+      expected_hash = {
+
+        @item1 => {quantity: 100, food_trucks: [@food_truck, @food_truck3]},
+        @item2 => {quantity: 7, food_trucks: [@food_truck]},
+        @item3 => {quantity: 25, food_trucks: [@food_truck2]},
+        @item4 => {quantity: 50, food_trucks: [@food_truck2]}
+
+
+      }
+
+      expect(@event.total_inventory).to eq(expected_hash)
+    end
+
+    it 'can return #overstocked_items' do
+      expected_array = [@item1]
+      expect(@event.overstocked_items).to eq(expected_array)
+    end
   end
 end
