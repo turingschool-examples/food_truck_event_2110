@@ -63,4 +63,11 @@ RSpec.describe Event do
 
     expect(event.sorted_item_list).to eq(expected)
   end
+
+  it 'can identify overstocked items' do
+    stock_items
+    add_trucks
+
+    expect(event.overstocked_items).to eq([item1])
+  end
 end
