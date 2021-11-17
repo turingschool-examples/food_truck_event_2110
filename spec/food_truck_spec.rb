@@ -16,7 +16,7 @@ describe FoodTruck do
     expect(food_truck.inventory).to eq({})
   end
 
-  xit '#check stock' do 
+  it '#check stock' do 
     expect(food_truck.check_stock(item1)).to eq(0)
   end
 
