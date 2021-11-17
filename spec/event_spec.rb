@@ -47,7 +47,7 @@ describe Event do
       expect(event.food_trucks_that_sell(item4)).to eq([food_truck2])
     end
 
-    xit '#potential revenue' do 
+    it '#potential revenue' do 
       expect(food_truck1.potential_revenue).to eq(148.75)
       expect(food_truck2.potential_revenue).to eq(345.00)
       expect(food_truck3.potential_revenue).to eq(243.75)
