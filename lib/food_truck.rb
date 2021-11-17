@@ -18,14 +18,10 @@ class FoodTruck
     @inventory[item]
   end
 
-  # def get_item_price_as_float(item)
-  #   item.price.tr('$', '').to_f
-  # end
-
   def potential_revenue
     revenue_total = 0
-    @inventory.each do |item|
-      revenue_total += item[0].price.tr('$','').to_f * item[1]
+    @inventory.each do |item, amount|
+      revenue_total += item.price.tr('$','').to_f * amount
     end
     revenue_total
   end
