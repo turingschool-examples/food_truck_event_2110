@@ -30,10 +30,12 @@ describe Event do
   end
 
   describe '#add_food_truck' do
-    @event.add_food_truck(@food_truck1)
-    @event.add_food_truck(@food_truck2)
-    @event.add_food_truck(@food_truck3)
-    expect(@event.food_trucks).to eq([@food_truck1, @food_truck2, @food_truck3])
+    it 'adds a food truck to the event' do
+      @event.add_food_truck(@food_truck1)
+      @event.add_food_truck(@food_truck2)
+      @event.add_food_truck(@food_truck3)
+      expect(@event.food_trucks).to eq([@food_truck1, @food_truck2, @food_truck3])
+    end
   end
 
 end
