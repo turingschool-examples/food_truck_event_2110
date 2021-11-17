@@ -86,5 +86,27 @@ describe Event do
         expect(@event.food_trucks_that_sell(@item1)).to eq([@food_truck1, @food_truck3])
       end
     end
+
+    describe ' #sorted_item_list' do
+      before(:each) do
+        @food_truck3.stock(@item3, 10)
+        @event.add_food_truck(@food_truck1)
+        @event.add_food_truck(@food_truck2)
+        @event.add_food_truck(@food_truck3)
+      end
+
+      it 'returns an Array' do
+        expect(@event.sorted_items_list).to be_a(Array)
+      end
+
+      it 'returns an Array of strings' do
+        expect(@event.sorted_items_list.all?{|name| name.class == String}).to eq(true)
+      end
+
+      it 'returns expected array of names that are sorted with no duplicates' do
+        expected = ["Apple Pie (Slice)", "Banana Nice Cream", "Peach Pie (Slice)", "Peach-Raspberry Nice Cream"]
+        expect(@event.sorted_items_list).to eq(expected)
+      end
+    end
   end
 end
