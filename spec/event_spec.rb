@@ -78,9 +78,17 @@ RSpec.describe Event do
       expect(@event.sorted_items_list).to eq([@item2.name, @item4.name, @item1.name, @item3.name])
     end
 
-    it 'makes list of overstocked items' do
+    it 'tracks total inventory' do
+      expect(@event.total_inventory).to be_a Hash
+      expect(@event.total_inventory.keys).to eq([@item1, @item2 ,@item3 ,@item4])
+      expect(@event.total_inventory.values[0]).to be_a Hash
+      expect(@event.total_inventory.values[0]).to be_a Hash
+    end
+
+
+    xit 'makes list of overstocked items' do
       expect(@event.overstocked_items).to be_a Array
-      expect(@event.overstocked_items).to eq([item1)])
+      expect(@event.overstocked_items).to eq([item1])
     end
   end
 end
