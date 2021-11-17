@@ -32,4 +32,12 @@ RSpec.describe Event do
     expect(event.name).to eq('South Pearl Street Farmers Market')
     expect(event.food_trucks).to eq([])
   end
+
+  it 'can add food trucks' do
+    expect(event.food_trucks).to eq([])
+
+    add_trucks
+
+    expect(event.food_trucks).to eq([food_truck1, food_truck2, food_truck3])
+  end
 end
