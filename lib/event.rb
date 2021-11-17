@@ -26,10 +26,28 @@ class Event
         all_inventory << item
       end
     end
-    alphabetically = []
+    set = ("A".."Z").to_a
     all_inventory.sort_by do |item|
-      alphabetically << item[0].name
+      item[0].name.split("").map do |char|
+        set.index(char)
+      end
+    end.map do |item|
+      item[0].name
+    end.uniq 
+  end
+
+  def total_inventory
+    total = {}
+    food_trucks.each do |food_truck|
+      food_truck.inventory.each do |item|
+        if total[item[0]].nil?
+          total[item[0]] = {qty: item[1], food_trucks: [food_truck] }
+        else
+        total[item[0]][:qty] += item[1]
+        total[item[0]][:food_trucks] += [food_truck]
+        end
+      end
     end
-    alphabetically.uniq
+    total
   end
 end
