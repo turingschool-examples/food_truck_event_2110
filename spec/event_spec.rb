@@ -54,7 +54,9 @@ describe Event do
   end
 
   it 'returns sorted item list' do
-    
+    expected = ["Apple Pie (Slice)", "Banana Nice Cream", "Peach Pie (Slice)", "Peach-Raspberry Nice Cream"]
+
+    expect(@event.sorted_item_list).to eq(expected)
   end
 
 end
