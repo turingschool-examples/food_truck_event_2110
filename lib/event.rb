@@ -47,6 +47,16 @@ class Event
   end
 
   def sell(item, quantity)
-    return false if total_inventory[item].quantity < quantity
+    return false if total_inventory[item][:quantity] < quantity
+    total_inventory[item][:food_trucks].each do |food_truck|
+      if quantity >= food_truck.check_stock(item)
+        food_truck.inventory[item] = 0
+        quantity -= food_truck.check_stock(item)
+      else
+        food_truck.inventory[item] -= quantity
+        quantity = 0
+      end
+    end
+    true
   end
 end

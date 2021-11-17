@@ -216,7 +216,7 @@ describe Event do
 
     describe ' #sell' do
       before(:each) do
-        @item5 = Item.new('pizza', '$2.00')
+        @item5 = Item.new({name: 'Pizza', price: "$3.75"})
         @food_truck1.stock(@item5, 10)
         @food_truck2.stock(@item5, 50)
         @food_truck3.stock(@item5, 40)
