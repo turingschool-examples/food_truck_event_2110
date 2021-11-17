@@ -8,12 +8,22 @@ class FoodTruck
   end
 
   def check_stock(item)
-    # return 0 unless @inventory.has_key?(item)
     @inventory[item]
   end
 
   def stock(item, amount)
     @inventory[item] += amount
+  end
+
+  def potential_revenue
+    prices = self.inventory.keys.map do |item|
+      item.price
+    end
+    stocks = self.inventory.values
+    total = prices.zip(stocks).map do |price, inventory|
+      price * inventory
+    end
+    total.sum
   end
 
   
