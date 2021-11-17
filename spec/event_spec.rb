@@ -93,12 +93,20 @@ RSpec.describe Event do
       food_truck2.stock(item4, 50)
       food_truck2.stock(item3, 25)
       food_truck3.stock(item1, 65)
+      food_truck3.stock(item3, 10)
       event.add_food_truck(food_truck1)
       event.add_food_truck(food_truck2)
       event.add_food_truck(food_truck3)
 
-      actual = event.food_trucks_that_sell(item1)
-      expected = ['Rocky Mountain Pies', 'Ba-Nom-a-Nom', 'Palisade Peach Shack']
+      actual = event.total_inventory
+      expected =
+        {
+          item1 => { quantity: 100, food_trucks: [food_truck1, food_truck3] },
+          item2 => { quantity: 7, food_trucks: [food_truck1] },
+          item3 => { quantity: 35, food_trucks: [food_truck2, food_truck3] },
+          item4 => { quantity: 50, food_trucks: [food_truck2] }
+
+        }
 
       expect(actual).to eq(expected)
     end
@@ -114,8 +122,8 @@ RSpec.describe Event do
       event.add_food_truck(food_truck2)
       event.add_food_truck(food_truck3)
 
-      actual = event.food_trucks_that_sell(item1)
-      expected = ['Rocky Mountain Pies', 'Ba-Nom-a-Nom', 'Palisade Peach Shack']
+      actual = event.overstocked_items
+      expected = [item1]
 
       expect(actual).to eq(expected)
     end
