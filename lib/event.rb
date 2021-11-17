@@ -26,28 +26,26 @@ class Event
     trucks_selling_item
   end
 
-  def keys
-    all_items = []
-    @food_trucks.each do |truck|
-      all_items << truck.inventory.keys
-    end
-    keys = all_items.flatten.uniq
-  end
-
-  def total_quantity(item_name)
-    total = 0
-    @food_trucks.each do |truck|
-      total += truck.check_stock(item_name)
-    end
-    total
-  end
-
   def total_inventory
-    keys.reduce({}) do |key, item_name|
-      key[item_name] = {}
-      require "pry"; binding.pry
-      key[item_name][:quantity] = total_quantity(item_name)
-      key[item_name][:food_trucks] = food_trucks_that_sell(item_name)
+    inner_hash_keys.reduce({}) do |key, item|
+      key[item] = Hash.new(0)
+      key[item][:quantity] = total_amount_of_item(item)
+      key[item][:food_trucks]  = food_trucks_that_sell(item)
+      key
     end
+  end
+
+  def inner_hash_keys
+    keys = []
+    @food_trucks.each do |food_truck|
+      keys << food_truck.inventory.keys
+    end
+    keys.flatten.uniq
+  end
+
+  def total_amount_of_item(item)
+    @food_trucks.map do |food_truck|
+      food_truck.inventory[item]
+    end.sum
   end
 end

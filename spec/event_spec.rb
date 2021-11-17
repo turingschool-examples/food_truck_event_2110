@@ -99,13 +99,13 @@ RSpec.describe Event do
           quantity: 7,
           food_trucks: [@food_truck1]
         },
-        @item4 => {
-          quantity: 50,
-          food_trucks: [@food_truck2]
-        },
         @item3 => {
           quantity: 35,
           food_trucks: [@food_truck2, @food_truck3]
+        },
+        @item4 => {
+          quantity: 50,
+          food_trucks: [@food_truck2]
         },
       }
 
