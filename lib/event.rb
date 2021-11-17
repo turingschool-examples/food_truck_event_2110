@@ -34,7 +34,7 @@ class Event
     hash = {}
     self.items.each do |item|
       hash[item] = {
-        quantity: @food_trucks.sum { |food_truck| food_truck.inventory[item] },
+        quantity: @food_trucks.sum { |food_truck| food_truck.check_stock(item) },
         food_trucks: self.food_trucks_that_sell(item)
       }
     end
@@ -42,8 +42,8 @@ class Event
   end
 
   def overstocked_items
-    self.total_inventory.map do |item, data|
-      data[:quantity] > 50 && data[:food_trucks].length > 1 ? item : nil
+    self.total_inventory.map do |item, item_data|
+      item_data[:quantity] > 50 && item_data[:food_trucks].length > 1 ? item : nil
     end.compact
   end
 
