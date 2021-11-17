@@ -103,4 +103,10 @@ describe Event do
     end
   end
 
+  describe '#overstocked_items' do
+    it 'returns items that are sold by 2+ trucks and with quantity greater than 50' do
+      expect(@event.overstocked_items).to eq([@item1])
+    end
+  end
+
 end
