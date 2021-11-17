@@ -12,4 +12,9 @@ describe Event do
     event = Event.new("South Pearl Street Farmers Market")
     expect(event.name).to eq("South Pearl Street Farmers Market")
   end
+
+  it 'has food trucks' do
+    event = Event.new("South Pearl Street Farmers Market")
+    expect(event.food_trucks).to eq([])
+  end
 end
