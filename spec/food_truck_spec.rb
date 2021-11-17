@@ -33,10 +33,4 @@ RSpec.describe FoodTruck do
 
     expect(@food_truck.inventory).to eq({@item1 => 55, @item2 => 12})
   end
-
-  #Iteration 2
-
-  # it 'calculates potential revenue' do
-  #
-  # end
 end
