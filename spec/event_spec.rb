@@ -17,6 +17,7 @@ RSpec.describe Event do
     food_truck2.stock(item4, 50)
     food_truck2.stock(item3, 25)
     food_truck3.stock(item1, 65)
+    food_truck3.stock(item3, 10)
   end
   let (:add_trucks) do
     event.add_food_truck(food_truck1)
@@ -53,5 +54,13 @@ RSpec.describe Event do
 
     expect(event.food_trucks_that_sell(item1)).to eq([food_truck1, food_truck3])
     expect(event.food_trucks_that_sell(item4)).to eq([food_truck2])
+  end
+
+  it 'can return a sorted list of all items in stock by strucks' do
+    stock_items
+    add_trucks
+    expected = ["Apple Pie (Slice)", "Banana Nice Cream", "Peach Pie (Slice)", "Peach-Raspberry Nice Cream"]
+
+    expect(event.sorted_item_list).to eq(expected)
   end
 end
