@@ -19,7 +19,7 @@ class FoodTruck
     if @inventory.key?(item_obj)
       @inventory[item_obj]
     else
-      puts "Out Of Stock."
+      @inventory[item_obj] = 0
     end
   end
 end
