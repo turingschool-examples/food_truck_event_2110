@@ -1,7 +1,5 @@
 require './lib/item'
 require './lib/food_truck'
-# pry(main)> food_truck.check_stock(item1)
-# #=> 0
 # pry(main)> food_truck.stock(item1, 30)
 # pry(main)> food_truck.inventory
 # #=> {#<Item:0x007f9c56740d48...> => 30}
@@ -33,6 +31,13 @@ RSpec.describe FoodTruck do
   describe '#check_stock' do
     it "checks the quantity level for a given item" do
       expect(food_truck.check_stock(item1)).to eq 0
+    end
+  end
+
+  describe '#stock' do
+    it "adds given item to ::inventory with a given quantity" do
+      food_truck.stock(item1, 30)
+      expect(food_truck.inventory).to eq({item1 => 30})
     end
   end
 end
