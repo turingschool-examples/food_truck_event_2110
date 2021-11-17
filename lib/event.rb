@@ -1,9 +1,12 @@
+require 'date'
+
 class Event
-  attr_reader :name, :food_trucks
+  attr_reader :name, :food_trucks, :date
 
   def initialize(name)
     @name = name
     @food_trucks = []
+    @date = Date.today.strftime('%d/%m/%Y')
   end
 
   def add_food_truck(food_truck)
@@ -41,4 +44,17 @@ class Event
     end
     overstock.keys
   end
+
+  # def sell(item, quantity)
+  #   require 'pry'; binding.pry
+  #   sell_quantity = quantity
+  #   if total_inventory[item][:quantity] > quantity
+  #     false
+  #   else
+  #     @food_trucks.each do |food_truck|
+  #       food_truck.sell(item, sell_quantity)
+  #       sell_quantity -=
+  #     end
+  #   end
+  # end
 end
