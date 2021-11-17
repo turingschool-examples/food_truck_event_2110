@@ -12,5 +12,12 @@ class FoodTruck
 
   def stock(item, quant)
     @inventory[item] += quant
-  end 
+  end
+
+  def potential_revenue
+    @inventory.sum do |item, quant|
+      item.price * quant
+    end
+  end
+
 end
