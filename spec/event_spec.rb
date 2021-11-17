@@ -38,27 +38,27 @@ RSpec.describe Event do
   end
 
   it 'can #add_food_truck to @food_trucks[]' do
-    @event.add_food_truck(@food_truck1)
-    @event.add_food_truck(@food_truck1)
-    @event.add_food_truck(@food_truck1)
+    @event.add_food_truck(@food_truck)
+    @event.add_food_truck(@food_truck2)
+    @event.add_food_truck(@food_truck3)
 
-    expected_array = [@food_truck1, @food_truck2, @food_truck3]
+    expected_array = [@food_truck, @food_truck2, @food_truck3]
     expect(@event.food_trucks).to eq(expected_array)
   end
 
   it 'returns all #food_truck_names' do
-    @event.add_food_truck(@food_truck1)
-    @event.add_food_truck(@food_truck1)
-    @event.add_food_truck(@food_truck1)
+    @event.add_food_truck(@food_truck)
+    @event.add_food_truck(@food_truck2)
+    @event.add_food_truck(@food_truck3)
 
     expected_array = ["Rocky Mountain Pies", "Ba-Nom-a-Nom", "Palisade Peach Shack"]
     expect(@event.food_truck_names).to eq(expected_array)
   end
 
   it 'returns #food_trucks_that_sell(item_obj)' do
-    @event.add_food_truck(@food_truck1)
-    @event.add_food_truck(@food_truck1)
-    @event.add_food_truck(@food_truck1)
+    @event.add_food_truck(@food_truck)
+    @event.add_food_truck(@food_truck2)
+    @event.add_food_truck(@food_truck3)
 
     expect(@event.food_trucks_that_sell(@item4)).to eq([@food_truck2])
   end
