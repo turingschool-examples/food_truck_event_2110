@@ -7,4 +7,12 @@ class FoodTruck
     @inventory = {}
   end
 
+  def stock(item_obj, quantity)
+    if @inventory[item_obj] == nil
+      @inventory[item_obj] = quantity
+    else
+      @inventory[item_obj] += quantity
+    end
+   end
+
 end
