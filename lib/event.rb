@@ -55,12 +55,19 @@ class Event
   end
 
   def sell(item, amount)
+    #didnt' get to finish this method to reduce food_truck item
+    #stock.
     instock = false
       total_inventory.each do |thing, stock|
         if item == thing && stock[:quantity] >= amount
           instock = true
+          # @food_trucks.each do |food_truck|
+          #   if food_truck.inventory[item] = amount
+          #     food_truck.inventory[item] -= amount
+          #   end
+          # end
         end
       end
     instock
-  end 
+  end
 end
