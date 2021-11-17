@@ -136,10 +136,16 @@ describe Event do
     event.add_food_truck(food_truck1)
     event.add_food_truck(food_truck2)
     event.add_food_truck(food_truck3)
-    item1 = Item.new({name: 'Peach', price: "$0.75"})
-    item2 = Item.new({name: 'Tomato', price: "$0.50"})
+    item1 = Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})
+    item2 = Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})
     item3 = Item.new({name: "Peach-Raspberry Nice Cream", price: "$5.30"})
     item4 = Item.new({name: "Banana Nice Cream", price: "$4.25"})
+    food_truck1.stock(item1, 35)
+    food_truck1.stock(item2, 7)
+    food_truck2.stock(item4, 50)
+    food_truck2.stock(item3, 25)
+    food_truck3.stock(item1, 65)
+    food_truck3.stock(item3, 10)
     expect(event.sorted_item_list).to eq(["Apple Pie (Slice)", "Banana Nice Cream", "Peach Pie (Slice)", "Peach-Raspberry Nice Cream"])
   end
 end
