@@ -38,7 +38,7 @@ class FoodTruck
 
     # Inside of our loop, it turns possible_revenue
     # into an array
-    @inventory.map do |item_obj, item_quantity|
+    @inventory.each do |item_obj, item_quantity|
       fiscal_value = item_obj.price * item_quantity
       possible_revenue += fiscal_value
     end
