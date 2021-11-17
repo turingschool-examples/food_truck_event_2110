@@ -58,4 +58,20 @@ class Event
        item.name
      end.sort
    end
+
+   def sell(item, quantity)
+     if total_inventory.keys.include?(item) == false || total_inventory[item][:quantity] < quantity
+       false
+     else
+       total_inventory[item][:quantity] -= quantity
+       total_inventory[item][:food_trucks].map do |truck|
+          if truck.inventory[item] > 0
+            truck.inventory[item] -= quantity
+          end 
+        end
+        true
+       #require "pry"; binding.pry
+     end
+   end
+
 end

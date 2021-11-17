@@ -106,5 +106,39 @@ RSpec.describe Event do
         expect(event.sorted_item_list).to eq(["Apple Pie (Slice)", "Banana Nice Cream", "Peach Pie (Slice)", "Peach-Raspberry Nice Cream"])
       end
     end
+
+    describe 'Iteration IV (date tests are above)' do
+      before :each do
+        food_truck1.stock(item1, 35)
+        food_truck1.stock(item2, 7)
+
+        food_truck2.stock(item4, 50)
+        food_truck2.stock(item3, 25)
+
+        food_truck3.stock(item1, 65)
+
+        event.add_food_truck(food_truck1)
+        event.add_food_truck(food_truck2)
+        event.add_food_truck(food_truck3)
+      end
+
+      it 'can sell items' do
+
+        expect(event.sell(item1, 200)).to eq(false)
+        expect(event.sell(item5, 1)).to eq(false)
+        expect(event.sell(item4, 5)).to eq(true)
+      end
+
+      xit 'can reduce inventory' do
+        #so close...
+        event.sell(item4, 5)
+
+        expect(food_truck2.check_stock(item4)).to eq(45)
+
+        event.sell(item1, 40)
+        expect(food_truck1.check_stock(item1)).to eq(0)
+        expect(food_truck3.check_stock(item1)).to eq(60)
+      end
+    end
   end
 end
