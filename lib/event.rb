@@ -27,4 +27,5 @@ class Event
     end
     trucks_with_inventory
   end
+  
 end
