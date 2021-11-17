@@ -68,6 +68,15 @@ class Event
     flag = false
     if item_hash(item)[:quantity] >= quantity
       flag = true
+      item_hash(item)[:food_trucks].map do |truck|
+        if truck.inventory[item] >= quantity
+          truck.inventory[item] -= quantity
+        elsif truck.inventory[item] <= quantity
+          truck.inventory[item] -= truck.inventory[item]
+          quantity1 = quantity - truck.inventory[item]
+        end
+        quantity = quantity1
+      end
     end
     flag
   end
