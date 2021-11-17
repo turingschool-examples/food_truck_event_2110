@@ -65,5 +65,16 @@ class Event
     overstocked.keys
   end
 
+  def sell(item, count)
+    if total_inventory[item] = nil
+      return false
+    end
+
+    require "pry"; binding.pry
+    # if total_inventory[item].quantity
+
+    trucks_with_item = total_inventory[item]
+
+  end
 
 end
