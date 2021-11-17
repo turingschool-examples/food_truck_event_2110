@@ -20,7 +20,6 @@ class Event
 
   # Select trucks who's inventory has an existing
   # key of our given obj
-
   # Does not account for an empty quantity of said key
   def food_trucks_that_sell(item_obj)
     @food_trucks.select do |truck|
@@ -54,8 +53,6 @@ class Event
       end
     end.flatten.uniq
   end
-
-
 
   def total_inventory
     # Initialize empty hash

@@ -45,6 +45,4 @@ class FoodTruck
     # We have to call it again to return as integer
     possible_revenue
   end
-
-
 end
