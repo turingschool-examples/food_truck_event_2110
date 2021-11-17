@@ -28,6 +28,11 @@ class Event
   end
 
   def sorted_item_list
-
+    alphabetical_items = @food_trucks.map do |food_truck|
+      food_truck.inventory.map do |item|
+        item[0].name
+      end
+    end
+    alphabetical_items.flatten.uniq.sort
   end
 end
