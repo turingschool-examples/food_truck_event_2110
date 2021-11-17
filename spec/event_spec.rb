@@ -67,7 +67,11 @@ describe Event do
       event.add_food_truck(food_truck3)
     end
 
-    it '#total inventory' do 
+    it 'items list' do 
+      expect(event.items_list).to eq([item1, item2, item4, item3, item1, item3])
+    end
+
+    xit '#total inventory' do 
       expected = {
       item1 => {
       quantity: 100,
@@ -86,7 +90,7 @@ describe Event do
       food_trucks: [food_truck2, food_truck3]
       },
     }
-    
+
       expect(event.total_inventory).to eq(expected)
     end
   end

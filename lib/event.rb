@@ -24,4 +24,8 @@ class Event
       end
     end.flatten.compact
   end
+
+  def total_inventory 
+    
+  end
 end
