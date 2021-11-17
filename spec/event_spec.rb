@@ -97,4 +97,12 @@ describe Event do
     end
   end
 
+  describe '#sell' do
+    it 'returns true/false depending on if item & qty sold' do
+      expect(@event.sell(@item1, 200)).to eq(false)
+      expect(@event.sell(@item5, 1)).to eq(false)
+      expect(@event.sell(@item4, 5)).to eq(true)
+    end
+  end 
+
 end
