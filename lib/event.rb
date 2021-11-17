@@ -21,4 +21,11 @@ class Event
     @food_trucks.find_all { |food_truck| food_truck.inventory.include?(item) }
   end
 
+  def sorted_item_list
+    items = @food_trucks.flat_map { |food_truck| food_truck.inventory.keys }
+    items.uniq!
+    items = items.map { |item| item.name }
+    items.sort
+  end
+
 end
