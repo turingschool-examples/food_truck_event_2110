@@ -5,6 +5,12 @@ class Event
   def initialize(name)
     @name = name
     @food_trucks = []
+    @date = date
+  end
+
+  def date
+    today = Date.today
+    "#{today.mday}/#{today.month.to_s.rjust(2, '0')}/#{today.year}"
   end
 
   def add_food_truck(food_truck)
@@ -44,7 +50,7 @@ class Event
 
         if not all_inventory.keys.include?(k)
           all_inventory[k] = {quantity: v, food_trucks: food_trucks_that_sell(k)}
-        elsif all_inventory.keys.include? (k)
+        elsif all_inventory.keys.include?(k)
           num = all_inventory[k][:quantity]
           num += v
           all_inventory[k][:quantity] = num
@@ -67,5 +73,8 @@ class Event
     overstocked.uniq!
   end
 
+  # def sell
+  #   skip
+  # end
 
 end
