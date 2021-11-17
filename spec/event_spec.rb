@@ -1,12 +1,11 @@
 require './lib/item'
 require './lib/food_truck'
 require './lib/event'
-# pry(main)> food_truck1.potential_revenue
-# #=> 148.75
-# pry(main)> food_truck2.potential_revenue
-# #=> 345.00
-# pry(main)> food_truck3.potential_revenue
-# #=> 243.75
+# pry(main)> event.overstocked_items
+# #=> [#<Item:0x007f9c56740d48...>]
+#
+# pry(main)> event.sorted_item_list
+# #=> ["Apple Pie (Slice)", "Banana Nice Cream", "Peach Pie (Slice)", "Peach-Raspberry Nice Cream"]
 RSpec.describe Event do
   let!(:item1){Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})}
   let!(:item2){Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})}
@@ -72,6 +71,40 @@ RSpec.describe Event do
       expect(food_truck1.potential_revenue).to eq 148.75
       expect(food_truck2.potential_revenue).to eq 345.00
       expect(food_truck3.potential_revenue).to eq 243.75
+    end
+  end
+
+  describe '#total_inventory' do
+    it "calculates the total stock of all the items sold at the event" do
+      event.add_food_truck(food_truck1)
+      event.add_food_truck(food_truck2)
+      event.add_food_truck(food_truck3)
+      food_truck1.stock(item1, 35)
+      food_truck1.stock(item2, 7)
+      food_truck2.stock(item4, 50)
+      food_truck2.stock(item3, 25)
+      food_truck3.stock(item1, 65)
+      food_truck3.stock(item3, 10)
+      expected = {
+        item1 => {
+          quantity: 100,
+          food_trucks: [food_truck1, food_truck3]
+        },
+        item2 => {
+          quantity: 7,
+          food_trucks: [food_truck1]
+        },
+        item4 => {
+          quantity: 50,
+          food_trucks: [food_truck2]
+        },
+        item3 => {
+          quantity: 35,
+          food_trucks: [food_truck2, food_truck3]
+
+        }
+      }
+      expect(event.total_inventory).to eq expected
     end
   end
 end
