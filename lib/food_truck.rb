@@ -7,4 +7,12 @@ class FoodTruck
     @name = name
     @inventory = {}
   end
-end 
+
+  def check_stock(item)
+    if @inventory.include?(item)
+      return @inventory[item]
+    else
+      return 0
+    end 
+  end
+end
