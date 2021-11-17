@@ -63,4 +63,12 @@ class Event
       item.name
     end.sort
   end
+
+  def sell(item, quantity)
+    flag = false
+    if item_hash(item)[:quantity] >= quantity
+      flag = true
+    end
+    flag
+  end
 end
