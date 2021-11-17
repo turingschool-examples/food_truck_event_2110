@@ -40,5 +40,11 @@ describe FoodTruck do
     expect(@food_truck.check_stock(@item1)).to eq(5)
   end
 
+  it 'calculates potential revenue' do
+    @food_truck.stock(@item1, 2)
+    @food_truck.stock(@item2, 3)
+    expected = 15.00
 
+    expect(@food_truck.potential_revenue).to eq(expected)
+  end
 end
