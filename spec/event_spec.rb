@@ -82,4 +82,10 @@ describe Event do
   expect(@event.total_inventory).to eq(expected)
   end
 
+  it 'finds overstocked items' do
+    expected = [@item1]
+
+    expect(@event.overstocked_items).to eq(expected)
+  end
+
 end
