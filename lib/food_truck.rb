@@ -7,4 +7,8 @@ class FoodTruck
     @inventory = {}
   end
 
+  def check_stock(item)
+    @inventory.values_at(item).join.to_i
+  end
+
 end
