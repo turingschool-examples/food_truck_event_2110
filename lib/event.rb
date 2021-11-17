@@ -53,4 +53,14 @@ class Event
      item.name
    end.sort
   end
+
+  def sell(item, amount)
+    instock = false
+      total_inventory.each do |thing, stock|
+        if item == thing && stock[:quantity] >= amount
+          instock = true
+        end
+      end
+    instock
+  end 
 end
