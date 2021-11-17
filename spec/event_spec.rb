@@ -17,6 +17,7 @@ describe Event do
     @food_truck2.stock(@item3, 25)
     @food_truck3 = FoodTruck.new("Palisade Peach Shack")
     @food_truck3.stock(@item1, 65)
+    @food_truck3.stock(@item3, 10)
   end
 
   describe '#initialize' do
@@ -54,6 +55,30 @@ describe Event do
       @event.add_food_truck(@food_truck3)
       expect(@event.food_trucks_that_sell(@item1)).to eq([@food_truck1, @food_truck3])
       expect(@event.food_trucks_that_sell(@item4)).to eq([@food_truck2])
+    end
+  end
+
+  describe '#total_inventory' do
+    it 'returns the total inventory' do
+      expected = {
+        @item1 => {
+          quantity: 100,
+          food_trucks: [@food_truck1, @food_truck3]
+        },
+        @item2 => {
+          quantity: 7,
+          food_trucks: [@food_truck1]
+        },
+        @item4 => {
+          quantity: 50,
+          food_trucks: [@food_truck2]
+        },
+        @item3 => {
+          quantity: 35,
+          food_trucks: [@food_truck2, @food_truck3]
+        },
+      }
+      expect(@event.total_inventory).to eq(expected)
     end
   end
 
