@@ -30,14 +30,14 @@ class Event
   end
 
   def total_inventory
-    hash = {}
+    inventory = {}
     self.items.each do |item|
-      hash[item] = {
+      inventory[item] = {
         quantity: @food_trucks.sum { |food_truck| food_truck.check_stock(item) },
         food_trucks: self.food_trucks_that_sell(item)
       }
     end
-    hash
+    inventory
   end
 
   def overstocked_items
