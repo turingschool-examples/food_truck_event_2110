@@ -18,4 +18,12 @@ RSpec.describe 'food truck' do
     expect(@food_truck.name).to eq("Rocky Mountain Pies")
     expect(@food_truck.inventory).to eq({})
   end
+
+  it "can stock items in the inventory" do
+    expect(@food_truck.inventory).to eq({})
+
+    @food_truck.stock(@item1, 30)
+
+    expect(@food_truck.inventory).to eq({@item1 => 30})
+  end
 end
