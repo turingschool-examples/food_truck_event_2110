@@ -37,7 +37,11 @@ class Event
     items_list.uniq
   end
 
-  
+  def total_quantity_per_item(item)
+    @food_trucks.map do |truck| 
+      truck.inventory[item]
+    end.sum
+  end
 
   def total_inventory 
     @items.reduce({}) do |hash, item|
