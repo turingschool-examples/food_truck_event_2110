@@ -60,7 +60,22 @@ RSpec.describe Event do
 
     it 'returns list of food trucks with item in stock' do
       expect(@event.food_trucks_that_sell(@item1)).to be_a Array
-      expect(@event.food_trucks_that_sell(@item1)).to eq([food_truck1, food_truck3]) 
+      expect(@event.food_trucks_that_sell(@item1)).to eq([@food_truck1, @food_truck3])
+      expect(@event.food_trucks_that_sell(@item2)).to eq([@food_truck1])
+      expect(@event.food_trucks_that_sell(@item3)).to eq([@food_truck2])
+    end
+
+    it 'checks potential revenue again' do
+      expect(@food_truck1.potential_revenue).to eq 148.75
+
+      expect(@food_truck2.potential_revenue).to eq 345.00
+
+      expect(@food_truck3.potential_revenue).to eq 243.75
+    end
+
+    it 'checks all items available at event' do
+      expect(@event.sorted_items_list).to be_a Array
+      expect(@event.sorted_items_list).to eq([@item1.name, @item2.name, @item3.name, @item4.name])
     end
   end
 end
