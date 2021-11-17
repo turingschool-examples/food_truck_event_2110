@@ -153,5 +153,22 @@ describe Event do
         expect(@event.total_inventory).to eq(expected)
       end
     end
+
+    describe ' #item_from_item_name' do
+      before(:each) do
+        @food_truck3.stock(@item3, 10)
+        @event.add_food_truck(@food_truck1)
+        @event.add_food_truck(@food_truck2)
+        @event.add_food_truck(@food_truck3)
+      end
+
+      it 'returns an Item' do
+        expect(@event.item_from_item_name("Apple Pie (Slice)")).to be_a(Item)
+      end
+
+      it 'returns correct item' do
+        expect(@event.item_from_item_name("Apple Pie (Slice)")).to eq(@item2)
+      end
+    end
   end
 end
