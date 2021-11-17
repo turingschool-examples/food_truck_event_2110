@@ -82,7 +82,7 @@ describe Event do
 
   end
 
-  xit 'Can show total inventory of an event' do
+  it 'Can show total inventory of an event' do
     event = Event.new("South Pearl Street Farmers Market")
     item1 = Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})
     item2 = Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})
@@ -110,11 +110,11 @@ describe Event do
         quantity: 7 ,
         food_trucks: [food_truck1]
       },
-      item3 => {
+      item4 => {
         quantity: 50 ,
         food_trucks: [food_truck2]
       },
-      item4 => {
+      item3 => {
         quantity: 35 ,
         food_trucks: [food_truck2,food_truck3]
       },
@@ -195,7 +195,24 @@ describe Event do
       quantity: 100 ,
       food_trucks: [food_truck1, food_truck3]
     }
+    expected_2 =
+    {
+    quantity: 7 ,
+    food_trucks: [food_truck1]
+    }
+    expected_3 =
+    {
+    quantity: 50 ,
+    food_trucks: [food_truck2]
+    }
+    expected_4 =
+    {
+    quantity: 35 ,
+    food_trucks: [food_truck2,food_truck3]
+    }
     expect(event.item_details(item1)).to eq (expected)
-
+    expect(event.item_details(item2)).to eq (expected_2)
+    expect(event.item_details(item4)).to eq (expected_3)
+    expect(event.item_details(item3)).to eq (expected_4)
   end
 end
