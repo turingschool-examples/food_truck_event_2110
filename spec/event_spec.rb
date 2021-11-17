@@ -45,6 +45,7 @@ RSpec.describe Event do
         food_truck2.stock(item3, 25)
 
         food_truck3.stock(item1, 65)
+        food_truck3.stock(item3, 10)
 
         event.add_food_truck(food_truck1)
         event.add_food_truck(food_truck2)
@@ -60,6 +61,38 @@ RSpec.describe Event do
 
         expect(event.food_trucks_that_sell(item1)).to eq([food_truck1, food_truck3])
         expect(event.food_trucks_that_sell(item4)).to eq([food_truck2])
+      end
+
+      it 'can list all items being sold' do
+
+        expect(event.items_for_sale).to eq([item1, item2, item4, item3])
+      end
+
+      it 'can list total inventory of all items, and which trucks are selling an item' do
+        expected = {
+          item1 => {quantity: 100,
+                     food_trucks: [food_truck1, food_truck3]},
+          item2 => {quantity: 7,
+                     food_trucks: [food_truck1]},
+          item4 => {quantity: 50,
+                     food_trucks: [food_truck2]},
+          item3 => {quantity: 35,
+                     food_trucks: [food_truck2, food_truck3]}
+        }
+
+        expect(event.total_inventory).to eq(expected)
+      end
+
+      it 'can tell when an item is overstocked' do
+        # An item is overstocked if it is
+        # sold by more than 1 food truck AND
+        # the total quantity is greater than 50.
+        expect(event.overstocked_items).to eq([item1])
+      end
+
+      it 'can sort items for sale alphabetically' do
+
+        expect(event.sorted_item_list).to eq(["Apple Pie (Slice)", "Banana Nice Cream", "Peach Pie (Slice)", "Peach-Raspberry Nice Cream"])
       end
     end
   end

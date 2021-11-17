@@ -22,4 +22,36 @@ class Event
       truck.inventory.keys.include?(item)
     end
   end
+
+  def items_for_sale
+    @food_trucks.map do |truck|
+      truck.inventory.keys
+    end.flatten.uniq
+  end
+
+  def total_inventory
+    inventory = {}
+    items_for_sale.map do |item|
+      inventory[item] = {quantity: food_trucks_that_sell(item).sum {|truck| truck.inventory[item]},
+                 food_trucks: food_trucks_that_sell(item)}
+                 #require "pry"; binding.pry
+     end
+     inventory
+   end
+
+   def overstocked_items
+     overstocked_items = []
+     total_inventory.each do |key, value|
+       if value[:quantity] > 50 && value[:food_trucks].count >= 2
+         overstocked_items.push(key)
+       end
+     end
+     overstocked_items
+   end
+
+   def sorted_item_list
+     items_for_sale.map do |item|
+       item.name
+     end.sort
+   end 
 end
