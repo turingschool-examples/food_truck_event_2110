@@ -42,7 +42,7 @@ describe Event do
       expect(event.food_truck_names).to eq(["Rocky Mountain Pies", "Ba-Nom-a-Nom", "Palisade Peach Shack"])
     end
 
-    xit '#food trucks that sell' do 
+    it '#food trucks that sell' do 
       expect(event.food_trucks_that_sell(item1)).to eq([food_truck1, food_truck3])
       expect(event.food_trucks_that_sell(item4)).to eq([food_truck2])
     end
