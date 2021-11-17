@@ -66,4 +66,20 @@ RSpec.describe FoodTruck do
     expect(@food_truck.inventory).to eq(expected)
   end
 
+  it '#potential_revenue empty' do
+    # @food_truck.stock(@item1, 30)
+    # @food_truck.stock(@item1, 25)
+    # @food_truck.stock(@item2, 12)
+
+    expect(@food_truck.potential_revenue).to eq(0)
+  end
+
+  it '#potential_revenue' do
+    @food_truck.stock(@item1, 30)
+    @food_truck.stock(@item1, 25)
+    @food_truck.stock(@item2, 12)
+
+    expect(@food_truck.potential_revenue).to eq(236.25)
+  end
+
 end
