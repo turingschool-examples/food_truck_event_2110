@@ -39,4 +39,23 @@ class Event
     item_names.sort.uniq
   end
 
+  def total_inventory
+    all_inventory = Hash.new(0)
+    @food_trucks.each do |t|
+      truck_items = t.inventory
+      truck_items.each do |item, count|
+        all_inventory[item] += count
+
+      end
+    end
+    all_inventory_with_trucks = Hash.new
+    all_inventory.each do |item|
+      all_inventory_with_trucks[item[0]] = {
+        quantity: item[1],
+        food_trucks: food_trucks_that_sell(item[0])
+      }
+    end
+    all_inventory_with_trucks
+  end
+
 end
