@@ -28,9 +28,7 @@ class Event
     end
   end
 
-  # Fat comment in this one, will probably
-  # remove in time
-
+  # Fat comment in the method below will probably remove
   # Also I know I can use =begin || =end, it just looks ugly
   def sorted_item_list
 
@@ -47,7 +45,47 @@ class Event
         item_array << item_obj[0].name
       end
     end
-
+    # Make sure there's no duplicates, sort alphabetically
     item_array.uniq.sort
+  end
+
+  # Basically the same thing as above but with entire objects
+  def find_items_objects
+    @food_trucks.map do |truck|
+      truck.inventory.map do |kv_arr|
+        kv_arr[0]
+      end
+    end.flatten.uniq
+  end
+
+
+
+  def total_inventory
+    # Initialize empty hash
+    inventory_hash = {}
+
+    # Initialize empty array of unique items
+    object_items_arr = find_items_objects
+
+    # Iterate through each unique item
+    object_items_arr.each do |item_obj|
+
+      # Find trucks that contain this unique item
+      found_trucks = @food_trucks.select do |truck|
+        truck.inventory.key?(item_obj)
+      end
+
+      # Accumulator
+      total_amount = 0
+      # Search through all trucks that have this item
+      # Add total supply to our accumulator
+      found_trucks.each do |truck|
+        total_amount += truck.inventory[item_obj]
+      end
+      # Create new key/pair value within our hash
+      inventory_hash[item_obj] = {quantity: total_amount, food_trucks: found_trucks}
+    end
+
+    inventory_hash
   end
 end
