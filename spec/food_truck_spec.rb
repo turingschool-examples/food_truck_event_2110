@@ -18,10 +18,12 @@ describe FoodTruck do
   end
 
   describe 'methods' do
+
     describe ' #check_stock' do
       it 'returns an integer' do
         expect(@food_truck.check_stock(@item1)).to be_a(Integer)
       end
+
       it 'returns the correct count of the item' do
         expect(@food_truck.check_stock(@item1)).to eq(0)
         @food_truck.stock(@item1, 30)
@@ -29,20 +31,38 @@ describe FoodTruck do
         @food_truck.stock(@item1, 25)
         expect(@food_truck.check_stock(@item1)).to eq(55)
       end
+
       it 'returns 0 if item is not in inventory' do
         expect(@food_truck.check_stock(@item1)).to eq(0)
       end
     end
+
     describe ' #stock' do
       it 'adds the item as a key to the inventory hash' do
         expect(@food_truck.inventory).to eq({})
         @food_truck.stock(@item1, 30)
         expect(@food_truck.inventory.keys).to eq([@item1])
       end
+
       it 'adds the # of items as a value to the inventory hash' do
         expect(@food_truck.inventory).to eq({})
         @food_truck.stock(@item1, 30)
         expect(@food_truck.inventory.values).to eq([30])
+      end
+    end
+
+    describe ' #potential_revenue' do
+      before(:each) do
+        @food_truck.stock(@item1, 35)
+        @food_truck.stock(@item2, 7)
+      end
+
+      it 'returns a Float' do
+        expect(@food_truck.potential_revenue).to be_a(Float)
+      end
+
+      it 'returns the sum of all items * their prices' do
+        expect(@food_truck.potential_revenue).to eq(148.75)
       end
     end
   end
