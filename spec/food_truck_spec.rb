@@ -1,16 +1,5 @@
 require './lib/item'
 require './lib/food_truck'
-# pry(main)> food_truck.stock(item1, 30)
-# pry(main)> food_truck.inventory
-# #=> {#<Item:0x007f9c56740d48...> => 30}
-# pry(main)> food_truck.check_stock(item1)
-# #=> 30
-# pry(main)> food_truck.stock(item1, 25)
-# pry(main)> food_truck.check_stock(item1)
-# #=> 55
-# pry(main)> food_truck.stock(item2, 12)
-# pry(main)> food_truck.inventory
-# #=> {#<Item:0x007f9c56740d48...> => 55, #<Item:0x007f9c565c0ce8...> => 12}
 RSpec.describe FoodTruck do
   let!(:item1){Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})}
   let!(:item2){Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})}
@@ -38,6 +27,11 @@ RSpec.describe FoodTruck do
     it "adds given item to ::inventory with a given quantity" do
       food_truck.stock(item1, 30)
       expect(food_truck.inventory).to eq({item1 => 30})
+      expect(food_truck.check_stock(item1)).to eq 30
+      food_truck.stock(item1, 25)
+      expect(food_truck.check_stock(item1)).to eq 55
+      food_truck.stock(item2, 12)
+      expect(food_truck.inventory).to eq({item1 => 55, item2 => 12})
     end
   end
 end
