@@ -41,4 +41,8 @@ class Event
       total_inventory[item] = item_hash
     end
   end
+
+  def overstocked_items
+    total_inventory.select{|item, sub_hash|sub_hash[:quantity] > 50 && sub_hash[:food_trucks].count > 1}.keys
+  end
 end

@@ -66,7 +66,7 @@ describe FoodTruck do
       end
     end
 
-    def inventory_list
+    describe 'inventory_list' do
       before(:each) do
         @food_truck.stock(@item1, 35)
         @food_truck.stock(@item2, 7)

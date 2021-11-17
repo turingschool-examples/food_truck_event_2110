@@ -210,7 +210,7 @@ describe Event do
       end
 
       it 'returns an array of items with a total quantity greater than 50 and that are sold by more than 1 food truck' do
-        expect(@event.overstocked_items).to eq(@item1)
+        expect(@event.overstocked_items).to eq([@item1])
       end
     end
   end
