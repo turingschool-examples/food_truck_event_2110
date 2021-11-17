@@ -1,3 +1,7 @@
+require './lib/item'
+require './lib/food_truck'
+require './lib/event'
+
 describe Event do
   it 'exists' do
     event = Event.new("South Pearl Street Farmers Market")
