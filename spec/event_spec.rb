@@ -9,6 +9,7 @@ describe Event do
     @item2 = Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})
     @item3 = Item.new({name: "Peach-Raspberry Nice Cream", price: "$5.30"})
     @item4 = Item.new({name: "Banana Nice Cream", price: "$4.25"})
+    @item5 = Item.new({name: 'Onion Pie', price: '$25.00'})
     @food_truck1 = FoodTruck.new("Rocky Mountain Pies")
     @food_truck1.stock(@item1, 35)
     @food_truck1.stock(@item2, 7)
@@ -18,6 +19,7 @@ describe Event do
     @food_truck3 = FoodTruck.new("Palisade Peach Shack")
     @food_truck3.stock(@item1, 65)
     @food_truck3.stock(@item3, 10)
+    allow(@event).to receive(:date).and_return("24/02/2020")
   end
 
   describe '#initialize' do
@@ -27,6 +29,7 @@ describe Event do
     it 'has attributes' do
       expect(@event.name).to eq("South Pearl Street Farmers Market")
       expect(@event.food_trucks).to eq([])
+      expect(@event.date).to eq("24/02/2020")
     end
   end
 
@@ -109,6 +112,18 @@ describe Event do
       @event.add_food_truck(@food_truck2)
       @event.add_food_truck(@food_truck3)
       expect(@event.overstocked_items).to eq([@item1])
+    end
+  end
+
+  describe '#sell' do
+    it 'sells an item from the events total inventory' do
+      expect(@event.sell(@item1, 200)).to eq(false)
+      expect(@event.sell(@item5, 1)).to eq(false)
+      expect(@event.sell(@item4, 5)).to eq(true)
+      expect(food_truck2.check_stock(item4)).to eq(45)
+      expect(event.sell(item1, 40)).to eq(true)
+      expect(food_truck1.check_stock(item1)).to eq(0)
+      expect(food_truck3.check_stock(item1)).to eq(60)
     end
   end
 
