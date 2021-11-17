@@ -36,6 +36,9 @@ class Event
   end
 
   def overstocked_items
-    @food_trucks.map
+    overstock = total_inventory.select do |item, stock_trucks|
+      item if stock_trucks[:quantity] > 50 && stock_trucks[:food_trucks].length > 1
+    end
+    overstock.keys
   end
 end
