@@ -41,4 +41,12 @@ class Event
     inventory_hash
   end
 
+  def how_many_trucks_sell_this(item)
+    @food_trucks.find_all do |truck|
+      food_truck.inventory.any?(item)
+    end.count
+  end
+
+
+
 end
