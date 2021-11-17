@@ -3,7 +3,7 @@ require './lib/item'
 RSpec.describe Item do
 
   before(:each) do
-    @item = Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})
+    @item = Item.new({name: 'Apple Pie (Slice)', price: "$2.50"})
   end
 
 
