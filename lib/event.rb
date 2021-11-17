@@ -35,4 +35,10 @@ class Event
     end.sum
   end
 
+  def item_details(item)
+    hash = Hash.new(0)
+    hash[:quantity] = item_quant(item)
+    hash[:food_trucks] = food_trucks_that_sell(item)
+    hash
+  end
 end
