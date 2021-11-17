@@ -33,5 +33,24 @@ describe Event do
       event.add_food_truck(food_truck2)
       event.add_food_truck(food_truck3)
     end
+
+    it '#food trucks' do 
+      expect(event.food_trucks).to eq(food_truck1, food_truck2, food_truck3)
+    end
+
+    it '#food truck names' do 
+      expect(event.food_truck_names).to eq(["Rocky Mountain Pies", "Ba-Nom-a-Nom", "Palisade Peach Shack"])
+    end
+
+    it '#food trucks that sell' do 
+      expect(event.food_trucks_that_sell(item1)).to eq([food_truck1, food_truck3])
+      expect(event.food_trucks_that_sell(item4)).to eq([food_truck2])
+    end
+
+    it '#potential revenue' do 
+      expect(food_truck1.potential_revenue).to eq(148.75)
+      expect(food_truck2.potential_revenue).to eq(345.00)
+      expect(food_truck3.potential_revenue).to eq(243.75)
+    end
   end
 end
