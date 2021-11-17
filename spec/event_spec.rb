@@ -1,6 +1,7 @@
 require './lib/item'
 require './lib/food_truck'
 require './lib/event'
+require 'pry'
 
 RSpec.describe Event do
   it 'exists' do
@@ -133,7 +134,7 @@ RSpec.describe Event do
     expect(event.overstocked_items).to eq([item1])
   end
 
-  xit 'can list its items sorted' do
+  it 'can list its items sorted' do
     event = Event.new("South Pearl Street Farmers Market")
     item1 = Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})
     item2 = Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})
