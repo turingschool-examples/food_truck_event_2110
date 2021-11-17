@@ -92,12 +92,4 @@ RSpec.describe Event do
     expect(@event.overstocked_items).to eq([@item1])
   end
 
-
-
-
-
-
-
-
-
 end
