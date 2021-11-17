@@ -6,8 +6,6 @@ require './lib/event'
 # pry(main)> food_truck2.stock(item4, 50)
 # pry(main)> food_truck2.stock(item3, 25)
 # pry(main)> food_truck3.stock(item1, 65)
-# pry(main)> event.food_truck_names
-# #=> ["Rocky Mountain Pies", "Ba-Nom-a-Nom", "Palisade Peach Shack"]
 # pry(main)> event.food_trucks_that_sell(item1)
 # #=> [#<FoodTruck:0x00007fe1348a1160...>, #<FoodTruck:0x00007fe134910650...>]
 # pry(main)> event.food_trucks_that_sell(item4)
@@ -27,11 +25,6 @@ RSpec.describe Event do
   let!(:food_truck2){FoodTruck.new("Ba-Nom-a-Nom")}
   let!(:food_truck3){FoodTruck.new("Palisade Peach Shack")}
   let!(:event){Event.new("South Pearl Street Farmers Market")}
-  # food_truck1.stock(item1, 35)
-  # food_truck1.stock(item2, 7)
-  # food_truck2.stock(item4, 50)
-  # food_truck2.stock(item3, 25)
-  # food_truck3.stock(item1, 65)
 
 
   describe '#initialize' do
@@ -60,6 +53,22 @@ RSpec.describe Event do
       event.add_food_truck(food_truck2)
       event.add_food_truck(food_truck3)
       expect(event.food_truck_names).to eq ["Rocky Mountain Pies", "Ba-Nom-a-Nom", "Palisade Peach Shack"]
+    end
+  end
+
+  describe '#food_trucks_that_sell' do
+    it "checks each food truck to see if they sell the given item" do
+      food_truck1.stock(item1, 35)
+      food_truck1.stock(item2, 7)
+      food_truck2.stock(item4, 50)
+      food_truck2.stock(item3, 25)
+      food_truck3.stock(item1, 65)
+      event.add_food_truck(food_truck1)
+      event.add_food_truck(food_truck2)
+      event.add_food_truck(food_truck3)
+      expect(event.food_trucks_that_sell(item1)).to eq [food_truck1, food_truck3]
+      expect(event.food_trucks_that_sell(item4)).to eq [food_truck2]
+
     end
   end
 end
