@@ -105,6 +105,9 @@ describe Event do
 
   describe '#overstocked_items' do
     it 'returns items that are sold by 2+ trucks and with quantity greater than 50' do
+      @event.add_food_truck(@food_truck1)
+      @event.add_food_truck(@food_truck2)
+      @event.add_food_truck(@food_truck3)
       expect(@event.overstocked_items).to eq([@item1])
     end
   end
