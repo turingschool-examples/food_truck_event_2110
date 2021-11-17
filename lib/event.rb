@@ -33,7 +33,7 @@ class Event
       end
     end.map do |item|
       item[0].name
-    end.uniq 
+    end.uniq
   end
 
   def total_inventory
@@ -49,5 +49,15 @@ class Event
       end
     end
     total
+  end
+
+  def overstocked_items
+    overstocked = []
+    total_inventory.each do |key, value|
+      if (value[:qty] > 50) && (food_trucks_that_sell(key).length > 1)
+        overstocked << key
+      end
+    end
+    overstocked
   end
 end
