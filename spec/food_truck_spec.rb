@@ -1,16 +1,16 @@
 require './lib/food_truck'
 
 
-RSpec.describe Foodtruck do
+RSpec.describe FoodTruck do
   describe "Iteration 1" do
     before :each do
-      @food_truck = Foodtruck.new("Rocky Mountain Pies")
+      @food_truck = FoodTruck.new("Rocky Mountain Pies")
       @item1 = Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})
       @item2 = Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})
     end
 
     it "exists" do
-      expect(@food_truck).to be_a(Foodtruck)
+      expect(@food_truck).to be_a(FoodTruck)
     end
 
     it "checks the attributes " do

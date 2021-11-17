@@ -1,4 +1,4 @@
-class Foodtruck
+class FoodTruck
   attr_reader :name, :inventory
 
   def initialize(name)
@@ -24,5 +24,5 @@ class Foodtruck
     end
   end
 
-  
+
 end
