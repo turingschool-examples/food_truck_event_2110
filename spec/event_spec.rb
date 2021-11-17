@@ -118,11 +118,11 @@ RSpec.describe Event do
     @event.add_food_truck(food_truck3)
 
     expect(@event.sorted_item_list).to eq(["Apple Pie (Slice)", "Banana Nice Cream", "Peach Pie (Slice)", "Peach-Raspberry Nice Cream"])
-  end 
+  end
 
 
 
-  xit '#total_inventory' do
+  it '#total_inventory' do
     item1 = Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})
     item2 = Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})
     item3 = Item.new({name: "Peach-Raspberry Nice Cream", price: "$5.30"})
@@ -144,25 +144,24 @@ RSpec.describe Event do
     @event.add_food_truck(food_truck2)
     @event.add_food_truck(food_truck3)
 
-    # alphabetize by item name
     expected = {
-                item2 => { # apple
-                quantity: 7,
-                food_trucks: [food_truck1]},
-
-                item4 => { # banana
-                quantity: 35,
-                food_trucks: [food_truck2]},
-
-                item1 => { # peach p
+                item1 => {
                 quantity: 100,
                 food_trucks: [food_truck1, food_truck3]},
 
-                item3 => { # peach r
+                item2 => {
+                quantity: 7,
+                food_trucks: [food_truck1]},
+
+                item3 => {
                 quantity: 50,
-                food_trucks: [food_truck2, food_truck3]}
+                food_trucks: [food_truck2, food_truck3]},
+
+                item4 => {
+                quantity: 35,
+                food_trucks: [food_truck2]},
                 }
 
-    expect(@event.something_else). to eq(expected)
+    expect(@event.total_inventory). to eq(expected)
   end
 end
