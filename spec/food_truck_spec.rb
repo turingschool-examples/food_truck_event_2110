@@ -26,7 +26,7 @@ RSpec.describe FoodTruck do
 
     it "has attributes" do
       expect(food_truck.name).to eq "Rocky Mountain Pies"
-      expect(food_truck.inventory).to eq({})
+      expect(food_truck.inventory).to be_a Hash
     end
   end
 
