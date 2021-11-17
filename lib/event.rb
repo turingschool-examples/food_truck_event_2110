@@ -39,5 +39,13 @@ class Event
   def overstocked_items
     #An item is overstocked if it is sold by more than 1
     #food truck AND the total quantity is greater than 50.
+    #test = array of sum of inventory amount
+    overstocked_array = []
+  test = @food_trucks.map do |food_truck|
+      food_truck.inventory.sum do |item|
+        item[1]
+      end
+    end
+    #was not able to finish
   end
 end
