@@ -22,12 +22,11 @@ class Event
   end
 
   def items
-    items = @food_trucks.flat_map { |food_truck| food_truck.inventory.keys }.uniq
+    @food_trucks.flat_map { |food_truck| food_truck.inventory.keys }.uniq
   end
 
   def sorted_item_list
-    names = self.items.map { |item| item.name }
-    names.sort
+    self.items.map { |item| item.name }.sort
   end
 
   def total_inventory
