@@ -74,4 +74,16 @@ class Event
   def date
     todays_date = Time.now.strftime("%m/%d/%Y")
   end
+
+  # def sell(item_name, amount)
+  #   sell_from = food_trucks_that_sell(item_name)
+  #   if total_amount_of_item(item_name) >= amount
+  #     truck_w_more = sell_from.max
+  #     truck_w_more.quantity - amount
+  #     require "pry"; binding.pry
+  #     true
+  #   else
+  #     false
+  #   end
+  # end
 end

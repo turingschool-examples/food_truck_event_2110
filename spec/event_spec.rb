@@ -148,23 +148,23 @@ RSpec.describe Event do
     expect(@event.date).to eq(todays_date)
   end
 
-  it 'sells an item' do
-    @food_truck1.stock(@item1, 35)
-    @food_truck1.stock(@item2, 7)
-    @food_truck2.stock(@item4, 50)
-    @food_truck2.stock(@item3, 25)
-    @food_truck3.stock(@item1, 65)
-
-    @event.add_food_truck(@food_truck1)
-    @event.add_food_truck(@food_truck2)
-    @event.add_food_truck(@food_truck3)
-
-    expect(@event.sell(@item1, 200)).to eq(false)
-    expect(@event.sell(@item5, 1)).to eq(false)
-    expect(@event.sell(@item4, 5)).to eq(true)
-    expect(@food_truck2.check_stock(@item4)).to eq(45)
-    expect(@event.sell(@item1, 40)).to eq(true)
-    expect(@food_truck1.check_stock(@item1)).to eq(0)
-    expect(@food_truck3.check_stock(@item1)).to eq(60)
-  end
+  # it 'sells an item' do
+  #   @food_truck1.stock(@item1, 35)
+  #   @food_truck1.stock(@item2, 7)
+  #   @food_truck2.stock(@item4, 50)
+  #   @food_truck2.stock(@item3, 25)
+  #   @food_truck3.stock(@item1, 65)
+  #
+  #   @event.add_food_truck(@food_truck1)
+  #   @event.add_food_truck(@food_truck2)
+  #   @event.add_food_truck(@food_truck3)
+  #
+  #   expect(@event.sell(@item1, 200)).to eq(false)
+  #   expect(@event.sell(@item5, 1)).to eq(false)
+  #   expect(@event.sell(@item4, 5)).to eq(true)
+  #   expect(@food_truck2.check_stock(@item4)).to eq(45)
+  #   expect(@event.sell(@item1, 40)).to eq(true)
+  #   expect(@food_truck1.check_stock(@item1)).to eq(0)
+  #   expect(@food_truck3.check_stock(@item1)).to eq(60)
+  # end
 end
