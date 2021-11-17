@@ -56,4 +56,10 @@ class Event
     end
   end
 
+  def sorted_item_list
+    total_items.map do |items|
+      items.name
+    end.sort
+  end
+
 end
