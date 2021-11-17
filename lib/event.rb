@@ -34,11 +34,11 @@ class Event
 
   def item_hash(item)
     item_info_hash = Hash.new(0)
-    food_trucks_that_sell(item)
 
     item_info_hash[:quantity] = food_trucks_that_sell(item).sum do |truck|
       truck.inventory[item]
     end
+
     item_info_hash[:food_trucks] = food_trucks_that_sell(item)
     item_info_hash
   end
