@@ -1,7 +1,5 @@
 require './lib/item'
 require './lib/food_truck'
-# pry(main)> food_truck.name
-# #=> "Rocky Mountain Pies"
 # pry(main)> food_truck.inventory
 # #=> {}
 # pry(main)> food_truck.check_stock(item1)
@@ -30,6 +28,7 @@ RSpec.describe FoodTruck do
 
     it "has attributes" do
       expect(food_truck.name).to eq "Rocky Mountain Pies"
+      expect(food_truck.inventory).to eq {}
     end
   end
 end
