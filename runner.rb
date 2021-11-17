@@ -47,8 +47,8 @@ event.add_food_truck(food_truck2)
 
 event.add_food_truck(food_truck3)
 
-event.total_inventory
+puts "total_inventory = #{event.total_inventory}"
 
-event.overstocked_items
+p event.overstocked_items
 
-event.sorted_item_list
+p event.sorted_item_list
