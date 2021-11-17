@@ -81,12 +81,19 @@ RSpec.describe Event do
 
    it "checks for the total inventory " do
      expected = {
-       @item1 => {quantity: 100, food_trucks: @food_truck1, @food_truck3},
-       @items2 => {quantity: 7, food_trucks: @food_truck1},
-       @items3 => {quantity: 50, food_trucks: @food_truck2, @food_truck3},
-       @items4 => {quantity: 35, food_trucks: @food_truck2}
+       @item1 => {quantity: 100, food_trucks: [@food_truck1, @food_truck3]},
+       @items2 => {quantity: 7, food_trucks: [@food_truck1]},
+       @items3 => {quantity: 50, food_trucks: [@food_truck2, @food_truck3]},
+       @items4 => {quantity: 35, food_trucks: [@food_truck2]}
     }
    expect(@event.total_inventory).to eq(expected)
+   end
+
+   xit "finds overstocked items " do
+     expect(@event.overstocked_items).to eq(@item1)
+   end
+   xit "returns a list of all items available alphabetically" do
+     expect(@event.sorted_item_list).to eq(["Apple Pie (Slice)", "Banana Nice Cream", "Peach Pie (Slice)", "Peach-Raspberry Nice Cream"])
    end
  end
 end

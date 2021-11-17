@@ -32,4 +32,6 @@ class FoodTruck
     revenue_avail
   end
 
+  
+
 end
