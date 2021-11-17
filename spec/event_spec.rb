@@ -148,10 +148,10 @@ describe Event do
       it 'returns expected results' do
         expected = {"Apple Pie (Slice)" => {:quantity => 7, :food_trucks => [@food_truck1]},
                     "Banana Nice Cream" => {:quantity => 50, :food_trucks => [@food_truck2]},
-                    "Peach Pie (Slice)" => {:quantity => 100, :food_trucks => [@food_truck1, @food_truck3]},
-                    "Peach-Raspberry Nice Cream" => {:quantity => 50, :food_trucks => [@food_truck2]}}
+                    "Peach Pie (Slice)" => {:quantity => 100, :food_trucks => [@food_truck3, @food_truck1]},
+                    "Peach-Raspberry Nice Cream" => {:quantity => 35, :food_trucks => [@food_truck2, @food_truck3]}}
+        expect(@event.total_inventory).to eq(expected)
       end
-
     end
   end
 end
