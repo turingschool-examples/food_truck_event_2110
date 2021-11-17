@@ -69,11 +69,11 @@ describe Event do
       quantity: 7,
       food_trucks: [@food_truck1]
     },
-    @item3 => {
+    @item4 => {
       quantity: 50,
       food_trucks: [@food_truck2]
     },
-    @item4 => {
+    @item3 => {
       quantity: 25,
       food_trucks: [@food_truck2]
     }
@@ -88,4 +88,8 @@ describe Event do
     expect(@event.overstocked_items).to eq(expected)
   end
 
+  it 'sells items'
+
+  expect(@event.sell(@item1.101)).to eq(false)
+  expect(@event.sell(@item1.100)).to eq(true)
 end
