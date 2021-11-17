@@ -38,4 +38,10 @@ describe Event do
     end
   end
 
+  describe '#food_truck_names' do
+    it 'returns the names of the food trucks' do
+      expect(@event.food_truck_names).to eq(["Rocky Mountain Pies", "Ba-Nom-a-Nom", "Palisade Peach Shack"])
+    end
+  end
+
 end
