@@ -21,11 +21,24 @@ class Event
     @food_trucks.find_all { |food_truck| food_truck.inventory.include?(item) }
   end
 
+  def items
+    items = @food_trucks.flat_map { |food_truck| food_truck.inventory.keys }.uniq
+  end
+
   def sorted_item_list
-    items = @food_trucks.flat_map { |food_truck| food_truck.inventory.keys }
-    items.uniq!
-    items = items.map { |item| item.name }
-    items.sort
+    names = self.items.map { |item| item.name }
+    names.sort
+  end
+
+  def total_inventory
+    hash = {}
+    self.items.each do |item|
+      hash[item] = {
+        quantity: @food_trucks.sum { |food_truck| food_truck.inventory[item] },
+        food_trucks: self.food_trucks_that_sell(item)
+      }
+    end
+    hash
   end
 
 end
