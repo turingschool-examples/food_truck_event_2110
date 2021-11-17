@@ -25,42 +25,48 @@ RSpec.describe Event do
     @event = Event.new("South Pearl Street Farmers Market")
   end
 
-  it 'exists' do
-    expect(@event).to be_instance_of(Event)
+  context 'initialize tests' do
+    it 'exists' do
+      expect(@event).to be_instance_of(Event)
+    end
+
+    it 'has a name' do
+      expect(@event.name).to eq("South Pearl Street Farmers Market")
+    end
+
+    it 'initializes empty @food_trucks attributes' do
+      expect(@event.food_trucks).to eq([])
+    end
   end
 
-  it 'has a name' do
-    expect(@event.name).to eq("South Pearl Street Farmers Market")
+  context 'class methods' do
+    it 'can #add_food_truck to @food_trucks[]' do
+      @event.add_food_truck(@food_truck)
+      @event.add_food_truck(@food_truck2)
+      @event.add_food_truck(@food_truck3)
+
+      expected_array = [@food_truck, @food_truck2, @food_truck3]
+      expect(@event.food_trucks).to eq(expected_array)
+    end
+
+
+    it 'returns all #food_truck_names' do
+      @event.add_food_truck(@food_truck)
+      @event.add_food_truck(@food_truck2)
+      @event.add_food_truck(@food_truck3)
+
+      expected_array = ["Rocky Mountain Pies", "Ba-Nom-a-Nom", "Palisade Peach Shack"]
+      expect(@event.food_truck_names).to eq(expected_array)
+    end
+
+    it 'returns #food_trucks_that_sell(item_obj)' do
+      @event.add_food_truck(@food_truck)
+      @event.add_food_truck(@food_truck2)
+      @event.add_food_truck(@food_truck3)
+
+      expect(@event.food_trucks_that_sell(@item4)).to eq([@food_truck2])
+    end
+
+    
   end
-
-  it 'initializes empty @food_trucks attributes' do
-    expect(@event.food_trucks).to eq([])
-  end
-
-  it 'can #add_food_truck to @food_trucks[]' do
-    @event.add_food_truck(@food_truck)
-    @event.add_food_truck(@food_truck2)
-    @event.add_food_truck(@food_truck3)
-
-    expected_array = [@food_truck, @food_truck2, @food_truck3]
-    expect(@event.food_trucks).to eq(expected_array)
-  end
-
-  it 'returns all #food_truck_names' do
-    @event.add_food_truck(@food_truck)
-    @event.add_food_truck(@food_truck2)
-    @event.add_food_truck(@food_truck3)
-
-    expected_array = ["Rocky Mountain Pies", "Ba-Nom-a-Nom", "Palisade Peach Shack"]
-    expect(@event.food_truck_names).to eq(expected_array)
-  end
-
-  it 'returns #food_trucks_that_sell(item_obj)' do
-    @event.add_food_truck(@food_truck)
-    @event.add_food_truck(@food_truck2)
-    @event.add_food_truck(@food_truck3)
-
-    expect(@event.food_trucks_that_sell(@item4)).to eq([@food_truck2])
-  end
-
 end
