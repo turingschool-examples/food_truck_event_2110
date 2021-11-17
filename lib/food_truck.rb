@@ -15,4 +15,13 @@ class FoodTruck
     @inventory[item] += quantity
   end
 
+  def potential_revenue
+    total = 0
+    @inventory.each do |k, v|
+      total += (k.price[1..-1].to_f * v.to_i)
+    end
+    total
+
+  end
+
 end

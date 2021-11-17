@@ -7,11 +7,4 @@ class Item
     @price = item_attributes[:price]
   end
 
-
-
-
-
-
-
-
 end
