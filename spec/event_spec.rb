@@ -17,6 +17,7 @@ describe Event do
     @food_truck2.stock(@item4, 50)
     @food_truck2.stock(@item3, 25)
     @food_truck3.stock(@item1, 65)
+    @food_truck3.stock(@item3, 10)
   end
 
   describe '#initialize' do
@@ -50,5 +51,14 @@ describe Event do
       expect(@event.food_trucks_that_sell(@item1)).to eq([@food_truck1, @food_truck3])
     end
   end
+
+  describe 'sorted_item_list' do
+    it 'returns all items in stock listed alphabetically' do
+      @event.add_food_truck(@food_truck1)
+      @event.add_food_truck(@food_truck2)
+      @event.add_food_truck(@food_truck3)
+      expect(@event.sorted_item_list).to eq([@item2, @item4, @item1, @item3])
+    end
+  end 
 
 end
