@@ -72,7 +72,11 @@ describe Event do
     end
 
     it 'items' do 
-      expect(event.items_list).to eq([item1, item2, item4, item3])
+      expect(event.items).to eq([item1, item2, item4, item3])
+    end
+
+    it '#total quantity per item' do 
+      expect(event.total_quantity_per_item(item1)).to eq(100)
     end
 
     xit '#total inventory' do 

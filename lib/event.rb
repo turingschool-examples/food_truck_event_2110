@@ -33,7 +33,16 @@ class Event
     end.flatten
   end
 
+  def items
+    items_list.uniq
+  end
+
+  
+
   def total_inventory 
-    
+    @items.reduce({}) do |hash, item|
+      hash[item] = {} if !hash[item].is_a?(Hash)
+      hash[item][:quantity] 
+    end
   end
 end
