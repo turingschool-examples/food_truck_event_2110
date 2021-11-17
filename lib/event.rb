@@ -40,4 +40,17 @@ class Event
     vendors
   end
 
+  def sorted_item_list
+    items = []
+    @food_trucks.each do |truck|
+      truck.inventory.each_pair do |item, quantity|
+        if !items.include?(item.name)
+          items << item.name
+        end
+      end
+    end
+    items = items.sort()
+    items
+  end
+
 end
