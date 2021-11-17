@@ -34,5 +34,13 @@ describe Event do
     expect(event.food_trucks).to eq([food_truck1, food_truck2, food_truck3])
   end
 
+  it 'has an array of food truck names' do
+    event = Event.new("South Pearl Street Farmers Market")
+    food_truck1 = FoodTruck.new("Rocky Mountain Pies")
+    food_truck2 = FoodTruck.new("Ba-Nom-a-Nom")
+    food_truck3 = FoodTruck.new("Palisade Peach Shack")
+    expect(event.food_truck_names).to eq(["Rocky Mountain Pies", "Ba-Nom-a-Nom", "Palisade Peach Shack"])
+  end
+
 
 end
