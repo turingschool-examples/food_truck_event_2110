@@ -22,4 +22,10 @@ class Event
       truck.inventory.include?(item)
     end
   end
+
+  def total_items
+    @food_trucks.map do |truck|
+      truck.inventory.keys
+    end.flatten.uniq
+  end
 end
