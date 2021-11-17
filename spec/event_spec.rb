@@ -26,4 +26,14 @@ RSpec.describe "Event" do
     expect(@event.name).to eq("South Pearl Street Farmers Market")
     expect(@event.food_trucks).to eq([])
   end
+
+  it "can add food trucks to food_trucks array" do
+    @event.add_food_truck(@food_truck1)
+
+    expect(@event.food_trucks).to eq([@food_truck1])
+
+    @event.add_food_truck(@food_truck2)
+
+    expect(@event.food_trucks).to eq([@food_truck1, @food_truck2])
+  end
 end
