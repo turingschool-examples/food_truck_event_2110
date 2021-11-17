@@ -32,8 +32,23 @@ class Event
     items_array.flatten.uniq
   end
 
+  def item_hash(item)
+    item_info_hash = Hash.new(0)
+    food_trucks_that_sell(item)
+
+    item_info_hash[:quantity] = food_trucks_that_sell(item).sum do |truck|
+      truck.inventory[item]
+    end
+    item_info_hash[:food_trucks] = food_trucks_that_sell(item)
+    item_info_hash
+  end
+
   def total_inventory
     total_inventory_hash = Hash.new(0)
     total_inventory_hash_keys = all_items
+    total_inventory_hash_keys.each do |key|
+      total_inventory_hash[key] = item_hash(key)
+    end
+    total_inventory_hash
   end
 end

@@ -99,7 +99,7 @@ RSpec.describe Event do
     expect(@event.item_hash(@item1)).to eq(expected)
   end
 
-  xit '#total_inventory' do
+  it '#total_inventory' do
     @event.add_food_truck(@food_truck1)
     @event.add_food_truck(@food_truck2)
     @event.add_food_truck(@food_truck3)
