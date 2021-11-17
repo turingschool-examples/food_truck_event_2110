@@ -52,6 +52,14 @@ class Event
     end
     overstocked
   end
-
-
+  
+  def sorted_item_list
+    sorted_items = []
+    food_trucks.each do |food_truck|
+      food_truck.inventory.keys.each do |item|
+        sorted_items.sort << item.name
+      end.flatten.uniq
+    end
+    sorted_items
+  end
 end
