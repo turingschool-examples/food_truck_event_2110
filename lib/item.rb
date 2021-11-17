@@ -4,7 +4,7 @@ class Item
 
   def initialize(info)
     @name = info[:name]
-    @price = set_price(info[:price])#(((info[:price].chars).delete_at(0)).join()).to_i
+    @price = set_price(info[:price])
 
   end
 
