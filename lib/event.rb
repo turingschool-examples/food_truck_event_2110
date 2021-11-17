@@ -28,4 +28,11 @@ class Event
       truck.inventory.keys
     end.flatten.uniq
   end
+
+  def item_quant(item)
+    @food_trucks.map do |truck|
+      truck.inventory[item]
+    end.sum
+  end
+
 end
