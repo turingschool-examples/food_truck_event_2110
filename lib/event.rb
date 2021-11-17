@@ -42,6 +42,7 @@ class Event
         # key.name (or item_obj name technically)
         item_obj[0].name
       end
+      # Make sure there's no duplicates, sort alphabetically, flatten
     end.flatten.uniq.sort
   end
 
