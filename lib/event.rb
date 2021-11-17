@@ -12,10 +12,10 @@ class Event
   end
 
   def food_truck_names
-    truck_names = @food_trucks.map do |truck|
-
+    @food_trucks.map do |truck|
       truck.name
-
     end
   end
+
+
 end
