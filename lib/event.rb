@@ -70,4 +70,8 @@ class Event
     end
     alphabetical_item_list.uniq.sort
   end
+
+  def date
+    todays_date = Time.now.strftime("%m/%d/%Y")
+  end
 end
