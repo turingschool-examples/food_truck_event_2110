@@ -25,6 +25,10 @@ class FoodTruck
   end
 
   def sell(item, quantity)
-    @inventory[item] -= quantity
+    if quantity >= @inventory[item]
+      @inventory[item] = 0
+    else
+      @inventory[item] -= quantity
+    end
   end
 end
