@@ -12,5 +12,10 @@ describe Food_truck do
     expect(food_truck.name).to eq("Rocky Mountain Pies")
   end
 
+  it 'has inventory' do
+    food_truck = Food_truck.new("Rocky Mountain Pies")
+    expect(food_truck.inventory).to eq({})
+  end
+
 
 end
