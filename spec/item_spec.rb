@@ -17,5 +17,4 @@ describe Item do
     expect(@item.price).to eq("$3.75")
   end
 
-
 end
