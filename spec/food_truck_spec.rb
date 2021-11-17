@@ -14,7 +14,7 @@ RSpec.describe 'food truck' do
     expect(@food_truck).to be_a FoodTruck
   end
 
-  xit "has attributes that are readable" do
+  it "has attributes that are readable" do
     expect(@food_truck.name).to eq("Rocky Mountain Pies")
     expect(@food_truck.inventory).to eq({})
   end
