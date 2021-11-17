@@ -75,15 +75,15 @@ describe Event do
       end
 
       it 'returns an Array' do
-        expect(@event.food_trucks_that_sell(@item1)).to be_a(Array)
+        expect(@event.food_trucks_that_sell('Peach Pie (Slice)')).to be_a(Array)
       end
 
       it 'returns an Array of FoodTrucks' do
-        expect(@event.food_trucks_that_sell(@item1).all?{|food_truck|food_truck.class == FoodTruck}).to eq(true)
+        expect(@event.food_trucks_that_sell('Peach Pie (Slice)').all?{|food_truck|food_truck.class == FoodTruck}).to eq(true)
       end
 
-      it 'returns correct Array' do
-        expect(@event.food_trucks_that_sell(@item1)).to eq([@food_truck1, @food_truck3])
+      it 'returns correct Array sorted by names' do
+        expect(@event.food_trucks_that_sell('Peach Pie (Slice)')).to eq([@food_truck3, @food_truck1])
       end
     end
 
@@ -146,10 +146,10 @@ describe Event do
       end
 
       it 'returns expected results' do
-        expected = {"Apple Pie (Slice)" => {:quantity => 7, :food_trucks => [@food_truck1]},
-                    "Banana Nice Cream" => {:quantity => 50, :food_trucks => [@food_truck2]},
-                    "Peach Pie (Slice)" => {:quantity => 100, :food_trucks => [@food_truck3, @food_truck1]},
-                    "Peach-Raspberry Nice Cream" => {:quantity => 35, :food_trucks => [@food_truck2, @food_truck3]}}
+        expected = {@item2 => {:quantity => 7, :food_trucks => [@food_truck1]},
+                    @item4 => {:quantity => 50, :food_trucks => [@food_truck2]},
+                    @item1 => {:quantity => 100, :food_trucks => [@food_truck3, @food_truck1]},
+                    @item3 => {:quantity => 35, :food_trucks => [@food_truck2, @food_truck3]}}
         expect(@event.total_inventory).to eq(expected)
       end
     end
@@ -188,7 +188,7 @@ describe Event do
       end
 
       it 'returns the correct sorted array of unique items' do
-        expected = [@item2, @item4, @item3, @item1]
+        expected = [@item2, @item4, @item1, @item3]
         expect(@event.sorted_items).to eq(expected)
       end
     end
