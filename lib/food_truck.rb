@@ -23,4 +23,13 @@ class FoodTruck
   def menu_list
     inventory.keys
   end
+
+  # def sell_item(item, qty)
+  #   inventory[item] -= if inventory[item] >= qty
+  #                        qty
+  #                      else
+  #                        inventory[item]
+  #
+  #                      end
+  # end
 end

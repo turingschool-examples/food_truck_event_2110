@@ -47,4 +47,20 @@ class Event
       results << item if hash[:quantity] > 50 && hash[:food_trucks].count > 1
     end
   end
+
+  # def sell(item, qty)
+  #   can_sell = total_inventory.any? do |the_item, hash|
+  #     hash[:quantity] > qty && item == the_item
+  #   end
+  #   if can_sell == true
+  #     require 'pry'
+  #     binding.pry
+  #     total_inventory[item][:food_trucks].each do |truck|
+  #       # until qty == 0
+  #       qty -= truck.inventory[item]
+  #       truck.sell_item(item, qty)
+  #     end
+  #   end
+  #   can_sell
+  # end
 end

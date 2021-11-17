@@ -91,4 +91,16 @@ RSpec.describe FoodTruck do
       expected = [item1, item2]
     end
   end
+  describe 'sell_item/2' do
+    it 'sells the item' do
+      food_truck1.stock(item1, 30)
+      food_truck1.stock(item2, 12)
+      food_truck1.sell_item(item1, 30)
+      actual = food_truck1.check_stock(item1)
+      expected = 0
+      food_truck1.sell_item(item1, 30)
+      actual = food_truck1.check_stock(item1)
+      expected = 0
+    end
+  end
 end
