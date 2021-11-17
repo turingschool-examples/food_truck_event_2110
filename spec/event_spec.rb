@@ -115,7 +115,7 @@ describe Event do
     expect(event.total_inventory).to eq(expected)
   end
 
-  xit '#overstocked_items' do
+  it '#overstocked_items' do
     event = Event.new("South Pearl Street Farmers Market")
     item1 = Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})
     item2 = Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})
