@@ -57,4 +57,10 @@ class Event
       food_trucks_that_sell(item).count > 1 && total_quantity_per_item(item) > 50 
     end
   end
+
+  def sorted_item_list
+    items.map do |item|
+      item.name
+    end.sort
+  end
 end
