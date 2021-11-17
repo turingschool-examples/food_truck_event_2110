@@ -6,9 +6,6 @@ require './lib/event'
 # pry(main)> food_truck2.stock(item4, 50)
 # pry(main)> food_truck2.stock(item3, 25)
 # pry(main)> food_truck3.stock(item1, 65)
-# pry(main)> event.add_food_truck(food_truck1)
-# pry(main)> event.add_food_truck(food_truck2)
-# pry(main)> event.add_food_truck(food_truck3)
 # pry(main)> event.food_trucks
 # #=> [#<FoodTruck:0x00007fe1348a1160...>, #<FoodTruck:0x00007fe1349bed40...>, #<FoodTruck:0x00007fe134910650...>]
 # pry(main)> event.food_truck_names
@@ -32,6 +29,11 @@ RSpec.describe Event do
   let!(:food_truck2){FoodTruck.new("Ba-Nom-a-Nom")}
   let!(:food_truck3){FoodTruck.new("Palisade Peach Shack")}
   let!(:event){Event.new("South Pearl Street Farmers Market")}
+  # food_truck1.stock(item1, 35)
+  # food_truck1.stock(item2, 7)
+  # food_truck2.stock(item4, 50)
+  # food_truck2.stock(item3, 25)
+  # food_truck3.stock(item1, 65)
 
 
   describe '#initialize' do
@@ -44,4 +46,13 @@ RSpec.describe Event do
       expect(event.food_trucks).to eq []
     end
   end
-end 
+
+  describe '#add_food_truck' do
+    it "adds given food trucks to ::food_trucks" do
+      event.add_food_truck(food_truck1)
+      event.add_food_truck(food_truck2)
+      event.add_food_truck(food_truck3)
+      expect(event.food_trucks).to eq [food_truck1, food_truck2, food_truck3]
+    end
+  end
+end
