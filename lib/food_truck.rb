@@ -1,4 +1,4 @@
-class Food_truck
+class FoodTruck
 
   attr_reader :name , :inventory
   def initialize(name)
