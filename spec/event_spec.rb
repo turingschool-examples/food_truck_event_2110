@@ -127,4 +127,20 @@ describe Event do
     food_truck3.stock(item3, 10)
     expect(event.overstocked_items).to eq([item1])
   end
-end 
+
+  it "sorts items alphabetically" do
+    event = Event.new("South Pearl Street Farmers Market")
+    food_truck1 = FoodTruck.new("Rocky Mountain Pies")
+    food_truck2 = FoodTruck.new("Ba-Nom-a-Nom")
+    food_truck3 = FoodTruck.new("Palisade Peach Shack")
+    event.add_food_truck(food_truck1)
+    event.add_food_truck(food_truck2)
+    event.add_food_truck(food_truck3)
+    item1 = Item.new({name: 'Peach', price: "$0.75"})
+    item2 = Item.new({name: 'Tomato', price: "$0.50"})
+    item3 = Item.new({name: "Peach-Raspberry Nice Cream", price: "$5.30"})
+    item4 = Item.new({name: "Banana Nice Cream", price: "$4.25"})
+    expect(event.sorted_item_list).to eq(["Apple Pie (Slice)", "Banana Nice Cream", "Peach Pie (Slice)", "Peach-Raspberry Nice Cream"])
+
+  end
+end
