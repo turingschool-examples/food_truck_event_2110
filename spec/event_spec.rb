@@ -215,8 +215,31 @@ describe Event do
     end
 
     describe ' #sell' do
+      before(:each) do
+        @item5 = Item.new('pizza', '$2.00')
+        @food_truck1.stock(@item5, 10)
+        @food_truck2.stock(@item5, 50)
+        @food_truck3.stock(@item5, 40)
+        @event.add_food_truck(@food_truck1)
+        @event.add_food_truck(@food_truck2)
+        @event.add_food_truck(@food_truck3)
+      end
       it 'returns false if the event does not have enough of the item' do
         expect(@event.sell(@item1, 1000)).to eq(false)
+      end
+
+      it 'returns true if the event has enough of the item' do
+        expect(@event.sell(@item1, 5)).to eq(true)
+      end
+
+      it 'depletes the stock of the item according to food add order' do
+        expect(@event.food_trucks[0].check_stock(@item5)).to eq(10)
+        expect(@event.food_trucks[1].check_stock(@item5)).to eq(50)
+        expect(@event.food_trucks[2].check_stock(@item5)).to eq(40)
+        @event.sell(@item5, 80)
+        expect(@event.food_trucks[0].check_stock(@item5)).to eq(0)
+        expect(@event.food_trucks[1].check_stock(@item5)).to eq(0)
+        expect(@event.food_trucks[2].check_stock(@item5)).to eq(20)
       end
     end
   end
