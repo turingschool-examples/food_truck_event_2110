@@ -70,11 +70,13 @@ class Event
   end
 
   def overstocked_items
-    @food_trucks.each do |truck|
-      truck.inventory.each do |item, amount|
-        require "pry"; binding.pry
+    overstocked_items_list = []
+    total_inventory.each do |key, value|
+      if value[:quantity] >= 50 && value[:food_trucks].length >= 2
+        overstocked_items_list << key
       end
     end
+    overstocked_items_list
   end
 
 end
