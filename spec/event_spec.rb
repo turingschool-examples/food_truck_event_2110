@@ -1,3 +1,4 @@
+require 'date'
 require './lib/item'
 require './lib/food_truck'
 require './lib/event'
@@ -8,6 +9,7 @@ RSpec.describe Event do
     let(:item2) {Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})}
     let(:item3) {Item.new({name: "Peach-Raspberry Nice Cream", price: "$5.30"})}
     let(:item4) {Item.new({name: "Banana Nice Cream", price: "$4.25"})}
+    let(:item5) {Item.new({name: 'Onion Pie', price: '$25.00'})}
 
     let(:food_truck1) {FoodTruck.new("Rocky Mountain Pies")}
     let(:food_truck2) {FoodTruck.new("Ba-Nom-a-Nom")}
@@ -15,6 +17,10 @@ RSpec.describe Event do
 
     let(:event) {Event.new("South Pearl Street Farmers Market")}
 
+    let(:fake_date) {"22/04/1988"}
+    before :each do
+      allow(Date).to receive_message_chain(:today, :strftime).and_return(fake_date)
+    end
     describe 'Event' do
       it 'exists' do
 
@@ -25,6 +31,11 @@ RSpec.describe Event do
 
         expect(event.name).to eq("South Pearl Street Farmers Market")
         expect(event.food_trucks).to eq([])
+      end
+
+      it 'has a date' do
+
+        expect(event.date).to eq("22/04/1988")
       end
 
       it 'can add food trucks' do
