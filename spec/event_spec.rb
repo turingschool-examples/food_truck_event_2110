@@ -57,8 +57,35 @@ describe Event do
       @event.add_food_truck(@food_truck1)
       @event.add_food_truck(@food_truck2)
       @event.add_food_truck(@food_truck3)
-      expect(@event.sorted_item_list).to eq([@item2, @item4, @item1, @item3])
+      expect(@event.sorted_item_list).to eq([@item1.name, @item2.name, @item4.name, @item3.name])
     end
-  end 
+  end
+
+  describe 'total_inventory' do
+    it 'returns total inventory of all items' do
+      @event.add_food_truck(@food_truck1)
+      @event.add_food_truck(@food_truck2)
+      @event.add_food_truck(@food_truck3)
+      expected = {
+        @item1 => {
+          :qty => 100,
+          :food_trucks => [@food_truck1, @food_truck3]
+          },
+        @item2 => {
+          :qty => 7,
+          :food_trucks => [@food_truck1]
+          },
+        @item3 => {
+          :qty => 35,
+          :food_trucks => [@food_truck2, @food_truck3]
+          },
+        @item4 => {
+          :qty => 50,
+          :food_trucks => [@food_truck2]
+          }
+        }
+      expect(@event.total_inventory).to eq(expected)
+    end
+  end
 
 end
