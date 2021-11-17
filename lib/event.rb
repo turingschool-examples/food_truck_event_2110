@@ -57,4 +57,10 @@ class Event
       food_trucks_that_sell(item).length > 1 && item_hash(item)[:quantity] > 50
     end
   end
+
+  def sorted_item_list
+    all_items.map do |item|
+      item.name
+    end.sort
+  end
 end
