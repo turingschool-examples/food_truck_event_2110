@@ -80,9 +80,9 @@ RSpec.describe Event do
 
     it 'tracks total inventory' do
       expect(@event.total_inventory).to be_a Hash
-      expect(@event.total_inventory.keys).to eq([@item1, @item2 ,@item3 ,@item4])
+      expect(@event.total_inventory.keys).to include(@item1, @item2 ,@item3 ,@item4)
       expect(@event.total_inventory.values[0]).to be_a Hash
-      expect(@event.total_inventory.values[0]).to be_a Hash
+      expect(@event.total_inventory.values[0]).to include(:quantity, :food_trucks)
     end
 
 
