@@ -20,4 +20,19 @@ class Event
       food_truck.inventory.include?(item)
     end
   end
+
+  def total_inventory
+    total = Hash.new
+    @food_trucks.each do |food_truck|
+      food_truck.inventory.each do |item, amount|
+        if total[item].nil?
+          total[item] = {quantity: amount, food_trucks: [food_truck]}
+        else
+          total[item][:quantity] += amount
+          total[item][:food_trucks] << food_truck
+        end
+      end
+    end
+    total
+  end
 end
