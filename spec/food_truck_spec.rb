@@ -67,4 +67,16 @@ RSpec.describe FoodTruck do
 
     expect(food_truck.in_stock).to eq([item1, item2])
   end
+
+  it 'can sell items' do
+    stock_items
+
+    food_truck.sell(item1, 30)
+
+    expect(food_truck.check_stock(item1)).to eq(5)
+
+    food_truck.sell(item1, 5)
+
+    expect(food_truck.check_stock(item1)).to eq(0)
+  end
 end
