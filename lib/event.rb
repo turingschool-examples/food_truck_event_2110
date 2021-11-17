@@ -85,7 +85,24 @@ class Event
       # Create new key/pair value within our hash
       inventory_hash[item_obj] = {quantity: total_amount, food_trucks: found_trucks}
     end
-
+    # return hash
     inventory_hash
+  end
+
+  def overstocked_items
+    # Total inventory we comb through
+    inventory = total_inventory
+    # Accumulator
+    overstocked = []
+
+    inventory.each do |item_obj, item_obj_hash|
+      # Check to see if an item has quantity of 50+, sold by more than 1 food truck
+      if item_obj_hash[:quantity] > 50 && item_obj_hash[:food_trucks].size > 1
+        # shift into overstocked array if condition above is true
+        overstocked << item_obj
+      end
+    end
+    # Return all overstocked items
+    overstocked
   end
 end
