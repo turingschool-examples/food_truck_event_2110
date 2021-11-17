@@ -59,4 +59,27 @@ describe Event do
     expect(@event.sorted_item_list).to eq(expected)
   end
 
+  it 'returns total inventory' do
+    expected = {
+    @item1 => {
+      quantity: 100,
+      food_trucks: [@food_truck1, @food_truck3]
+    },
+    @item2 => {
+      quantity: 7,
+      food_trucks: [@food_truck1]
+    },
+    @item3 => {
+      quantity: 50,
+      food_trucks: [@food_truck2]
+    },
+    @item4 => {
+      quantity: 25,
+      food_trucks: [@food_truck2]
+    }
+  }
+  expect(@event.total_inventory).to be_a(Hash)
+  expect(@event.total_inventory).to eq(expected)
+  end
+
 end
