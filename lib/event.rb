@@ -37,15 +37,37 @@ class Event
 
   def inner_hash_keys
     keys = []
-    @food_trucks.each do |food_truck|
-      keys << food_truck.inventory.keys
+    @food_trucks.each do |truck|
+      keys << truck.inventory.keys
     end
     keys.flatten.uniq
   end
 
-  def total_amount_of_item(item)
-    @food_trucks.map do |food_truck|
-      food_truck.inventory[item]
+  def total_amount_of_item(item_name)
+    @food_trucks.map do |truck|
+      truck.inventory[item_name]
     end.sum
+  end
+
+  def overstocked_items
+    overstocked_item_names = []
+    @food_trucks.each do |truck|
+      truck.inventory.map do |item_name, quantity|
+        if total_amount_of_item(item_name) > 50
+          overstocked_item_names << item_name
+        end
+      end
+    end
+    overstocked_item_names.uniq
+  end
+
+  def sorted_item_list
+    alphabetical_item_list = []
+    @food_trucks.each do |truck|
+      truck.inventory.map do |item, quantity|
+        alphabetical_item_list << item.name
+      end
+    end
+    alphabetical_item_list.uniq.sort
   end
 end

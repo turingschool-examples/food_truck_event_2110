@@ -112,7 +112,7 @@ RSpec.describe Event do
     expect(@event.total_inventory).to eq(expected)
   end
 
-  xit 'returns overstocked items' do
+  it 'returns overstocked items' do
     @food_truck1.stock(@item1, 35)
     @food_truck1.stock(@item2, 7)
     @food_truck2.stock(@item4, 50)
@@ -126,7 +126,7 @@ RSpec.describe Event do
     expect(@event.overstocked_items).to eq([@item1])
   end
 
-  xit 'returns a sorted item list' do
+  it 'returns a sorted item list' do
     @food_truck1.stock(@item1, 35)
     @food_truck1.stock(@item2, 7)
     @food_truck2.stock(@item4, 50)
