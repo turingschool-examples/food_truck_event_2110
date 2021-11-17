@@ -86,9 +86,9 @@ RSpec.describe Event do
     end
 
 
-    xit 'makes list of overstocked items' do
+    it 'makes list of overstocked items' do
       expect(@event.overstocked_items).to be_a Array
-      expect(@event.overstocked_items).to eq([item1])
+      expect(@event.overstocked_items).to eq([@item1])
     end
   end
 end
