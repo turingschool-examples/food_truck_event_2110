@@ -11,6 +11,4 @@ RSpec.describe Item do
     expect(item.name).to eq 'Peach Pie (Slice)'
     expect(item.price).to eq "$3.75"
   end
-
-
 end

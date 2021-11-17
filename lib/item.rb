@@ -7,6 +7,4 @@ class Item
     @name = info[:name]
     @price = info[:price]
   end
-
-
 end

@@ -85,8 +85,8 @@ RSpec.describe Event do
       expect(@event.total_inventory.values[0]).to include(:quantity, :food_trucks)
     end
 
-
     it 'makes list of overstocked items' do
+      require "pry"; binding.pry
       expect(@event.overstocked_items).to be_a Array
       expect(@event.overstocked_items).to eq([@item1])
     end

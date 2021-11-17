@@ -25,6 +25,4 @@ class FoodTruck
     end
     revenue_total
   end
-
-
 end
