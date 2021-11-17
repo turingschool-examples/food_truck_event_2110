@@ -66,5 +66,5 @@ class Event
 # # [4] pry(#<Event>)> names
 # # => ["Peach-Raspberry Nice Cream"]
 #     end
-#   end
+#   end.sort
 end
