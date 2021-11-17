@@ -35,4 +35,11 @@ describe FoodTruck do
       expect(@food_truck.inventory).to eq({@item1 => 30})
     end
   end
+
+  describe '#potential_revenue' do
+    it 'gives amount of potential revenue using stock and price' do
+      @food_truck.stock(@item1, 30)
+      expect(@food_truck.potential_revenue).to eq(112.5)
+    end
+  end
 end
