@@ -25,4 +25,20 @@ class Event
     end
   end
 
+  def total_inventory  #come back later
+    inventory_hash = Hash.new(0)
+    @food_trucks.each do |truck|
+      truck.inventory.each do |item|
+        values = Hash.new(0)
+        values[:quanity] += item[1]
+        values[food_trucks] = []
+        if truck.inventory.any?(item)
+          values[food_trucks] << truck
+        end
+        inventory_hash[item] = values
+      end
+    end
+    inventory_hash
+  end
+
 end

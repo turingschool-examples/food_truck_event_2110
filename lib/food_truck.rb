@@ -23,5 +23,4 @@ class FoodTruck
     end
     pot_revenue
   end
-
 end
