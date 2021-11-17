@@ -127,5 +127,18 @@ describe Event do
     it '#date' do 
       allow(event.date("20200224")).to receive(:"20200224").and_return("24/02/2020")
     end
+
+    it '#sell' do 
+      expect(event.sell(item1, 200)).to be(false)
+      expect(event.sell(item5, 1)).to be(false)
+      expect(event.sell(item4, 5)).to be(true)
+
+      expect(food_truck2.check_stock(item4)).to eq(45)
+      
+      expect(event.sell(item1, 40)).to be(true)
+      
+      expect(food_truck1.check_stock(item1)).to eq(0)
+      expect(food_truck3.check_stock(item1)).to eq(60)
+    end
   end
 end
