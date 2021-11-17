@@ -35,4 +35,9 @@ class Event
     end
     alphabetical_items.flatten.uniq.sort
   end
+
+  def overstocked_items
+    #An item is overstocked if it is sold by more than 1
+    #food truck AND the total quantity is greater than 50.
+  end
 end
