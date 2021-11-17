@@ -127,4 +127,4 @@ describe Event do
     food_truck3.stock(item3, 10)
     expect(event.overstocked_items).to eq([item1])
   end
-end
+end 

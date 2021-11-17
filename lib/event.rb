@@ -42,4 +42,16 @@ class Event
     inventory_total
   end
 
+  def overstocked_items
+    # overstocked if more than one vendor && total quantity >= 50
+    overstocked = []
+    total_inventory.each do |key, value|
+      if value[:quantity] >= 50 && value[:food_trucks].count >= 2
+        overstocked.push(key)
+      end
+    end
+    overstocked
+  end
+
+
 end
