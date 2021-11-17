@@ -37,8 +37,6 @@ class Event
   end
 
   def overstocked_items
-    #An item is overstocked if it is sold by more than 1
-    #food truck AND the total quantity is greater than 50.
     overstocked = []
     @food_trucks.each do |food_truck|
       food_truck.inventory.each do |item, quantity|
