@@ -10,6 +10,9 @@ describe FoodTruck do
   end
 
   describe '#initialize' do
+    it 'exists' do
+      expect(@food_truck).to be_a(FoodTruck)
+    end
     it 'has attributes' do
       expect(@food_truck.name).to eq("Rocky Mountain Pies")
       expect(@food_truck.inventory).to eq({})
