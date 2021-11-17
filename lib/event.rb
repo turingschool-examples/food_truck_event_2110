@@ -20,7 +20,11 @@ class Event
 
   def sorted_item_list
     @food_trucks.map do |food_truck|
-      food_truck.in_stock
+      food_truck.in_stock.map {|item| item.name}
     end.flatten.sort.uniq
+  end
+
+  def overstocked_items
+    @food_trucks.map
   end
 end
