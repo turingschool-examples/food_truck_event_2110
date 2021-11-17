@@ -78,6 +78,9 @@ describe Event do
 
   describe '#total_inventory' do
     it 'returns the total inventory' do
+      @event.add_food_truck(@food_truck1)
+      @event.add_food_truck(@food_truck2)
+      @event.add_food_truck(@food_truck3)
       expected = {
         @item1 => {
           quantity: 100,
