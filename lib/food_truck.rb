@@ -15,4 +15,11 @@ class FoodTruck
     end
    end
 
+  def check_stock(item_obj)
+    if @inventory.key?(item_obj)
+      @inventory[item_obj]
+    else
+      puts "Out Of Stock."
+    end
+  end
 end
