@@ -58,6 +58,15 @@ describe Event do
     end
   end
 
+  describe '#items' do
+    it 'returns an array of items sold at the event' do
+      @event.add_food_truck(@food_truck1)
+      @event.add_food_truck(@food_truck2)
+      @event.add_food_truck(@food_truck3)
+      expect(@event.items).to eq([@item1, @item2, @item4, @item3])
+    end
+  end
+
   describe '#sorted_item_list' do
     it 'returns an array of all items sold at the event by name' do
       @event.add_food_truck(@food_truck1)
