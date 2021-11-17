@@ -49,4 +49,12 @@ class Event
     end
     overstocked
   end
+
+  def sorted_item_list
+    items = []
+    total_inventory.keys.each do |item|
+     items << item.name
+    end
+    items.sort
+  end
 end
