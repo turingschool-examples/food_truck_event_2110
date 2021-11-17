@@ -13,7 +13,7 @@ class Event
   end
 
   def food_truck_names
-    @food_trucks.map{|food_truck| food_truck.name}
+    @food_trucks.map{|food_truck| food_truck.name}.sort
   end
 
   def food_trucks_that_sell(item)

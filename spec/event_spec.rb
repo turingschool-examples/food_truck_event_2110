@@ -62,7 +62,7 @@ describe Event do
       end
 
       it 'returns an Array of all the food_truck names' do
-        expected = ["Rocky Mountain Pies", "Ba-Nom-a-Nom", "Palisade Peach Shack"]
+        expected = ["Ba-Nom-a-Nom", "Palisade Peach Shack", "Rocky Mountain Pies"]
         expect(@event.food_truck_names).to eq(expected)
       end
     end
@@ -107,6 +107,51 @@ describe Event do
         expected = ["Apple Pie (Slice)", "Banana Nice Cream", "Peach Pie (Slice)", "Peach-Raspberry Nice Cream"]
         expect(@event.sorted_items_list).to eq(expected)
       end
+    end
+
+    describe ' #total_inventory' do
+      before(:each) do
+        @food_truck3.stock(@item3, 10)
+        @event.add_food_truck(@food_truck1)
+        @event.add_food_truck(@food_truck2)
+        @event.add_food_truck(@food_truck3)
+      end
+
+      it 'returns a Hash' do
+        expect(@event.total_inventory).to be_a(Hash)
+      end
+
+      it 'returns a Hash with items as keys' do
+        expect(@event.total_inventory.keys.all?{|item| item.class == Item}).to eq(true)
+      end
+
+      it 'returns a Hash with Hashes as values' do
+        expect(@event.total_inventory.values.all?{|hash| hash.class == Hash}).to eq(true)
+      end
+
+      it 'returns a sub-hash whos keys are quantity and food_trucks' do
+        expect(@event.total_inventory.values.all?{|sub_hash| sub_hash.keys == [:quantity, :food_trucks]}).to eq(true)
+      end
+
+      it 'returns a sub-hash whos quantity values are integers' do
+        expect(@event.total_inventory.values.all?{|sub_hash| sub_hash[:quantity].class == Integer}).to eq(true)
+      end
+
+      it 'returns a sub-hash whos food_truck values are Arrays' do
+        expect(@event.total_inventory.values.all?{|sub_hash| sub_hash[:food_trucks].class == Array}).to eq(true)
+      end
+
+      it 'returns a sub-hash whos food_truck values are Arrays of FoodTrucks' do
+        expect(@event.total_inventory.values.all?{|sub_hash| sub_hash[:food_trucks].all?{|food_truck|food_truck.class == FoodTruck}}).to eq(true)
+      end
+
+      it 'returns expected results' do
+        expected = {"Apple Pie (Slice)" => {:quantity => 7, :food_trucks => [@food_truck1]},
+                    "Banana Nice Cream" => {:quantity => 50, :food_trucks => [@food_truck2]},
+                    "Peach Pie (Slice)" => {:quantity => 100, :food_trucks => [@food_truck1, @food_truck3]},
+                    "Peach-Raspberry Nice Cream" => {:quantity => 50, :food_trucks => [@food_truck2]}}
+      end
+
     end
   end
 end
