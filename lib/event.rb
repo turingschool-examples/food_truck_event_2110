@@ -9,5 +9,12 @@ class Event
 
   def add_food_truck(truck)
     @food_trucks.append(truck)
-  end 
+  end
+
+  def food_truck_names
+    @food_trucks.map do |truck|
+      truck.name
+    end
+  end
+
 end
