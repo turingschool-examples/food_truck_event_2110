@@ -23,7 +23,7 @@ class Event
 
   # Does not account for an empty quantity of said key
   def food_trucks_that_sell(item_obj)
-    food_trucks_arr = @food_trucks.select do |truck|
+    @food_trucks.select do |truck|
       truck.inventory.key?(item_obj)
     end
   end
