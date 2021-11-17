@@ -65,6 +65,6 @@ RSpec.describe FoodTruck do
   it 'can check for item names for items that are in stock' do
     stock_items
 
-    expect(food_truck.in_stock).to eq([item1.name, item2.name])
+    expect(food_truck.in_stock).to eq([item1, item2])
   end
 end
