@@ -34,6 +34,6 @@ class Event
 
   def total_inventory
     total_inventory_hash = Hash.new(0)
-    total_inventory_hash_keys
+    total_inventory_hash_keys = all_items
   end
 end

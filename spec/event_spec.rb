@@ -78,6 +78,27 @@ RSpec.describe Event do
     expect(@event.all_items).to eq([@item1, @item2, @item4, @item3])
   end
 
+  it '#item_hash' do
+    @event.add_food_truck(@food_truck1)
+    @event.add_food_truck(@food_truck2)
+    @event.add_food_truck(@food_truck3)
+
+    @food_truck1.stock(@item1, 35)
+    @food_truck1.stock(@item2, 7)
+
+    @food_truck2.stock(@item4, 50)
+    @food_truck2.stock(@item3, 25)
+
+    @food_truck3.stock(@item1, 65)
+    @food_truck3.stock(@item3, 10)
+
+    expected = {
+      quantity: 100,
+      food_trucks: [@food_truck1, @food_truck3]
+    }
+    expect(@event.item_hash(@item1)).to eq(expected)
+  end
+
   xit '#total_inventory' do
     @event.add_food_truck(@food_truck1)
     @event.add_food_truck(@food_truck2)
