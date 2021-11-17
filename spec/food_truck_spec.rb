@@ -20,6 +20,9 @@ describe FoodTruck do
 
     expect(food_truck.check_stock(item1)).to eq 30
 
+    food_truck.stock(item1, 25)
+
+    food_truck.check_stock(item1)
   end
 
   it 'Can stock an item'  do
@@ -30,5 +33,11 @@ describe FoodTruck do
     expected = {item1 => 30}
 
     expect(food_truck.inventory).to eq (expected)
+
+    food_truck.stock(item2, 12)
+    expected_2 = {item1 => 30, item2 => 12}
+
+    expect(food_truck.inventory).to eq (expected_2)
+
   end
 end
