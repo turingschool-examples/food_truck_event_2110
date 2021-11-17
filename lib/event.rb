@@ -51,10 +51,8 @@ class Event
   end
 
   def sorted_item_list
-    items = []
-    total_inventory.keys.each do |item|
-     items << item.name
-    end
-    items.sort
+    total_inventory.keys.map do |item|
+     item.name
+   end.sort
   end
 end
