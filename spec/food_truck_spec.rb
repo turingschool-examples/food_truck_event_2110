@@ -19,10 +19,28 @@ describe FoodTruck do
 
   describe 'methods' do
     describe ' #check_stock' do
-
+      it 'returns an integer' do
+        expect(@food_truck.check_stock(@item1)).to be_a(Integer)
+      end
+      it 'returns the correct count of the item' do
+        expect(@food_truck.check_stock(@item1)).to eq(0)
+        @food_truck.stock(@item1, 30)
+        expect(@food_truck.check_stock(@item1)).to eq(30)
+        @food_truck.stock(@item1, 25)
+        expect(@food_truck.check_stock(@item1)).to eq(55)
+      end
     end
     describe ' #stock' do
-      
+      it 'adds the item as a key to the inventory hash' do
+        expect(@food_truck.inventory).to eq({})
+        @food_truck.stock(@item1, 30)
+        expect(@food_truck.inventory.keys).to eq([@item])
+      end
+      it 'adds the # of items as a value to the inventory hash' do
+        expect(@food_truck.inventory).to eq({})
+        @food_truck.stock(@item1, 30)
+        expect(@food_truck.inventory.values).to eq([30])
+      end
     end
   end
 end
