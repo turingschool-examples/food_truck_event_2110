@@ -22,4 +22,10 @@ class Event
       truck.inventory.keys.include?(item)
     end
   end
+
+  def total_inventory
+    total_inventory_hash = Hash.new(0)
+    require "pry"; binding.pry
+    total_inventory_hash_keys
+  end
 end
