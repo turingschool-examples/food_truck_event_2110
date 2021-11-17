@@ -9,7 +9,11 @@ class FoodTruck
   end
 
   def stock(key, value)
-    @inventory[key] = value
+    @inventory[key] += value
+  end
+
+  def check_stock(item)
+    @inventory[item]
   end
 
 end
