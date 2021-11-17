@@ -25,6 +25,14 @@ class Event
     end.flatten.compact
   end
 
+  def items_list 
+    @food_trucks.map do |truck|
+      truck.inventory.map do |item, quantity|
+        item
+      end
+    end.flatten
+  end
+
   def total_inventory 
     
   end
