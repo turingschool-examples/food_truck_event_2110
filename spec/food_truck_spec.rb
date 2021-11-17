@@ -6,6 +6,7 @@ describe FoodTruck do
   let(:item1) {Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})}
   let(:item2) {Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})}
   let(:food_truck) {FoodTruck.new("Rocky Mountain Pies")}
+  
   it 'exists' do
     expect(food_truck).to be_an_instance_of(FoodTruck)
   end
@@ -25,4 +26,4 @@ describe FoodTruck do
     food_truck.stock(item2, 12)
     expect(food_truck.inventory).to eq({item1 => 55, item2 => 12})
   end
-end 
+end
