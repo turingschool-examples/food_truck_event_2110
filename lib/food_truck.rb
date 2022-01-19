@@ -7,12 +7,7 @@ class FoodTruck
   end
 
   def check_stock(item)
-    # @inventory.select do |inven|
-    #    if inven == item
-    #      binding.pry
-         @inventory[item]
-    #    end
-    # end
+    @inventory[item]
   end
 
   def stock(item, amount)
