@@ -52,4 +52,25 @@ class Event
     item_names.uniq.sort
   end
 
+  def list_items
+    items = []
+    @food_trucks.each do |truck|
+      truck.inventory.each do |item, quantity|
+        items << item
+      end
+    end
+    items
+  end
+
+  def total_inventory
+    inventory_hash = Hash.new(0)
+    list_items.each do |item|
+      item_hash = Hash.new(0)
+      inventory_hash[item] = item_hash
+      item_hash[:quantity] = total_stock(item)
+      item_hash[:food_trucks] = food_trucks_that_sell(item)
+    end
+    inventory_hash
+  end
+
 end

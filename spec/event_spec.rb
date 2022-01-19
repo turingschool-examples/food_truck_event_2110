@@ -127,7 +127,7 @@ RSpec.describe Event do
       event.add_food_truck(food_truck3)
       expect(event.total_inventory).to be_a(Hash)
       expect(event.total_inventory.count).to eq(4)
-      expect(event.total_inventory.keys).to eq([item1, item2, item3, item4])
+      expect(event.total_inventory.keys).to eq([item1, item2, item4, item3])
     end
   end
 end
