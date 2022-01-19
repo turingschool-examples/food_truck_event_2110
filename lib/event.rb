@@ -71,4 +71,18 @@ class Event
   def date
     Date.today.strftime("%d/%m/%Y")
   end
+
+  def sell(item, quantity)
+    return false if total_quantity(item) < quantity
+    @food_trucks.each do |truck|
+      truck.inventory.keys.include?(item)
+      if truck.inventory[item] > quantity
+        truck.inventory[item] -= quantity
+      else
+        quantity -= truck.inventory[item]
+        truck.inventory[item] = 0
+      end
+    end
+  true
+  end
 end
