@@ -13,13 +13,14 @@ class FoodTruck
 
     def stock(item, amount)
       # require "pry"; binding.pry
+
       if self.inventory[item].nil? then self.inventory[item] = amount else self.inventory[item] += amount end
     end
 
-  def potential_revenue
-    @inventory.sum do |key, value|
-      key.price * value
-          # require "pry"; binding.pry
+    def potential_revenue
+      @inventory.sum do |key, value|
+        key.price * value
+      end
     end
-  end
+
 end
