@@ -17,4 +17,18 @@ describe FoodTruck do
     expect(@food_truck.name).to eq("Rocky Mountain Pies")
     expect(@food_truck.inventory).to eq({})
   end
+
+  it '#check_stock(item) - yields zero' do
+    expect(@food_truck.check_stock(@item1)).to eq(0)
+  end
+
+  it '#stock(item) / #inventory udpates' do
+    @food_truck.stock(@item1, 30)
+    expect(@food_truck.inventory).to eq({@item1 => 30})
+  end
+
+  it '#check_stock(item) - yields 30' do
+    @food_truck.stock(@item1, 30)
+    expect(@food_truck.check_stock(@item1)).to eq(30)
+  end
 end
