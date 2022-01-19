@@ -15,4 +15,12 @@ class FoodTruck
     @inventory[item]
   end
 
+  def potential_revenue #sum of all their items' price * quantity.
+    sum = 0
+    @inventory.keys.map do |item|
+      sum += (check_stock(item) * item.price)
+    end
+    return sum
+  end
+
 end
