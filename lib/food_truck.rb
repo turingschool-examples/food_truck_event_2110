@@ -18,4 +18,13 @@ class FoodTruck
  def stock(item, quanity)
    @inventory[item] += quanity
  end
+
+ def potential_revenue
+   pot_revenue = 0
+   @inventory.map do |stock, quanity|
+     total = stock.price.delete('$').to_f * quanity
+     pot_revenue += total
+   end
+  return pot_revenue
+ end
 end

@@ -22,6 +22,17 @@ class Event
     trucks_that_sell << truck if object.name == item.name
     end
     end
-  return trucks_that_sell
+    return trucks_that_sell
   end
+
+  def total_inventory
+    inventory = Hash.new
+    unique_items = @food_trucks.map do |truck|
+      truck.inventory.map do {|object| object}.uniq
+      end
+      require "pry"; binding.pry
+      unique_items
+
+  end
+
 end
