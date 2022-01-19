@@ -185,4 +185,10 @@ RSpec.describe Event do
 
     expect(event.sorted_item_list).to eq(["Apple Pie (Slice)", "Banana Nice Cream", "Peach Pie (Slice)", "Peach-Raspberry Nice Cream"])
   end
+
+  it 'has a date' do
+    event = Event.new("South Pearl Street Farmers Market")
+    expect(event.date).to be_a(String)
+    expect(event.date).to eq("01/19/2022")
+  end
 end

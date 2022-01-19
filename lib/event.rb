@@ -1,3 +1,5 @@
+require 'date'
+
 class Event
   attr_reader :name,
               :food_trucks
@@ -53,5 +55,10 @@ class Event
         item.name
       end
     end.uniq.sort
+  end
+
+  def date
+    date = Date.today
+    date_to_string = date.strftime("%m/%d/%Y")
   end
 end
