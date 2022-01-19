@@ -10,4 +10,9 @@ class FoodTruck
     # require "pry"; binding.pry
     if self.inventory[item].nil? then 0 else self.inventory[item] end
     end
+
+    def stock(item, amount)
+      # require "pry"; binding.pry
+      if self.inventory[item].nil? then self.inventory[item] = amount else self.inventory[item] += amount end
+    end
 end
