@@ -1,7 +1,7 @@
 class FoodTruck
  	attr_reader :name, :inventory
 
- 	def initialize(i)
- 		@i = i
+ 	def initialize(name)
+ 		@name = name
  	end
 end
