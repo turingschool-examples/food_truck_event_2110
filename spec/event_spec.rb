@@ -1,7 +1,7 @@
 require './lib/item'
 require './lib/food_truck'
 require './lib/event'
-
+require 'pry'
 RSpec.describe "Iteration 2" do
   let(:item1) {Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})}
   let(:item2) {Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})}
@@ -44,6 +44,9 @@ RSpec.describe "Iteration 2" do
   end
 
   it "can list food_trucks that sell..." do
+    event.add_food_truck(food_truck1)
+    event.add_food_truck(food_truck2)
+    event.add_food_truck(food_truck3)
     expect(event.food_trucks_that_sell(item1)).to eq([food_truck1, food_truck3])
   end
 end
