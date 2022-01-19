@@ -21,4 +21,13 @@ describe FoodTruck do
     expect(@food_truck.inventory).to eq({})
   end
 
+  it 'defaults to 0 value for check stock' do
+    expect(@food_truck.check_stock(@item1)).to eq(0)
+  end
+
+  it 'can add stock w stock method to the hash inventory' do
+    @food_truck.stock(@item1, 30)
+    expect(@food_truck.inventory).to eq({@item1 => 30})
+  end
+
 end
