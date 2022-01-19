@@ -60,4 +60,14 @@ class Event
     end
     overstocked_item.uniq
   end
+
+  def sorted_item_list
+    items = []
+    food_trucks.each do |food_truck|
+      food_truck.inventory.each do |item, quantity|
+        items << item.name
+      end
+    end
+    items.uniq.sort
+  end
 end
