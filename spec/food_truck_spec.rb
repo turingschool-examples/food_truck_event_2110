@@ -40,7 +40,7 @@ RSpec.describe do FoodTruck
       food_truck.stock(item1, 30)
       food_truck.stock(item1, 25)
       food_truck.stock(item2, 12)
-      output = {item1 => 30, item2 => 12}
+      output = {item1 => 55, item2 => 12}
       expect(food_truck.inventory).to eq(output)
     end
   end
