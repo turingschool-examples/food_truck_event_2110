@@ -10,7 +10,7 @@ RSpec.describe Event do
 
   it 'exists and has a name' do
     expect(@event).to be_a(Event)
-    expect(@event.name).to eq("Rocky Mountain Pies")
+    expect(@event.name).to eq("South Pearl Street Farmers Market")
   end
 
   it "has an empty array of trucks" do
@@ -26,14 +26,14 @@ RSpec.describe Event do
       @item2 = Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})
       @item3 = Item.new({name: "Peach-Raspberry Nice Cream", price: "$5.30"})
       @item4 = Item.new({name: "Banana Nice Cream", price: "$4.25"})
-      food_truck1.stock(item1, 35)
-      food_truck1.stock(item2, 7)
-      food_truck2.stock(item4, 50)
-      food_truck2.stock(item3, 25)
-      food_truck3.stock(item1, 65)
-      event.add_food_truck(food_truck1)
-      event.add_food_truck(food_truck2)
-      event.add_food_truck(food_truck3)
+      @food_truck1.stock(@item1, 35)
+      @food_truck1.stock(@item2, 7)
+      @food_truck2.stock(@item4, 50)
+      @food_truck2.stock(@item3, 25)
+      @food_truck3.stock(@item1, 65)
+      @event.add_food_truck(@food_truck1)
+      @event.add_food_truck(@food_truck2)
+      @event.add_food_truck(@food_truck3)
     end
 
     it "returns the current array of trucks at event" do
@@ -49,7 +49,7 @@ RSpec.describe Event do
       expected << @food_truck1.name
       expected << @food_truck2.name
       expected << @food_truck3.name
-      expect(@event.food_trucks_names).to eq(expected)
+      expect(@event.food_truck_names).to eq(expected)
     end
 
     it 'returns an array of trucks which sell a specific item' do
@@ -60,9 +60,45 @@ RSpec.describe Event do
     it 'can calculate a food_trucks #potential_revenue' do
       expect(@food_truck1.potential_revenue).to eq(148.75)
       expect(@food_truck2.potential_revenue).to eq(345.00)
-      expect(@food_truck1.potential_revenue).to eq(243.75)
+      expect(@food_truck3.potential_revenue).to eq(243.75)
     end
   end
-end
 
-      
+  context 'Iteration 3' do
+
+      before(:each) do
+        @food_truck1 = FoodTruck.new("Rocky Mountain Pies")
+        @food_truck2 = FoodTruck.new("Ba-Nom-a-Nom")
+        @food_truck3 = FoodTruck.new("Palisade Peach Shack")
+        @item1 = Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})
+        @item2 = Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})
+        @item3 = Item.new({name: "Peach-Raspberry Nice Cream", price: "$5.30"})
+        @item4 = Item.new({name: "Banana Nice Cream", price: "$4.25"})
+        @food_truck1.stock(@item1, 35)
+        @food_truck1.stock(@item2, 7)
+        @food_truck2.stock(@item4, 50)
+        @food_truck2.stock(@item3, 25)
+        @food_truck3.stock(@item1, 65)
+        @food_truck3.stock(@item3, 10)
+        @event.add_food_truck(@food_truck1)
+        @event.add_food_truck(@food_truck2)
+        @event.add_food_truck(@food_truck3)
+      end
+
+      it 'can list items at event along with the trucks selling them' do
+      binding.pry
+      expect().to eq({
+                @item1 => {
+                  trucks: [@food_truck1, @food_truck3],
+                  amount: 100 },
+                @item2 => {
+                  trucks: [@food_truck1],
+                  amount: 7  },
+                @item4 => {
+                  trucks: [@food_truck2],
+                  amount: 50 },
+                @item3 => {
+                  trucks: [@food_truck2, @food_truck3], amount: 35})
+      end
+    end
+end
