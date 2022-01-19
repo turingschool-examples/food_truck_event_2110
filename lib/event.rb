@@ -20,4 +20,18 @@ class Event
       truck.inventory.include?(item)
     end
   end
+
+  def total_inventory
+    item_keys = @food_trucks.map do |truck|
+      truck.inventory.keys
+    end.flatten.uniq
+    inv = {}
+    item_keys.map do |item|
+      inv[item] = {
+                    quantity: food_trucks_that_sell(item).sum {|truck| truck.inventory[item]},
+                    food_trucks: food_trucks_that_sell(item)
+                  }
+    end
+    inv
+  end
 end
