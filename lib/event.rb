@@ -41,9 +41,24 @@ class Event
         if truck.inventory.key?(k)
           final_hash[k][:quantity] += truck.check_stock(k)
           final_hash[k][:food_trucks] << truck
-        end  # require "pry"; binding.pry
+        end
       end
     end
     final_hash
+  end
+
+  def overstocked_items
+    overstocked = total_inventory.reduce([]) do |arr, item|
+      if item[1][:quantity] > 50 && item[1][:food_trucks].length > 1
+        arr << item[0]
+      end
+      arr
+    end
+    overstocked
+  end
+
+  def sorted_item_list
+    obj_arr = total_inventory.keys.sort_by {|item| item.name}
+    obj_arr.map {|item| item.name}
   end
 end
