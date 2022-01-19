@@ -52,7 +52,7 @@ RSpec.describe Event do
       expect(@event.food_truck_names).to eq(expected)
     end
 
-    xit 'returns an array of trucks which sell a specific item' do
+    it 'returns an array of trucks which sell a specific item' do
       expect(@event.food_trucks_that_sell(@item1)).to eq([@food_truck1, @food_truck3])
       expect(@event.food_trucks_that_sell(@item4)).to eq([@food_truck2])
     end
