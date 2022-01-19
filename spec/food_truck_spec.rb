@@ -37,7 +37,7 @@ RSpec.describe FoodTruck do
 	end
 
 
-	xit 'can add more stock to inventory' do
+	it 'can add more stock to inventory' do
     @food_truck.stock(@item1, 30)
     @food_truck.stock(@item1, 25)
 
