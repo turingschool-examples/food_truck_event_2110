@@ -58,8 +58,11 @@ class Event
   end
 
   def item_list
-
+    @food_trucks.flat_map do |truck|
+      truck.inventory.keys
+    end.uniq
   end
+
   def sorted_item_list
     @food_trucks.sort_by do |truck|
       truck.inventory.map do |item, amount|
