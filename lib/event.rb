@@ -49,18 +49,16 @@ class Event
   end
 
   def sell(item, qty)
-    satisfied = nil
-    remaining_qty = qty
+    satisfied = nil; remaining_qty = qty
     total_inventory.each_pair do |inv_item, data|
       if (item == inv_item) && (data[:quantity] > qty)
         satisfied = true
-        until remaining_qty <= 0
+        until remaining_qty == 0
           food_trucks_that_sell(item).each do |truck|
             if truck.inventory[item] >= remaining_qty
-              (truck.inventory[item] -= remaining_qty) && (remaining_qty -= truck.inventory[item])
+              (truck.inventory[item] -= remaining_qty) && (remaining_qty = 0)
             elsif truck.inventory[item] < remaining_qty
-              remaining_qty -= truck.inventory[item]
-              truck.inventory[item] = 0
+              (remaining_qty -= truck.inventory[item]) && (truck.inventory[item] = 0)
             end
           end
         end
@@ -71,7 +69,4 @@ class Event
     end
     satisfied
   end
-
-
-
 end
