@@ -10,15 +10,11 @@ class Event
   end
 
   def food_truck_names
-    food_trucks.map do |food_truck|
-      food_truck.name
-    end
+    food_trucks.map {|food_truck| food_truck.name }
   end
 
   def food_trucks_that_sell(item)
-    food_trucks.find_all do |food_truck|
-      food_truck.inventory.include?(item)
-    end
+    food_trucks.find_all { |food_truck| food_truck.inventory.include?(item) }
   end
 
   def item_sum_at_event(item)
