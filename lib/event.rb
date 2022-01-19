@@ -19,4 +19,30 @@ class Event
   def food_trucks_that_sell(item)
     @food_trucks.select { |food_truck| food_truck.inventory.include?(item) }
   end
+
+  def total_inventory
+    s = items_array.each_with_object({}) do |item,hash|
+      hash[item] = {
+        quantity: item_quantity_in_food_trucks(item),
+        food_trucks: food_trucks_that_sell(item)
+      }
+    end
+  end
+
+  def item_quantity_in_food_trucks(item)
+    food_trucks = food_trucks_that_sell(item)
+    sum = food_trucks.sum do |food_truck|
+      food_truck.inventory[item]
+    end
+  end
+
+  def items_array
+    all_items_array = []
+    @food_trucks.each do |food_truck|
+      food_truck.inventory.each do |item, amount|
+        all_items_array << item
+      end
+    end
+    items = all_items_array.uniq
+  end
 end
