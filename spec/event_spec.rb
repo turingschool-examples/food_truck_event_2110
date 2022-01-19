@@ -93,6 +93,22 @@ RSpec.describe Event do
     expect(event.overstocked_items).to eq([item1])
   end
 
+  it 'can sort all items in alphabetical order' do
+    food_truck1.stock(item1, 35)
+    food_truck1.stock(item2, 7)
+    food_truck2.stock(item4, 50)
+    food_truck2.stock(item3, 25)
+    food_truck3.stock(item1, 65)
+    food_truck3.stock(item3, 10)
+    event.add_food_truck(food_truck1)
+    event.add_food_truck(food_truck2)
+    event.add_food_truck(food_truck3)
+
+    expected = ["Apple Pie (Slice)", "Banana Nice Cream", "Peach Pie (Slice)", "Peach-Raspberry Nice Cream"]
+    expect(event.sorted_item_list).to eq(expected)
+
+  end
+
 
 
 end
