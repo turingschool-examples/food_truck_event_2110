@@ -103,16 +103,16 @@ RSpec.describe 'Event Iteration 3' do
 
  it 'can list the total inventory' do
    expected = {
-     item1 => {quantity => 100,
-       food_trucks => [food_truck1, food_truck3]},
-     item2 => {quantity => 7,
-       food_trucks => [food_truck1]},
-     item4 => {quantity => 50,
-       food_trucks => [food_truck2]},
-     item3 => {quantity => 35,
-       food_trucks => [food_truck2, food_truck3]},
+     item1 => {:quanity => 100,
+       :food_trucks => [food_truck1, food_truck3]},
+     item2 => {:quanity => 7,
+       :food_trucks => [food_truck1]},
+     item4 => {:quanity => 50,
+       :food_trucks => [food_truck2]},
+     item3 => {:quanity => 35,
+       :food_trucks => [food_truck2, food_truck3]},
    }
-  expect().to eq(event.total_inventory).to eq(expected)
+  expect(event.total_inventory).to eq (expected)
  end
 
 end

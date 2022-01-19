@@ -28,11 +28,19 @@ class Event
   def total_inventory
     inventory = Hash.new
     unique_items = @food_trucks.map do |truck|
-      truck.inventory.map do {|object| object}.uniq
+      truck.inventory.flat_map {|object, quantity| object}
       end
-      require "pry"; binding.pry
-      unique_items
+    uniq_items = unique_items.flatten.uniq
+    uniq_items.map { |item| inventory[item]}
+    @food_trucks.each do |truck|
+      truck.inventory.each do |object, quantity|
+        if inventory.key?(object)
+          inventory[item] = {[:quanity] => quanity,
+                            [:food_trucks] => truck}
 
   end
-
+  return inventory
+end
+end
+  end
 end
