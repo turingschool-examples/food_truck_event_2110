@@ -38,4 +38,7 @@ class Event
     end
     inventory_hash
   end
+
+  def overstocked_items
+  end
 end
