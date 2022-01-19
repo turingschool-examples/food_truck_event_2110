@@ -15,6 +15,11 @@ class FoodTruck
     !@inventory.has_key?(item) ? @inventory[item] = qty : @inventory[item] += qty
   end
 
-
-
+  def potential_revenue
+    potential_revenue = 0
+    @inventory.each_pair do |item, qty|
+      potential_revenue += (item.price * qty)
+    end
+    potential_revenue
+  end
 end
