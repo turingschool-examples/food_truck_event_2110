@@ -8,7 +8,7 @@ class FoodTruck
  end
 
 
- def check stock(item)
+ def check_stock(item)
   @inventory.keys.size
  end
 end
