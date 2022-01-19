@@ -141,6 +141,8 @@ RSpec.describe "Iteration 4" do
   it "has a date" do
     #don't know how to use stubs yet I'll look into it if I have time
     expect(event.date).to eq(Date.today.strftime("%d/%m/%Y"))
+    #is this correct????
+    allow(event).to receive(:date).and_return("24/02/2020")
   end
 
   it "can sell items" do
