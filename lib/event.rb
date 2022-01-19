@@ -36,9 +36,9 @@ class Event
       food_truck.inventory.each do |item, inventory|
         sub_hash = {}
         if hash.has_key?(item) == false
-        sub_hash[:quantity] = item_sum_at_event(item)
-        sub_hash[:food_trucks] = food_trucks_that_sell(item)
-        hash[item] = sub_hash
+          sub_hash[:quantity] = item_sum_at_event(item)
+          sub_hash[:food_trucks] = food_trucks_that_sell(item)
+          hash[item] = sub_hash
         end
       end
     end

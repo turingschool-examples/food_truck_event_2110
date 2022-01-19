@@ -75,49 +75,49 @@ RSpec.describe Event do
     food_truck3.stock(item3, 10)
     expect(event.item_sum_at_event(item1)).to eq(100)
     expect(event.total_inventory).to eq({
-       item1 => {
+      item1 => {
         :quantity => 100,
         :food_trucks => [food_truck1, food_truck3]
       },
-        item2 => {
+      item2 => {
         :quantity => 7,
         :food_trucks => [food_truck1]
       },
-        item4 => {
-         :quantity => 50,
-         :food_trucks => [food_truck2]
+      item4 => {
+        :quantity => 50,
+        :food_trucks => [food_truck2]
       },
-        item3 => {
-          :quantity => 35,
-          :food_trucks => [food_truck2, food_truck3]
+      item3 => {
+        :quantity => 35,
+        :food_trucks => [food_truck2, food_truck3]
       },
-    })
-  end
+      })
+    end
 
-  it '#overstocked_items' do
-    event.add_food_truck(food_truck1)
-    event.add_food_truck(food_truck2)
-    event.add_food_truck(food_truck3)
-    food_truck1.stock(item1, 35)
-    food_truck1.stock(item2, 7)
-    food_truck2.stock(item4, 50)
-    food_truck2.stock(item3, 25)
-    food_truck3.stock(item1, 65)
-    food_truck3.stock(item3, 10)
-    expect(event.item_sum_at_event(item1)).to eq(100)
-    expect(event.overstocked_items).to eq([item1])
-  end
+    it '#overstocked_items' do
+      event.add_food_truck(food_truck1)
+      event.add_food_truck(food_truck2)
+      event.add_food_truck(food_truck3)
+      food_truck1.stock(item1, 35)
+      food_truck1.stock(item2, 7)
+      food_truck2.stock(item4, 50)
+      food_truck2.stock(item3, 25)
+      food_truck3.stock(item1, 65)
+      food_truck3.stock(item3, 10)
+      expect(event.item_sum_at_event(item1)).to eq(100)
+      expect(event.overstocked_items).to eq([item1])
+    end
 
-  it '#sorted_item_list' do
-    event.add_food_truck(food_truck1)
-    event.add_food_truck(food_truck2)
-    event.add_food_truck(food_truck3)
-    food_truck1.stock(item1, 35)
-    food_truck1.stock(item2, 7)
-    food_truck2.stock(item4, 50)
-    food_truck2.stock(item3, 25)
-    food_truck3.stock(item1, 65)
-    food_truck3.stock(item3, 10)
-    expect(event.sorted_item_list).to eq(["Apple Pie (Slice)", "Banana Nice Cream", "Peach Pie (Slice)", "Peach-Raspberry Nice Cream"])
+    it '#sorted_item_list' do
+      event.add_food_truck(food_truck1)
+      event.add_food_truck(food_truck2)
+      event.add_food_truck(food_truck3)
+      food_truck1.stock(item1, 35)
+      food_truck1.stock(item2, 7)
+      food_truck2.stock(item4, 50)
+      food_truck2.stock(item3, 25)
+      food_truck3.stock(item1, 65)
+      food_truck3.stock(item3, 10)
+      expect(event.sorted_item_list).to eq(["Apple Pie (Slice)", "Banana Nice Cream", "Peach Pie (Slice)", "Peach-Raspberry Nice Cream"])
+    end
   end
-end
