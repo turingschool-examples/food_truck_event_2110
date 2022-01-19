@@ -7,8 +7,11 @@ class FoodTruck
     @check_stock = 0
   end
 
-  def check_stock(stock)
+  def check_stock(item1)
     @check_stock
   end
 
+  def stock(item1, stock)
+
+  end
 end

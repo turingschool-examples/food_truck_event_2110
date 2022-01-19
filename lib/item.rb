@@ -5,4 +5,11 @@ class Item
     @name = attributes[:name]
     @price = attributes[:price]
   end
+
+  def price
+    @price.delete('$')
+    @price.to_i
+  end
+
+
 end
