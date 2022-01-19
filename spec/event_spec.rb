@@ -142,4 +142,13 @@ RSpec.describe "Iteration 4" do
     #don't know how to use stubs yet I'll look into it if I have time
     expect(event.date).to eq(Date.today.strftime("%d/%m/%Y"))
   end
+
+  it "can sell items" do
+    expect(event.sell(item1, 200)).to eq(false)
+    expect(event.sell(item4, 5)).to eq(true)
+    expect(food_truck2.check_stock(item4)).to eq(45)
+    expect(event.sell(item1, 40)).to eq(true)
+    expect(food_truck1.check_stock(item1)).to eq(0)
+    expect(food_truck3.check_stock(item1)).to eq(60)
+  end
 end
