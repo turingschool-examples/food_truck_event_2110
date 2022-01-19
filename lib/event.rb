@@ -5,6 +5,7 @@ class Event
   def initialize(name)
     @name = name
     @food_trucks = []
+    @total_inventory = Hash.new(0)
   end
 
 
@@ -29,5 +30,34 @@ class Event
     end
     return collector
   end
-  
+
+  def total_inventory
+    collector = []
+    @food_trucks.each do |truck|
+      truck.inventory.each do |item, amount|
+        if !collector.include?(item)
+          collector << item
+        end
+      end
+    end
+
+    collector.each do |indv_item|
+      hash = Hash.new(0)
+      hash[:quantity] = 0
+      hash[:food_trucks] = []
+      @food_trucks.each do |truck|
+        truck.inventory.each do |item, amount|
+          if item == indv_item
+            hash[:food_trucks] << truck
+            hash[:quantity] += amount
+          end
+        end
+      end
+      @total_inventory[indv_item] = hash
+    end
+
+    return @total_inventory
+  end
+
+
 end

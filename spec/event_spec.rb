@@ -21,14 +21,17 @@ RSpec.describe Event do
   end
 
   it "exists" do
+
     expect(@event).to be_instance_of(Event)
   end
 
   it "has a name" do
+
     expect(@event.name).to eq("South Pearl Street Farmers Market")
   end
 
   it "has foodtrucks" do
+
     expect(@event.food_trucks).to eq([])
   end
 
@@ -36,6 +39,7 @@ RSpec.describe Event do
     @event.add_food_truck(@food_truck1)
     @event.add_food_truck(@food_truck2)
     @event.add_food_truck(@food_truck3)
+
     expect(@event.food_trucks).to eq([@food_truck1, @food_truck2, @food_truck3])
   end
 
@@ -43,6 +47,7 @@ RSpec.describe Event do
     @event.add_food_truck(@food_truck1)
     @event.add_food_truck(@food_truck2)
     @event.add_food_truck(@food_truck3)
+
     expect(@event.food_truck_names).to eq(["Rocky Mountain Pies", "Ba-Nom-a-Nom", "Palisade Peach Shack"])
   end
 
@@ -50,6 +55,7 @@ RSpec.describe Event do
     @event.add_food_truck(@food_truck1)
     @event.add_food_truck(@food_truck2)
     @event.add_food_truck(@food_truck3)
+
     expect(@event.food_trucks_that_sell(@item1)).to eq([@food_truck1, @food_truck3])
   end
 
@@ -57,6 +63,7 @@ RSpec.describe Event do
     @event.add_food_truck(@food_truck1)
     @event.add_food_truck(@food_truck2)
     @event.add_food_truck(@food_truck3)
+
     expect(@event.food_trucks_that_sell(@item4)).to eq([@food_truck2])
   end
 
@@ -64,6 +71,7 @@ RSpec.describe Event do
     @event.add_food_truck(@food_truck1)
     @event.add_food_truck(@food_truck2)
     @event.add_food_truck(@food_truck3)
+
     expect(@food_truck1.potential_revenue).to eq(148.75)
   end
 
@@ -71,6 +79,7 @@ RSpec.describe Event do
     @event.add_food_truck(@food_truck1)
     @event.add_food_truck(@food_truck2)
     @event.add_food_truck(@food_truck3)
+
     expect(@food_truck2.potential_revenue).to eq(345.00)
   end
 
@@ -78,9 +87,22 @@ RSpec.describe Event do
     @event.add_food_truck(@food_truck1)
     @event.add_food_truck(@food_truck2)
     @event.add_food_truck(@food_truck3)
+
     expect(@food_truck3.potential_revenue).to eq(243.75)
   end
 
+  it "can show potential revenue for truck 3" do
+    @event.add_food_truck(@food_truck1)
+    @event.add_food_truck(@food_truck2)
+    @event.add_food_truck(@food_truck3)
+    @food_truck3.stock(@item3, 10)
 
+    expected = {
+      @item1 => {quantity: 100, food_trucks: [@food_truck1, @food_truck3]},
+      @item2 => {quantity: 7, food_trucks: [@food_truck1]},
+      @item4 => {quantity: 50, food_trucks: [@food_truck2]},
+      @item3 => {quantity: 35, food_trucks: [@food_truck2, @food_truck3]}}
 
+    expect(@event.total_inventory).to eq(expected)
+  end
 end
