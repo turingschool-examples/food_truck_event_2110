@@ -1,10 +1,10 @@
 class Event
   attr_reader :name, :food_trucks, :date
 
-  def initialize(name)
+  def initialize(name, date = assign_date)
     @name = name
     @food_trucks = []
-    @date = assign_date
+    @date = date
   end
 
   def assign_date

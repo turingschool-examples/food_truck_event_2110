@@ -137,8 +137,15 @@ describe Event do
       @event.add_food_truck(@food_truck3)
     end
 
-    it 'has a date' do
+    it 'uses todays date' do
       expect(@event.date).to eq "19/01/2022"
+    end
+
+    it 'tests the date using a stub' do #IDK, I tried...
+      date = double()
+      allow(@event.date).to receive("2020-02-24").and_return("24/02/2020")
+      event = Event.new("South Pearl Street Farmers Market")
+      expect(@event.date).to eq "24/02/2020"
     end
 
     it 'cannot sell more than there is' do
