@@ -162,58 +162,57 @@ Your `Event` will also be able to identify `overstocked_items`.  An item is over
 Use TDD to update your `Event` class so that it responds to the following interaction pattern:
 
 ```ruby
-pry(main)> require './lib/item'
+xxx pry(main)> require './lib/item'
 #=> true
 
-pry(main)> require './lib/food_truck'
+xxx#=> true
+
+xxx pry(main)> require './lib/event'
 #=> true
 
-pry(main)> require './lib/event'
-#=> true
-
-pry(main)> event = Event.new("South Pearl Street Farmers Market")
+xxx pry(main)> event = Event.new("South Pearl Street Farmers Market")
 #=> #<Event:0x00007fe134933e20...>
 
-pry(main)> item1 = Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})
+xxx pry(main)> item1 = Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})
 #=> #<Item:0x007f9c56740d48...>
 
-pry(main)> item2 = Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})
+xxx pry(main)> item2 = Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})
 #=> #<Item:0x007f9c565c0ce8...>
 
-pry(main)> item3 = Item.new({name: "Peach-Raspberry Nice Cream", price: "$5.30"})
+pxxxry(main)> item3 = Item.new({name: "Peach-Raspberry Nice Cream", price: "$5.30"})
 #=> #<Item:0x007f9c562a5f18...>
 
-pry(main)> item4 = Item.new({name: "Banana Nice Cream", price: "$4.25"})
+xxx pry(main)> item4 = Item.new({name: "Banana Nice Cream", price: "$4.25"})
 #=> #<Item:0x007f9c56343038...>
 
-pry(main)> food_truck1 = FoodTruck.new("Rocky Mountain Pies")
+pxxx ry(main)> food_truck1 = FoodTruck.new("Rocky Mountain Pies")
 #=> #<FoodTruck:0x00007fe1348a1160...>
 
-pry(main)> food_truck1.stock(item1, 35)
+xxx pry(main)> food_truck1.stock(item1, 35)
 
-pry(main)> food_truck1.stock(item2, 7)
+xxx pry(main)> food_truck1.stock(item2, 7)
 
-pry(main)> food_truck2 = FoodTruck.new("Ba-Nom-a-Nom")
+xxx pry(main)> food_truck2 = FoodTruck.new("Ba-Nom-a-Nom")
 #=> #<FoodTruck:0x00007fe1349bed40...>
 
-pry(main)> food_truck2.stock(item4, 50)
+xxx pry(main)> food_truck2.stock(item4, 50)
 
-pry(main)> food_truck2.stock(item3, 25)
+xxx pry(main)> food_truck2.stock(item3, 25)
 
-pry(main)> food_truck3 = FoodTruck.new("Palisade Peach Shack")
+xxx pry(main)> food_truck3 = FoodTruck.new("Palisade Peach Shack")
 #=> #<FoodTruck:0x00007fe134910650...>
 
-pry(main)> food_truck3.stock(item1, 65)
+xxx pry(main)> food_truck3.stock(item1, 65)
 
-pry(main)> food_truck3.stock(item3, 10)
+xxxpry(main)> food_truck3.stock(item3, 10)
 
-pry(main)> event.add_food_truck(food_truck1)
+xxxpry(main)> event.add_food_truck(food_truck1)
 
-pry(main)> event.add_food_truck(food_truck2)
+xxxpry(main)> event.add_food_truck(food_truck2)
 
-pry(main)> event.add_food_truck(food_truck3)
+xxxpry(main)> event.add_food_truck(food_truck3)
 
-pry(main)> event.total_inventory
+xxxpry(main)> event.total_inventory
 #=> {
   #   #<Item:0x007f9c56740d48...> => {
   #     quantity: 100,

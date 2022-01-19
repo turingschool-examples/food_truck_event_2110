@@ -20,6 +20,7 @@ RSpec.describe Event do
     @food_truck2.stock(@item4, 50)
     @food_truck2.stock(@item3, 25)
     @food_truck3.stock(@item1, 65)
+    @food_truck3.stock(@item3, 10)
 
 	end
 
@@ -65,6 +66,41 @@ RSpec.describe Event do
   		expect(@food_truck1.potential_revenue).to eq (148.75)
   		expect(@food_truck2.potential_revenue).to eq (345.00)
   		expect(@food_truck3.potential_revenue).to eq (243.75)
+  	end
+
+  	it 'can find #total_inventory for each truck' do
+      expected = {
+          @item1 => {
+            quantity: 100,
+            food_trucks: [@food_truck1, @food_truck3]
+          },
+          @item2 => {
+            quantity: 7,
+            food_trucks: [@food_truck1]
+          },
+          @item4 => {
+            quantity: 50,
+            food_trucks: [@food_truck2]
+          },
+          @item3 => {
+            quantity: 35,
+            food_trucks: [@food_truck2, @food_truck3]
+          },
+        }
+
+  		expect(@event.total_inventory).to eq (expected)
+  	end
+
+  	xit 'can find #overstocked_items' do
+
+  		expect(@event.overstocked_items).to eq (@item_1)
+  	end
+
+  	xit 'can do a #sorted_item_list' do
+
+      expected = ["Apple Pie (Slice)", "Banana Nice Cream", "Peach Pie (Slice)", "Peach-Raspberry Nice Cream"]
+
+  		expect(@event.overstocked_items).to eq (expected)
   	end
   end
 end
