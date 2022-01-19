@@ -30,4 +30,14 @@ describe FoodTruck do
     expect(@food_truck.inventory).to eq({@item1 => 30})
   end
 
+  it 'can add multiple items to hash inventory' do
+    @food_truck.stock(@item1, 30)
+    expect(@food_truck.inventory).to eq({@item1 => 30})
+    @food_truck.stock(@item1, 25)
+    expect(@food_truck.inventory).to eq({@item1 => 55})
+    @food_truck.stock(@item2, 12)
+    expect(@food_truck.inventory).to eq({@item1 => 55, @item2 => 12})
+    expect(@food_truck.potential_revenue).to eq(236.25)
+  end
+
 end
