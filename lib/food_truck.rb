@@ -17,5 +17,10 @@ class FoodTruck
   end
   def stock(item, quantity)
     @inventory[item] += quantity
-  end 
+  end
+
+  def potential_revenue
+    inventory.map{|item, item_count| item.price.delete_prefix('$').to_f * item_count}.sum
+  end
+  
 end

@@ -50,5 +50,19 @@ describe FoodTruck do
       end
     end
 
+    describe '#potential_revenue' do
+      before(:each) do
+        @food_truck.stock(@item1, 35)
+        @food_truck.stock(@item2, 7)
+      end
+
+      it 'returns a Float' do
+        expect(@food_truck.potential_revenue).to be_a(Float)
+      end
+
+      it 'returns the sum of all items * prices' do
+        expect(@food_truck.potential_revenue).to eq(148.75)
+      end 
+    end
   end
 end
