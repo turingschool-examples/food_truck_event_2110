@@ -11,4 +11,8 @@ RSpec.describe FoodTruck do
     expect(subject.name).to eq("Rocky Mountain Pies")
     expect(subject.inventory).to eq({})
   end
+
+  it "can #check_stock" do
+    expect(subject.check_stock(item1)).to eq(0)
+  end
 end
