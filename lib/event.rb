@@ -38,8 +38,8 @@ class Event
           inventory[item] = {[:quanity] => quanity,
                             [:food_trucks] => truck}
 
+                            return inventory
   end
-  return inventory
 end
 end
   end
