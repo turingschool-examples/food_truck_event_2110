@@ -89,4 +89,8 @@ end
   it 'knows when overstocked' do
     expect(@event.overstocked_items).to eq([@item1])
   end
+
+  it 'can sorted_item_list' do
+      expect(@event.sorted_item_list).to eq(["Apple Pie (Slice)", "Banana Nice Cream", "Peach Pie (Slice)", "Peach-Raspberry Nice Cream"])
+  end
 end

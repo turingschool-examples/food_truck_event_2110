@@ -52,4 +52,10 @@ class Event
     end
     overstocked
   end
+
+  def sorted_item_list
+    bulk =  (total_inventory.keys.map { |item| item.name }).sort
+    bulk.uniq
+    #binding.pry
+  end
 end
