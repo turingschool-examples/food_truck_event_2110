@@ -79,7 +79,7 @@ RSpec.describe "Iteration 3" do
     expect(event.total_quantity(item3)).to eq(35)
   end
 
-  xit "can list total inventory" do
+  it "can list total inventory" do
     expected = {
       item1 => {
         quantity: 100,
