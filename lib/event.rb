@@ -46,11 +46,32 @@ class Event
 
   def sorted_item_list
     total_inventory.map {|item| item[0].name}.sort
-    # sorted_item_list = []
-    # total_inventory.each_pair do |item, data|
-    #   sorted_item_list << item.name
-    # end
-    # sorted_item_list.sort
+  end
+
+  def sell(item, qty)
+    satisfied = nil
+    remaining_qty = qty
+    total_inventory.each_pair do |inv_item, data|
+      if (item == inv_item) && (data[:quantity] > qty)
+        satisfied = true
+        break
+      else
+        satisfied = false
+      end
+    end
+    if satisfied == true
+      until remaining_qty <= 0
+        food_trucks_that_sell(item).each do |truck|
+          if truck.inventory[item] >= remaining_qty
+            (truck.inventory[item] -= remaining_qty) && (remaining_qty -= truck.inventory[item])
+          elsif truck.inventory[item] < remaining_qty
+            remaining_qty -= truck.inventory[item]
+            truck.inventory[item] = 0
+          end
+        end
+      end
+    end
+    satisfied
   end
 
 
