@@ -2,6 +2,8 @@ require './lib/item'
 require './lib/food_truck'
 require './lib/event'
 require 'pry'
+require 'date'
+
 RSpec.describe "Iteration 2" do
   let(:item1) {Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})}
   let(:item2) {Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})}
@@ -111,5 +113,33 @@ RSpec.describe "Iteration 3" do
 
   it "can list items alphaberticly" do
     expect(event.sorted_item_list).to eq(["Apple Pie (Slice)", "Banana Nice Cream", "Peach Pie (Slice)", "Peach-Raspberry Nice Cream"])
+  end
+end
+
+RSpec.describe "Iteration 4" do
+  let(:item1) {Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})}
+  let(:item2) {Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})}
+  let(:item3) {Item.new({name: "Peach-Raspberry Nice Cream", price: "$5.30"})}
+  let(:item4) {Item.new({name: "Banana Nice Cream", price: "$4.25"})}
+  let(:item5) {Item.new({name: 'Onion Pie', price: '$25.00'})}
+  let(:food_truck1) {FoodTruck.new("Rocky Mountain Pies")}
+  let(:food_truck2) {FoodTruck.new("Ba-Nom-a-Nom")}
+  let(:food_truck3) {FoodTruck.new("Palisade Peach Shack")}
+  let(:event) {Event.new("South Pearl Street Farmers Market")}
+
+  before(:each) do
+    food_truck1.stock(item1, 35)
+    food_truck1.stock(item2, 7)
+    food_truck2.stock(item4, 50)
+    food_truck2.stock(item3, 25)
+    food_truck3.stock(item1, 65)
+    event.add_food_truck(food_truck1)
+    event.add_food_truck(food_truck2)
+    event.add_food_truck(food_truck3)
+  end
+
+  it "has a date" do
+    #don't know how to use stubs yet I'll look into it if I have time
+    expect(event.date).to eq(Date.today.strftime("%d/%m/%Y"))
   end
 end
