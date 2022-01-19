@@ -25,7 +25,7 @@ class Event
   def total_inventory
     @food_trucks.reduce({}) do |acc, truck|
       truck.inventory.each do |item, amount|
-        acc[item] = Hash.new(0)
+        acc[item] = Hash.new()
         acc[item][:quantity] = item_inventory(item)
         acc[item][:food_trucks] = food_trucks_that_sell(item)
       end
@@ -56,4 +56,21 @@ class Event
     item_names.sort_by {|item| item[0]}
   end
 
+  def date
+    Date.today.strftime("%d/%m/%Y")
+  end
+
+  def sell(item, quantity)
+    return false if item_inventory(item) < quantity
+    @food_trucks.each do |truck|
+      truck.inventory.keys.include?(item)
+      if truck.inventory[item] > quantity
+        truck.inventory[item] -= quantity
+      else
+        quantity -= truck.inventory[item]
+        truck.inventory[item] = 0
+      end
+    end
+  true
+  end
 end
