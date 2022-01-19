@@ -12,4 +12,8 @@ class FoodTruck
   def check_stock(new_item)
     @inventory[new_item]
   end
+
+  def potential_revenue
+    potential_revenue = (@item.price.to_f * @item.item_stock.to_f)
+  end
 end

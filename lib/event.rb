@@ -17,4 +17,20 @@ class Event
     end
     names
   end
+
+  def food_trucks_that_sell(food_item)
+    trucks_that_sell = []
+    @food_trucks.each do |food_truck|
+      # binding.pry
+      if @food_trucks.include?(food_item)
+        trucks_that_sell << food_truck.name
+      end
+    end
+    trucks_that_sell
+    # if @food_truck.include?(food_item)
+    #   trucks_that_sell << food_truck
+    # end
+    # trucks_that_sell
+    # @food_truck.inventory.include?(food_item)
+  end
 end
