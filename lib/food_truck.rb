@@ -16,7 +16,7 @@ def initialize(name)
   end
 
   def stock(item, quantity)
-    if inventory.empty?
+    if inventory.has_key?(item) == false
       inventory[item] = quantity
     elsif inventory.empty? == false
       inventory.each do |inventory_item, stock_quantity|
