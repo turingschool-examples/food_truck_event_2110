@@ -41,5 +41,11 @@ RSpec.describe Event do
       expected = [@food_truck1, @food_truck2, @food_truck3]
       expect(@event.food_trucks).to eq expected
     end
+
+    describe 'food_truck_names' do
+      it 'returns a collection of the names of the food trucks' do
+        expect(@event.food_truck_names).to eq ["Rocky Mountain Pies", "Ba-Nom-a-Nom", "Palisade Peach Shack"]
+      end
+    end
   end
 end
