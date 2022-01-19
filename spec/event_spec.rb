@@ -10,7 +10,7 @@ RSpec.describe Event do
 
   it 'exists and has a name' do
     expect(@event).to be_a(Event)
-    expect(@event.name).to eq("Rocky Mountain Pies")
+    expect(@event.name).to eq("South Pearl Street Farmers Market")
   end
 
   it "has an empty array of trucks" do
@@ -52,17 +52,15 @@ RSpec.describe Event do
       expect(@event.food_trucks_names).to eq(expected)
     end
 
-    it 'returns an array of trucks which sell a specific item' do
+    xit 'returns an array of trucks which sell a specific item' do
       expect(@event.food_trucks_that_sell(@item1)).to eq([@food_truck1, @food_truck3])
       expect(@event.food_trucks_that_sell(@item4)).to eq([@food_truck2])
     end
 
-    it 'can calculate a food_trucks #potential_revenue' do
+    xit 'can calculate a food_trucks #potential_revenue' do
       expect(@food_truck1.potential_revenue).to eq(148.75)
       expect(@food_truck2.potential_revenue).to eq(345.00)
       expect(@food_truck1.potential_revenue).to eq(243.75)
     end
   end
 end
-
-      
