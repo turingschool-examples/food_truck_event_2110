@@ -17,7 +17,7 @@ describe FoodTruck do
     expect(@food_truck.check_stock(@item1)).to eq(0)
   end
 
-  xit 'can check stock items' do
+  it 'can check stock items' do
     @food_truck.stock(@item1, 30)
     expect(@food_truck.check_stock(@item1)).to eq(30)
     @food_truck.stock(@item1, 25)
