@@ -7,7 +7,7 @@ describe FoodTruck do
     @item2 = Item.new({ name: 'Apple Pie (Slice)', price: '$2.50' })
   end
 
-  xit 'exists and has attributes' do
+  it 'exists and has attributes' do
     expect(@food_truck).to be_a(FoodTruck)
     expect(@food_truck.name).to eq('Rocky Mountain Pies')
     expect(@food_truck.inventory).to eq({})
