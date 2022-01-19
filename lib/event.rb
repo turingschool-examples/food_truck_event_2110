@@ -6,7 +6,7 @@ class Event
 
   def initialize(name)
     @name = name
-    @date = Date.today.strftime("%d/%m/%y")
+    @date = Date.today.strftime("%d/%m/%Y")
     @food_trucks = []
   end
 
