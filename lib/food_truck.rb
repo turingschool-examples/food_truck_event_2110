@@ -16,4 +16,12 @@ class FoodTruck
   def stock(item, quantity)
     @inventory[item] += quantity
   end
+
+  def potential_reveune
+    rev_by_time = @inventory.map do |item, quantity|
+      item.price * quantity
+    end
+    rev_by_item.reduce
+  
+  end
 end

@@ -21,7 +21,4 @@ class Event
   def food_trucks_that_sell(item)
     @food_trucks.select {|truck| truck.inventory.include? item }
   end
-
-  def potential_revenue
-    
 end

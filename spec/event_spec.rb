@@ -57,7 +57,8 @@ RSpec.describe Event do
       expect(@event.food_trucks_that_sell(@item4)).to eq([@food_truck2])
     end
 
-    xit 'can calculate a food_trucks #potential_revenue' do
+    it 'can calculate a food_trucks #potential_revenue' do
+      binding.pry
       expect(@food_truck1.potential_revenue).to eq(148.75)
       expect(@food_truck2.potential_revenue).to eq(345.00)
       expect(@food_truck1.potential_revenue).to eq(243.75)
