@@ -8,31 +8,32 @@ require './lib/food_truck'
     @item2 = Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})
  	end
 
- 	it 'exists' do
- 		expect(@food_truck).to be_a(FoodTruck)
- 	end
+    context 'Iteration 1' do
 
- 	it 'has attributes' do
- 		expect(@food_truck.name).to eq("Rocky Mountain Pies")
- 		expect(@food_truck.inventory).to eq({})
- 	end
+     	it 'exists' do
+     		expect(@food_truck).to be_a(FoodTruck)
+     	end
 
-  it 'can check the stock of an item' do
-    expect(@food_truck.check_stock(@item1)).to eq(0)
-  end
+     	it 'has attributes' do
+     		expect(@food_truck.name).to eq("Rocky Mountain Pies")
+     		expect(@food_truck.inventory).to eq({})
+     	end
 
-  it 'can add/remove stock and count the quantity of an item in stock' do
-    @food_truck.stock(@item1, 30)
-    expect(@food_truck.inventory).to eq({@item1 => 30})
-    expect(@food_truck.check_stock(@item1)).to eq(30)
+      it 'can check the stock of an item' do
+        expect(@food_truck.check_stock(@item1)).to eq(0)
+      end
 
-    @food_truck.stock(@item1, 25)
-    expect(@food_truck.check_stock(@item1)).to eq(55)
+      it 'can add/remove stock and count the quantity of an item in stock' do
+        @food_truck.stock(@item1, 30)
+        expect(@food_truck.inventory).to eq({@item1 => 30})
+        expect(@food_truck.check_stock(@item1)).to eq(30)
 
-    @food_truck.stock(@item2, 12)
-    expect(@food_truck.inventory).to eq(@item1 => 55, @item2 => 12)
+        @food_truck.stock(@item1, 25)
+        expect(@food_truck.check_stock(@item1)).to eq(55)
 
-  end
+        @food_truck.stock(@item2, 12)
+        expect(@food_truck.inventory).to eq(@item1 => 55, @item2 => 12)
+      end
 
-
+    end
  end
