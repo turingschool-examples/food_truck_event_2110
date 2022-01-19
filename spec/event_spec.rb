@@ -1,3 +1,4 @@
+require 'date'
 require './lib/item'
 require './lib/food_truck'
 require './lib/event'
@@ -20,7 +21,6 @@ RSpec.describe Event do
     @food_truck2.stock(@item4, 50)
     @food_truck2.stock(@item3, 25)
     @food_truck3.stock(@item1, 65)
-    @food_truck3.stock(@item3, 10)
 
 	end
 
@@ -33,7 +33,7 @@ RSpec.describe Event do
 		expect(@event.food_trucks).to eq ([])
 	end
 
-  describe do
+  describe 'Iteration II and III' do
     before(:each) do
       @event.add_food_truck(@food_truck1)
       @event.add_food_truck(@food_truck2)
@@ -62,13 +62,15 @@ RSpec.describe Event do
 
   	it 'can find #potential_revenue for each truck' do
 
-
   		expect(@food_truck1.potential_revenue).to eq (148.75)
   		expect(@food_truck2.potential_revenue).to eq (345.00)
   		expect(@food_truck3.potential_revenue).to eq (243.75)
   	end
 
-  	it 'can find #total_inventory for each truck' do
+  	xit 'can find #total_inventory for each truck' do
+
+      @food_truck3.stock(@item3, 10)
+
       expected = {
           @item1 => {
             quantity: 100,
@@ -101,6 +103,42 @@ RSpec.describe Event do
       expected = ["Apple Pie (Slice)", "Banana Nice Cream", "Peach Pie (Slice)", "Peach-Raspberry Nice Cream"]
 
   		expect(@event.overstocked_items).to eq (expected)
+  	end
+
+  end
+  describe 'Iteration IIII' do
+    before(:each) do
+      @event.add_food_truck(@food_truck1)
+      @event.add_food_truck(@food_truck2)
+      @event.add_food_truck(@food_truck3)
+    end
+
+    xit 'can list todays #date' do
+
+  		expect(@event.date).to eq ("24/02/2020")
+  	end
+
+    xit 'can #sell(item, amount)' do
+
+  		expect(@event.sell(@item1, 200)).to eq false
+  		expect(@event.sell(@item5, 1)).to eq false
+  		expect(@event.sell(@item4, 5)).to eq true
+  	end
+
+    xit 'can still #check_stock' do
+
+  		expect(@food_truck2.check_stock(@item4)).to eq 45
+  	end
+
+    xit 'can #sell(item, amount)' do
+
+  		expect(@event.sell(@item1, 40)).to eq true
+  	end
+
+    xit 'can still #check_stock' do
+
+  		expect(@food_truck1.check_stock(@item1)).to eq 0
+  		expect(@food_truck3.check_stock(@item1)).to eq 60
   	end
   end
 end
