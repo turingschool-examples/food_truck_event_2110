@@ -67,5 +67,9 @@ RSpec.describe Event do
                   }
       expect(event.total_inventory).to match(expected)
     end
+
+    it "can display #overstocked_items" do
+      expect(event.overstocked_items).to eq([item1])
+    end
   end
 end
