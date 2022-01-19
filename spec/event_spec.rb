@@ -32,38 +32,39 @@ RSpec.describe Event do
 		expect(@event.food_trucks).to eq ([])
 	end
 
-	it 'can #add_food_trucks' do
-    @event.add_food_truck(@food_truck1)
-    @event.add_food_truck(@food_truck2)
-    @event.add_food_truck(@food_truck3)
+  describe do
+    before(:each) do
+      @event.add_food_truck(@food_truck1)
+      @event.add_food_truck(@food_truck2)
+      @event.add_food_truck(@food_truck3)
+    end
 
-		expect(@event.food_trucks).to eq ([@food_truck1, @food_truck2, @food_truck3])
-	end
 
-	it 'can list #food_truck_names' do
-    @event.add_food_truck(@food_truck1)
-    @event.add_food_truck(@food_truck2)
-    @event.add_food_truck(@food_truck3)
+  	it 'can #add_food_trucks' do
 
-		expect(@event.food_truck_names).to eq (["Rocky Mountain Pies", "Ba-Nom-a-Nom", "Palisade Peach Shack"])
-	end
 
-	it 'can list #food_trucks_that_sell a specific item' do
-    @event.add_food_truck(@food_truck1)
-    @event.add_food_truck(@food_truck2)
-    @event.add_food_truck(@food_truck3)
+  		expect(@event.food_trucks).to eq ([@food_truck1, @food_truck2, @food_truck3])
+  	end
 
-		expect(@event.food_trucks_that_sell(@item1)).to eq ([@food_truck1, @food_truck3])
-		expect(@event.food_trucks_that_sell(@item4)).to eq ([@food_truck2])
-	end
+  	it 'can list #food_truck_names' do
 
-	it 'can find #potential_revenue for each truck' do
-    @event.add_food_truck(@food_truck1)
-    @event.add_food_truck(@food_truck2)
-    @event.add_food_truck(@food_truck3)
 
-		expect(@food_truck1.potential_revenue).to eq (148.75)
-		expect(@food_truck2.potential_revenue).to eq (345.00)
-		expect(@food_truck3.potential_revenue).to eq (243.75)
-	end
+  		expect(@event.food_truck_names).to eq (["Rocky Mountain Pies", "Ba-Nom-a-Nom", "Palisade Peach Shack"])
+  	end
+
+  	it 'can list #food_trucks_that_sell a specific item' do
+
+
+  		expect(@event.food_trucks_that_sell(@item1)).to eq ([@food_truck1, @food_truck3])
+  		expect(@event.food_trucks_that_sell(@item4)).to eq ([@food_truck2])
+  	end
+
+  	it 'can find #potential_revenue for each truck' do
+
+
+  		expect(@food_truck1.potential_revenue).to eq (148.75)
+  		expect(@food_truck2.potential_revenue).to eq (345.00)
+  		expect(@food_truck3.potential_revenue).to eq (243.75)
+  	end
+  end
 end
