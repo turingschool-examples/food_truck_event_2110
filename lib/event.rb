@@ -52,4 +52,11 @@ class Event
       array << item if value[:quantity] > 50 && value[:food_trucks].size > 1
     end
   end
+
+  def sorted_item_list
+    item_names = items_array.map do |item|
+      item.name
+    end
+    item_names.sort 
+  end
 end
