@@ -21,8 +21,7 @@ class Event
     truck.inventory.select do |object|
     trucks_that_sell << truck if object.name == item.name
     end
-  end
+    end
   return trucks_that_sell
+  end
 end
-end
-  # require "pry"; binding.pry
