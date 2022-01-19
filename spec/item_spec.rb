@@ -20,4 +20,5 @@ RSpec.describe Item do
     item2 = Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})
     expect(item2.price).to eq(2.50)
   end
+
 end
