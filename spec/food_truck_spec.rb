@@ -25,6 +25,23 @@ RSpec.describe FoodTruck do
     expect(@food_truck.check_stock(@item1)).to eq(0)
   end
 
+  it "can see inventory after adding items" do
+    @food_truck.stock(@item1, 30)
+    expect(@food_truck.inventory).to eq({@item1 => 30})
+  end
+
+  it "can add inventory" do
+    @food_truck.stock(@item1, 30)
+    expect(@food_truck.check_stock(@item1)).to eq(30)
+  end
+
+  it "can add inventory" do
+    @food_truck.stock(@item1, 30)
+    @food_truck.stock(@item1, 25)
+    expect(@food_truck.check_stock(@item1)).to eq(55)
+  end
+
+
 
 
 end
