@@ -7,6 +7,7 @@ RSpec.describe Event do
   let (:item2) {Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})}
   let (:item3) {Item.new({name: "Peach-Raspberry Nice Cream", price: "$5.30"})}
   let (:item4) {Item.new({name: "Banana Nice Cream", price: "$4.25"})}
+  let (:item5) {Item.new({name: 'Onion Pie', price: '$25.00'})}
   let (:food_truck2) {FoodTruck.new("Ba-Nom-a-Nom")}
   let (:food_truck3) {FoodTruck.new("Palisade Peach Shack")}
 
@@ -106,6 +107,14 @@ RSpec.describe Event do
 
     expected = ["Apple Pie (Slice)", "Banana Nice Cream", "Peach Pie (Slice)", "Peach-Raspberry Nice Cream"]
     expect(event.sorted_item_list).to eq(expected)
+  end
+
+  it 'includes a date' do
+    expect(event.date).to eq(Date.today.strftime("%d/%m/%y"))
+  end
+
+  xit 'can sell items from a food truck' do
+
 
   end
 
