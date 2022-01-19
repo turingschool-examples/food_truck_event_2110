@@ -81,8 +81,14 @@ describe Event do
        food_trucks: [@food_truck2, @food_truck3]
      },
    }
-
     expect(@event.total_inventory).to eq(expected)
   end
 
+  it 'can test overstock items' do
+    expect(@event.overstock_items).to eq([@item1])
+  end
+
+  it 'can sort items list alphabetically' do
+    expect(@event.sorted_item_list).to eq(["Apple Pie (Slice)", "Banana Nice Cream", "Peach Pie (Slice)", "Peach-Raspberry Nice Cream"])
+  end
 end

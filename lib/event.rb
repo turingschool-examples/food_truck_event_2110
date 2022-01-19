@@ -22,4 +22,13 @@ class Event
     end
   end
 
+  def total_inventory
+    total_inventory_hash = Hash.new
+    @food_trucks.map do |food_truck|
+      food_truck.inventory
+    end.flatten
+  end
+
+  #overstock items
+  #sorted items list 
 end
