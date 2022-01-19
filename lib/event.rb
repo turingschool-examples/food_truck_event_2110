@@ -50,4 +50,15 @@ class Event
     items.sort
   end
 
+  # def sell(item, qty)
+  #   if total_inventory.keys.include?(item) == false || total_inventory[item][:quantity] <= qty
+  #     return false
+  #   elsif food_trucks_that_sell(item)[0].inventory[item] > 0
+  #     food_trucks_that_sell(item)[0].inventory[item] -= qty until food_trucks_that_sell(item)[0].inventory[item] == 0
+  #     return true
+  #   elsif food_trucks_that_sell(item)[0].inventory[item] == 0
+  #     food_trucks_that_sell(item)[1].inventory[item] -= qty
+  #     return true
+  #   end
+  # end
 end
