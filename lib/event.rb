@@ -30,12 +30,12 @@ class Event
   end
 
   def total_inventory
-    result = {}
+    inventory_hash = {}
     @food_trucks.each do |food_truck|
       food_truck.inventory.each do |item, quantity|
-        result[item] = {quantity: 1 , food_trucks: food_trucks_that_sell(item)}
+        inventory_hash[item] = {quantity: sum_quantities(item), food_trucks: food_trucks_that_sell(item)}
       end
     end
-    result
+    inventory_hash
   end
 end

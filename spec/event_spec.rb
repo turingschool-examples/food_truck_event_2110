@@ -79,7 +79,7 @@ RSpec.describe Event do
     expect(event.food_trucks_that_sell(item3)).to eq([food_truck2])
   end
 
-  xit 'has a total inventory' do
+  it 'has a total inventory' do
     event = Event.new("South Pearl Street Farmers Market")
     item1 = Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})
     item2 = Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})
