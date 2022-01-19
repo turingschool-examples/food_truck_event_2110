@@ -14,4 +14,12 @@ class FoodTruck
   def stock(item, amount)
     @inventory[item] += amount
   end
+
+  def potential_revenue
+    potential = 0
+    @inventory.each do |item, amount|
+      potential += (item.price * amount)
+    end
+    potential #still drop trailing 0s for now
+  end
 end
