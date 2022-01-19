@@ -16,4 +16,11 @@ class Event
       food_truck.name
     end
   end
+
+  def food_trucks_that_sell(item)
+    @food_trucks.select do |food_truck|
+        # require "pry"; binding.pry
+       food_truck if food_truck.inventory.include?(item)
+    end
+  end
 end
