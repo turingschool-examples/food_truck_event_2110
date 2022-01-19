@@ -67,7 +67,7 @@ RSpec.describe Event do
   		expect(@food_truck3.potential_revenue).to eq (243.75)
   	end
 
-  	xit 'can find #total_inventory for each truck' do
+  	it 'can find #total_inventory for each truck' do
 
       @food_truck3.stock(@item3, 10)
 

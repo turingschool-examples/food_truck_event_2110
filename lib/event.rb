@@ -23,7 +23,19 @@ class Event
     end
   end
 
-  def potential_revenue
-    require 'pry'; binding.pry
+  def for_sale_items
+    @food_trucks.map do |truck|
+      truck.inventory.keys
+    end.flatten.uniq
   end
+
+  def total_inventory
+    inventory = {}
+    for_sale_items.map do |item|
+      inventory[item] = {quantity: food_trucks_that_sell(item).sum {|truck| truck.inventory[item]},
+                 food_trucks: food_trucks_that_sell(item)}
+
+     end
+     inventory
+   end
 end
