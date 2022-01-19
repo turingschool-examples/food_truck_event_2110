@@ -37,7 +37,6 @@ class Event
   def total_inventory
     @food_trucks.reduce({}) do |acc, truck|
       truck.inventory.each do |item, amount|
-        inventory_counter = 0
         acc[item] = Hash.new(0)
         acc[item][:quantity] = total_quantity(item)
         acc[item][:food_trucks] = food_trucks_that_sell(item)

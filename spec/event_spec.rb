@@ -100,4 +100,8 @@ RSpec.describe "Iteration 3" do
     }
     expect(event.total_inventory).to eq(expected)
   end
+
+  it "can list overstocked items" do
+    expect(event.overstocked_items).to eq([item1])
+  end
 end
