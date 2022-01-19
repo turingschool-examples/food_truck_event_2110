@@ -3,6 +3,7 @@ require './lib/food_truck'
 require './lib/event'
 require 'rspec'
 require 'pry'
+require 'date'
 
 RSpec.describe Event do
 
@@ -142,7 +143,7 @@ RSpec.describe Event do
 
     it 'date' do
 
-      expect(event.date).to eq("19/02/2022")
+      expect(event.date).to eq("19/01/22")
     end
   end
 end
