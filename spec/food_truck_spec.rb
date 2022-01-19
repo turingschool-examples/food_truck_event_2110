@@ -13,4 +13,9 @@ RSpec.describe FoodTruck do
     expect(food_truck.name).to eq("Rocky Mountain Pies")
   end
 
+  it "can have inventory" do
+    food_truck = FoodTruck.new("Rocky Mountain Pies")
+
+    expect(food_truck.inventory).to be_instance_of(Hash)
+  end
 end
