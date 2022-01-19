@@ -140,7 +140,7 @@ RSpec.describe Event do
     expect(event.total_sum(item1)).to eq(100)
   end
 
-  xit 'overstuck items' do
+  it 'overstuck items' do
     event = Event.new("South Pearl Street Farmers Market")
     item1 = Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})
     item2 = Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})

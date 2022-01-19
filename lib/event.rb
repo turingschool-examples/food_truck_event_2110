@@ -48,12 +48,17 @@ class Event
   end
 
   def overstocked_items
-    @food_trucks.map do |food_truck|
+    total_inventory.select do |item, value|
       # require "pry"; binding.pry
-      food_truck.inventory.map do |item, value|
+      return [item] if value[:food_trucks].length > 1 && total_sum(item) > 50
+      # require "pry"; binding.pry
+    end
+    # @food_trucks.map do |food_truck|
+    #   # require "pry"; binding.pry
+    #   food_truck.inventory.map do |item, value|
         # require "pry"; binding.pry
         # Might need total inventory
-      end
-    end
+      # end
+    # end
   end
 end
