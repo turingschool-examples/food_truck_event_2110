@@ -42,4 +42,8 @@ RSpec.describe "Iteration 2" do
     event.add_food_truck(food_truck3)
     expect(event.food_truck_names).to eq(["Rocky Mountain Pies", "Ba-Nom-a-Nom", "Palisade Peach Shack"])
   end
+
+  it "can list food_trucks that sell..." do
+    expect(event.food_trucks_that_sell(item1)).to eq([food_truck1, food_truck3])
+  end
 end
