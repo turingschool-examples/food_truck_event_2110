@@ -21,4 +21,17 @@ class Event
   def food_trucks_that_sell(item)
     @food_trucks.select {|truck| truck.inventory.include? item }
   end
+
+  def total_inventory
+    available=Hash.new
+    @food_trucks.each do |truck|
+      truck.inventory.each do |item,quantity|
+        total_amount_available = food_trucks_that_sell(item).sum do |truck_with|
+          truck_with.inventory[item]
+        end
+        available[item] = {trucks: food_trucks_that_sell(item), amount: total_amount_available}
+      end
+    end
+    available
+  end
 end
