@@ -63,11 +63,11 @@ RSpec.describe Event do
       ])
   end
 
-  xit "returns food trucks that sell a given item" do
+  it "returns food trucks that sell a given item" do
     @event.add_food_truck(@food_truck1)
     @event.add_food_truck(@food_truck2)
     @event.add_food_truck(@food_truck3)
-    
+
     expect(@event.food_trucks_that_sell(@item1)).to be_instance_of Array
     expect(@event.food_trucks_that_sell(@item1).length).to eq(2)
     expect(@event.food_trucks_that_sell(@item1)).to eq([
