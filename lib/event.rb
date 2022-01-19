@@ -64,10 +64,7 @@ class Event
   end
 
   def sorted_item_list
-    @food_trucks.sort_by do |truck|
-      truck.inventory.map do |item, amount|
-        item.name
-      end
-    end
+    item_names = item_list.map {|item| item.name}
+    item_names.sort_by {|item| item[0]}
   end
 end
