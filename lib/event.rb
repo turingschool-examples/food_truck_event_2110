@@ -11,7 +11,13 @@ class Event
 
   def food_truck_names
     names = @food_trucks.map do |truck|
-      truck.name 
+      truck.name
+    end
+  end
+
+  def food_trucks_that_sell(item)
+    @food_trucks.select do |truck|
+      truck.inventory.include?(item)
     end
   end
 end
