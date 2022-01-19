@@ -24,6 +24,14 @@ describe Event do
 
   it 'starts w empty food truck array' do
     expect(@event.food_trucks).to eq([])
-  end 
+  end
+
+  it 'can add food trucks to the array' do
+    @event.add_food_truck(@food_truck1)
+    @event.add_food_truck(@food_truck2)
+    @event.add_food_truck(@food_truck3)
+    expect(@event.food_trucks).to eq([@food_truck1, @food_truck2, @food_truck3])
+  end
+
 
 end
