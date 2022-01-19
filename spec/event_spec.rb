@@ -58,8 +58,9 @@ RSpec.describe Event do
     food_truck2.stock(item4, 50)
     food_truck2.stock(item3, 25)
     food_truck3.stock(item1, 65)
-    expect(even).to eq([food_truck1, food_truck3])
-    expect(event.food_trucks_that_sell(item4)).to eq([food_truck2])
+    expect(food_truck1.potential_revenue).to eq(148.75)
+    expect(food_truck2.potential_revenue).to eq(345.00)
+    expect(food_truck3.potential_revenue).to eq(243.75)
   end
 
 end
