@@ -1,12 +1,15 @@
 class Event
-  attr_reader :name
+  attr_reader :name,
+              :food_trucks
 
   def initialize(name)
     @name = name
-    # @attribute2 = parameter2
+    @food_trucks = []
   end
 
-  #def method_name
-  #end
+  def add_food_truck(truck)
+    @food_trucks << truck
+  end
+
 
 end
