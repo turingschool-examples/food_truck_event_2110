@@ -120,9 +120,9 @@ RSpec.describe 'Iteration 3' do
   end
 
   it "collects total quantity by item" do
-    expect(@event.qty_by_item).to be_instance_of Hash
-    expect(@event.qty_by_item.size).to eq(4)
-    expect(@event.qty_by_item).to eq({
+    expect(@event.total_qty_by_item).to be_instance_of Hash
+    expect(@event.total_qty_by_item.size).to eq(4)
+    expect(@event.total_qty_by_item).to eq({
       @item1 => 100,
       @item2 => 7,
       @item4 => 50,
@@ -167,13 +167,13 @@ RSpec.describe 'Iteration 3' do
     })
   end
 
-  xit "returns overstocked items" do #add to test
+  it "returns overstocked items" do
     expect(@event.overstocked_items).to be_instance_of Array
     expect(@event.overstocked_items.length).to eq(1)
     expect(@event.overstocked_items).to eq([@item1])
   end
 
-  xit "returns sorted item list" do
+  it "returns sorted item list" do
     expect(@event.sorted_item_list).to be_instance_of Array
     expect(@event.sorted_item_list.length).to eq(4)
     expect(@event.sorted_item_list).to eq([
