@@ -22,4 +22,8 @@ class Event
       food_truck.inventory.include?(item)
     end
   end
+
+  def potential_revenue
+    require 'pry'; binding.pry
+  end
 end
