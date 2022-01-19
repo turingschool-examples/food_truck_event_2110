@@ -144,7 +144,7 @@ RSpec.describe do Event
       event.add_food_truck(food_truck2)
       event.add_food_truck(food_truck3)
       output = ["Apple Pie (Slice)", "Banana Nice Cream", "Peach Pie (Slice)", "Peach-Raspberry Nice Cream"]
-      expect(event.overstocked_items).to eq(output)
+      expect(event.sorted_item_list).to eq(output)
     end
   end
 end
