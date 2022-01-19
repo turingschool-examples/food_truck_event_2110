@@ -21,5 +21,20 @@ RSpec.describe FoodTruck do
       expect(food_truck.name).to eq("Rocky Mountain Pies")
       expect(food_truck.inventory).to eq({})
     end
+
+    it '#check_stock' do
+
+      expect(food_truck.check_stock(item1)).to eq(0)
+      food_truck.stock(item1, 30)
+      expect(food_truck.check_stock(item1)).to eq(30)
+      food_truck.stock(item1, 25)
+      expect(food_truck.check_stock(item1)).to eq(55)
+    end
+
+    it '#stock' do
+
+      food_truck.stock(item1, 30)
+      expect(food_truck.check_stock(item1)).to eq(30)
+    end
   end
 end
