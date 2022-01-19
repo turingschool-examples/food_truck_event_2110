@@ -17,5 +17,17 @@ class FoodTruck
     @inventory[item] += amount
   end
 
+  def potential_revenue
+    collector = []
+    @inventory.each do |item, amount|
+      money_split = item.price.split('')
+      money_split.shift
+      float_amount = money_split.join.to_f
+      item_total = float_amount * amount
+      collector << item_total
+    end
+    return collector.sum
+  end
+
 
 end

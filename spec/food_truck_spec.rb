@@ -48,7 +48,4 @@ RSpec.describe FoodTruck do
     expect(@food_truck.inventory).to eq({@item1 => 55, @item2 => 12})
   end
 
-
-
-
 end
