@@ -140,11 +140,6 @@ RSpec.describe Event do
     event.add_food_truck(food_truck1)
     event.add_food_truck(food_truck2)
     event.add_food_truck(food_truck3)
-    expect(event.sell(item1, 200)).to eq false
-    expect(event.sell(item5, 1)).to eq false
-    expect(food_truck2.check_stock(item4)).to eq(50)
-    expect(event.sell(item4, 5)).to eq true
-    expect(food_truck2.check_stock(item4)).to eq(45)
 
     expect(food_truck1.check_stock(item1)).to eq(35)
     expect(food_truck3.check_stock(item1)).to eq(65)
@@ -154,7 +149,4 @@ RSpec.describe Event do
     expect(food_truck1.check_stock(item1)).to eq(0)
     expect(food_truck3.check_stock(item1)).to eq(60)
   end
-
-
-
 end
