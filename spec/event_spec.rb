@@ -24,11 +24,11 @@ RSpec.describe Event do
     expect(@event).to be_a(Event)
   end
 
-  xit 'has a name' do
+  it 'has a name' do
     expect(@event.name).to eq("South Pearl Street Farmers Market")
   end
 
-  xit 'has no food trucks' do
+  it 'has no food trucks' do
     expect(@event.food_trucks).to eq([])
   end
 
