@@ -71,5 +71,10 @@ RSpec.describe Event do
     it "can display #overstocked_items" do
       expect(event.overstocked_items).to eq([item1])
     end
+
+    it "can display #sorted_item_list" do
+      expected = ["Apple Pie (Slice)", "Banana Nice Cream", "Peach Pie (Slice)", "Peach-Raspberry Nice Cream"]
+      expect(event.sorted_item_list).to eq(expected)
+    end
   end
 end
