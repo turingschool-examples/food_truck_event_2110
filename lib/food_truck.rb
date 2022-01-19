@@ -24,4 +24,10 @@ class FoodTruck
       end
     end
   end
+
+  def potential_revenue
+    inventory.sum do |item, quantity|
+      item.price.delete('$,').to_f * quantity
+    end
+  end
 end
