@@ -1,11 +1,16 @@
 require 'pry'
 
 class FoodTruck
-  attr_reader :name
+  attr_reader :name, :inventory
   attr_accessor
 
   def initialize(name)
     @name = name
+    @inventory = Hash.new(0)
+  end
+
+  def check_stock(item)
+    @inventory[item]
   end
 
 
