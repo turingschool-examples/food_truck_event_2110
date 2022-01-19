@@ -78,4 +78,6 @@ RSpec.describe Event do
     expect(event.food_trucks_that_sell(item4)).to eq([food_truck2])
     expect(event.food_trucks_that_sell(item3)).to eq([food_truck2])
   end
+
+  
 end

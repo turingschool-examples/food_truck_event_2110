@@ -22,4 +22,6 @@ class Event
         food_truck.inventory.include?(item)
     end
   end
+
+  
 end
