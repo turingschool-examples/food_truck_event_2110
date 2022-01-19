@@ -12,7 +12,7 @@ require './lib/food_truck'
  		expect(@food_truck).to be_a(FoodTruck)
  	end
 
- 	xit 'has attributes' do
- 		expect(@food_truck.attribute).to eq(attribute)
+ 	it 'has attributes' do
+ 		expect(@food_truck.attribute).to eq("Rocky Mountain Pies")
  	end
  end
