@@ -3,22 +3,22 @@ require './lib/food_truck'
 require './lib/event'
 
 RSpec.describe '#event' do
-  xit 'exist' do
+  it 'exist' do
     event = Event.new('South Pearl Street Farmers Market')
     expect(event).to be_a(Event)
   end
 
-  xit 'has a name' do
+  it 'has a name' do
     event = Event.new('South Pearl Street Farmers Market')
     expect(event.name).to eq('South Pearl Street Farmers Market')
   end
 
-  xit 'has no food_truck' do
+  it 'has no food_truck' do
     event = Event.new('South Pearl Street Farmers Market')
     expect(event.food_trucks).to eq([])
   end
 
-  xit 'has  food_trucks' do
+  it 'has  food_trucks' do
     event = Event.new('South Pearl Street Farmers Market')
 
     item1 = Item.new({ name: 'Peach Pie (Slice)', price: '$3.75' })
@@ -51,7 +51,7 @@ RSpec.describe '#event' do
     expect(event.food_trucks).to eq([food_truck1, food_truck2, food_truck3])
   end
 
-  xit 'has a list food_truck by name' do
+  it 'has a list food_truck by name' do
     event = Event.new('South Pearl Street Farmers Market')
 
     item1 = Item.new({ name: 'Peach Pie (Slice)', price: '$3.75' })
@@ -84,7 +84,7 @@ RSpec.describe '#event' do
     expect(event.food_truck_names).to eq(['Rocky Mountain Pies', 'Ba-Nom-a-Nom', 'Palisade Peach Shack'])
   end
 
-  xit 'has a list of what food_trucks sell what' do
+  it 'has a list of what food_trucks sell what' do
     event = Event.new('South Pearl Street Farmers Market')
 
     item1 = Item.new({ name: 'Peach Pie (Slice)', price: '$3.75' })
