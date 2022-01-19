@@ -9,13 +9,19 @@ def initialize(name)
     if inventory.include?(item) == false
       0
     elsif inventory.include?(item) == true
-      inventory.each do |item, quantity|
+      inventory.each do |inventory_item, quantity|
         return quantity
       end
     end
   end
 
   def stock(item, quantity)
-    inventory[item] = quantity
+    if inventory.empty?
+      inventory[item] = quantity
+    elsif inventory.empty? == false
+      inventory.each do |inventory_item, stock_quantity|
+      inventory[item] = stock_quantity += quantity
+      end
+    end
   end
 end
