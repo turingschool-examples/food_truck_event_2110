@@ -1,5 +1,6 @@
 class Event
-  def initialize(event_name)
-    @event_name = event_name
+  attr_reader :name
+  def initialize(name)
+    @name = name
   end
 end
