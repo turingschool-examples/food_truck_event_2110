@@ -17,7 +17,7 @@ class FoodTruck
   def potential_revenue
     @inventory.sum do |item_object, number_of_item|
       item_object.price * number_of_item
-    end
+    end.flatten
   end
 
 end
