@@ -22,4 +22,51 @@ class Event
       truck.inventory.include?(item)
     end
   end
+
+  def total_inventory
+    outside = Hash.new(0)
+    inside = Hash.new(0)
+    @food_trucks.each do |truck|
+      truck.inventory.each do |item, quantity|
+        if inside[:quantity].nil?
+          inside[:quantity] = truck.check_stock(item)
+        else
+          inside[:quantity] += truck.check_stock(item)
+        end
+
+        # require "pry"; binding.pry
+      end
+    end
+  end
+
+  # @food_trucks.each do |truck|
+  #   truck.inventory.each do |item, quantity|
+  #     inside[:quantity] = truck.check_stock(item)
+  #     inside[:food_trucks] = food_trucks_that_sell(item)
+  #     outside[item] = inside
+  #     require "pry"; binding.pry
+  #   end
+  # end
+  # outside
+  def overstocked_items
+    items = []
+    @food_trucks.each do |truck|
+      truck.inventory.each do |item, quantity|
+        if quantity > 50 && food_trucks_that_sell(item).size >= 2
+          items << item
+        end
+      end
+    end
+    items
+  end
+
+  def sorted_item_list
+    names = []
+    @food_trucks.select do |truck|
+      truck.inventory.select do |item, quantity|
+        names << item.name
+      end
+    end
+    names.uniq.sort
+  end
 end
