@@ -53,12 +53,15 @@ class Event
       return [item] if value[:food_trucks].length > 1 && total_sum(item) > 50
       # require "pry"; binding.pry
     end
-    # @food_trucks.map do |food_truck|
-    #   # require "pry"; binding.pry
-    #   food_truck.inventory.map do |item, value|
-        # require "pry"; binding.pry
-        # Might need total inventory
-      # end
-    # end
+
+  end
+
+  def sorted_item_list
+    # total_inventory.map do |item|
+    total_inventory.map do |key, value|
+      # require "pry"; binding.pry
+      key.name
+    end.sort
+
   end
 end
