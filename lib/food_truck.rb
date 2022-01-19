@@ -4,4 +4,8 @@ class FoodTruck
     @name = name
     @inventory = {}
   end
+
+  def check_stock(item)
+    item.stock
+  end
 end

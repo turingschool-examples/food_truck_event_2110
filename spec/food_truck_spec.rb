@@ -21,5 +21,12 @@ RSpec.describe FoodTruck do
 
     expect(food_truck.inventory).to eq({})
     end
+
+    it 'can check the inventory of an item' do
+    food_truck = FoodTruck.new("Rocky Mountain Pies")
+    item1 = Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})
+
+    expect(food_truck.check_stock(item1)).to be(0)
+    end
   end
 end
