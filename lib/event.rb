@@ -71,4 +71,25 @@ class Event
     date_str << "#{today[0..3]}"
     date_str
   end
+
+  def sell(item, amount)
+    total_amount = amount
+    @food_trucks.each do |truck|
+      if truck.inventory.key?(item)
+        if truck.inventory[item] < total_amount
+          total_amount -= truck.inventory[item]
+          truck.inventory[item] = 0
+        elsif truck.inventory[item] >= total_amount
+          truck.inventory[item] -= total_amount
+          total_amount = 0
+        end
+        require "pry"; binding.pry
+      end
+    end
+    if total_amount > 0
+      false
+    else
+      true
+    end
+  end
 end
