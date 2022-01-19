@@ -7,9 +7,12 @@ class FoodTruck
   @inventory = {}
  end
 
-
  def check_stock(item)
-  @inventory.keys.size
+  how_many = 0
+  @inventory.select do |stock, quanity|
+    how_many += quanity if  stock == item
+  end
+  how_many
  end
 
  def stock(item, quanity)

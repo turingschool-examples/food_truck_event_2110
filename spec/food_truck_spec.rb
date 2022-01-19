@@ -34,11 +34,6 @@ RSpec.describe 'Food Truck' do
    expect(food_truck.inventory).to eq({})
  end
 
- it 'can check the inventory of an item' do
-
-  expect(food_truck.check_stock(item1)).to eq(0)
- end
-
  it 'can add items to the inventory' do
   food_truck.stock(item1, 30)
 
@@ -46,4 +41,11 @@ RSpec.describe 'Food Truck' do
 
   expect(food_truck.inventory).to eq(expected)
  end
+
+ it 'can check the inventory of an item' do
+
+  expect(food_truck.check_stock(item1)).to eq(0)
+  food_truck.stock(item1, 30)
+  expect(food_truck.check_stock(item1)).to eq(30)
+end
 end
