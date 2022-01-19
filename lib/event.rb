@@ -15,6 +15,6 @@ class Event
   end
 
   def food_trucks_that_sell(item)
-    @food_trucks.select { |truck| truck.inventory[item].positive? }
+    @food_trucks.select { |truck| truck.inventory.has_key?(item) }
   end
 end
