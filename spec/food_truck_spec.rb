@@ -36,4 +36,10 @@ RSpec.describe FoodTruck do
       expect(@food_truck.inventory).to eq({@item1 => 55, @item2 => 12})
     end
   end
+  it 'will return the potential revenue of a truck' do
+
+    @food_truck.stock(@item1, 55)
+    @food_truck.stock(@item2, 12)
+    expect(@food_truck.potential_revenue).to eq(236.25)
+  end
 end

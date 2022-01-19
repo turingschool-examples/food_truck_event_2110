@@ -14,5 +14,9 @@ class FoodTruck
     @inventory[item] += quantity
   end
 
+  def potential_revenue
+    @inventory.reduce(0) {|accumulator, item| accumulator + (item[1] * item[0].price)}
+  end
+
 
 end
