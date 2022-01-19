@@ -19,6 +19,20 @@ class Event
     @food_trucks.select {|truck| truck.inventory.has_key?(item)}
   end
 
+  def total_inventory
+    total_inventory = Hash.new{}
+    @food_trucks.each do |truck|
+      truck.inventory.each_pair do |item, qty|
+        if !total_inventory.has_key?(item)
+          total_inventory[item] = {quantity: qty, food_trucks: [truck]}
+        else
+          (total_inventory[item][:quantity] += qty) && (total_inventory[item][:food_trucks] << truck)
+        end
+      end
+    end
+  total_inventory
+  end
+
 
 
 end
