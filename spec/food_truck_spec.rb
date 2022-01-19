@@ -12,7 +12,7 @@ RSpec.describe FoodTruck do
     @item4 = Item.new({name: "Banana Nice Cream", price: "$4.25"})
 
   end
-
+  #Iteration I
   it 'exists' do
     expect(@food_truck1).to be_instance_of(FoodTruck)
   end
@@ -42,7 +42,7 @@ RSpec.describe FoodTruck do
     expect(@food_truck1.inventory).to eq({@item1 => 55, @item2 => 12})
     expect(@food_truck1.check_stock(@item2)).to eq(12)
   end
-
+  #Iteration II
   it 'can find its potential revenue' do
     @food_truck1.stock(@item1, 35)
     @food_truck1.stock(@item2, 7)
