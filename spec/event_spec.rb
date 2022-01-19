@@ -108,7 +108,18 @@ RSpec.describe 'Iteration 3' do
     @event.add_food_truck(@food_truck3)
   end
 
-  it "returns total inventory" do
+  it "collects all items sold at an event" do
+    expect(@event.collect_items).to be_instance_of Array
+    expect(@event.collect_items.length).to eq(4)
+    expect(@event.collect_items).to eq([
+      @item1,
+      @item2,
+      @item4,
+      @item3
+      ])
+  end
+
+  xit "returns total inventory" do
     expect(@event.total_inventory).to be_instance_of Hash
     expect(@event.total_inventory.size).to eq(4)
     expect(@event.total_inventory[@item1]).to be_instance_of Hash
