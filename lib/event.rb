@@ -5,7 +5,6 @@ class Event
   def initialize(name)
     @name        = name
     @food_trucks = []
-    # @total_inventory = Hash.new { |hash, key| hash[key] =  }
   end
 
   def add_food_truck(food_truck)
@@ -57,7 +56,6 @@ class Event
         true
       end
     end
-    #overstocked if sold by more than 1 food truck && qty > 50
   end
 
   def sorted_item_list
