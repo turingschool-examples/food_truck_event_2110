@@ -1,5 +1,6 @@
 require './lib/item'
 require './lib/food_truck'
+require './lib/event'
 require 'rspec'
 require 'pry'
 
