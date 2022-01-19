@@ -3,8 +3,10 @@ require './lib/item'
 
 describe FoodTruck do
   before(:each) do
-    @item1 = Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})
-    @item2 = Item.new({name: 'Apple Pie (Slice)', price: "$2.50"})
+    @item1 = Item.new({ name: 'Peach Pie (Slice)', price: "$3.75" })
+    @item2 = Item.new({ name: 'Apple Pie (Slice)', price: "$2.50" })
+    @item3 = Item.new({ name: "Peach-Raspberry Nice Cream", price: "$5.30" })
+    @item4 = Item.new({ name: "Banana Nice Cream", price: "$4.25" })
 
     @food_truck = FoodTruck.new("Rocky Mountain Pies")
   end
@@ -62,7 +64,39 @@ describe FoodTruck do
 
       it 'returns the sum of all items * prices' do
         expect(@food_truck.potential_revenue).to eq(148.75)
-      end 
+      end
+    end
+
+    describe 'inventory_list' do
+      before(:each) do
+        @food_truck.stock(@item1, 35)
+        @food_truck.stock(@item2, 7)
+      end
+
+      it 'returns an array' do
+        expect(@food_truck.inventory_list).to be_a(Array)
+      end
+
+      it 'returns a sorted list of all item names' do
+        expected = ['Apple Pie (Slice)', 'Peach Pie (Slice)']
+        expect(@food_truck.inventory_list).to eq(expected)
+      end
+    end
+
+    describe 'inventory_items' do
+      before(:each) do
+        @food_truck.stock(@item1, 35)
+        @food_truck.stock(@item2, 7)
+      end
+
+      it 'returns an array' do
+        expect(@food_truck.inventory_list).to be_a(Array)
+      end
+
+      it 'returns a sorted list of items' do
+        expected = [@item2, @item1]
+        expect(@food_truck.inventory_list).to eq(expected)
+      end
     end
   end
 end

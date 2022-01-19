@@ -15,12 +15,20 @@ class FoodTruck
       return 0
     end
   end
+
   def stock(item, quantity)
     @inventory[item] += quantity
   end
 
   def potential_revenue
-    inventory.map{|item, item_count| item.price.delete_prefix('$').to_f * item_count}.sum
+    inventory.map { |item, item_count| item.price.delete_prefix('$').to_f * item_count }.sum
   end
-  
+
+  def inventory_list
+    inventory.keys.map { |item| item.name }.sort
+  end
+
+  def inventory_items
+    inventory.keys.map { |item| item }.sort_by { |item| item.name }
+  end
 end

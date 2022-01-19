@@ -2,7 +2,7 @@ require './lib/item'
 
 describe Item do
   before (:each) do
-    @item = Item.new({name: 'Peach Pie (Slice)', price: "3.75"})
+    @item = Item.new({ name: 'Peach Pie (Slice)', price: "3.75" })
   end
   describe 'initialize' do
     it 'exists' do
