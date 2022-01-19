@@ -55,7 +55,7 @@ RSpec.describe FoodTruck do
     expect(food_truck.inventory).to eq({item1 => 55, item2 => 12})
   end
 
-  it 'food food trucks sell' do
+  it 'food food potential revenue' do
     # event = Event.new("South Pearl Street Farmers Market")
     food_truck1 = FoodTruck.new("Rocky Mountain Pies")
     item1 = Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})
