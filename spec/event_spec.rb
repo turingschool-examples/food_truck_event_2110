@@ -76,5 +76,44 @@ RSpec.describe do Event
       output1 = [food_truck2]
       expect(event.food_trucks_that_sell(item4)).to eq(output)
     end
+
+    it 'gives potential revenue- foodtruck1' do
+      food_truck1.stock(item1, 35)
+      food_truck1.stock(item2, 7)
+      food_truck2.stock(item4, 50)
+      food_truck2.stock(item3, 25)
+      food_truck3.stock(item1, 65)
+      event.add_food_truck(food_truck1)
+      event.add_food_truck(food_truck2)
+      event.add_food_truck(food_truck3)
+
+      expect(food_truck1.potential_revenue).to be(148.75)
+    end
+
+    it 'gives potential revenue- foodtruck2' do
+      food_truck1.stock(item1, 35)
+      food_truck1.stock(item2, 7)
+      food_truck2.stock(item4, 50)
+      food_truck2.stock(item3, 25)
+      food_truck3.stock(item1, 65)
+      event.add_food_truck(food_truck1)
+      event.add_food_truck(food_truck2)
+      event.add_food_truck(food_truck3)
+
+      expect(food_truck2.potential_revenue).to be(345.00)
+    end
+
+    it 'gives potential revenue- foodtruck3' do
+      food_truck1.stock(item1, 35)
+      food_truck1.stock(item2, 7)
+      food_truck2.stock(item4, 50)
+      food_truck2.stock(item3, 25)
+      food_truck3.stock(item1, 65)
+      event.add_food_truck(food_truck1)
+      event.add_food_truck(food_truck2)
+      event.add_food_truck(food_truck3)
+
+      expect(food_truck3.potential_revenue).to be(243.75)
+    end
   end
 end
