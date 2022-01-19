@@ -40,6 +40,9 @@ describe Event do
     expect(@event.food_truck_names).to eq(["Rocky Mountain Pies", "Ba-Nom-a-Nom", "Palisade Peach Shack"])
   end
 
+  it 'can tell which food truck sells a particular item' do
+  end
+
 
 
   # @food_truck1.stock(@item1, 35)
