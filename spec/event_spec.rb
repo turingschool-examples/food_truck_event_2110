@@ -50,6 +50,23 @@ require './lib/event'
         expect(@event.food_truck_names).to eq(["Rocky Mountain Pies", "Ba-Nom-a-Nom", "Palisade Peach Shack"])
       end
 
+      it 'can return a list of FoodTrucks that have that item in stock.' do
+        @food_truck1.stock(@item1, 35)
+        @food_truck1.stock(@item2, 7)
+        @food_truck2.stock(@item4, 50)
+        @food_truck2.stock(@item3, 25)
+        @food_truck3.stock(@item1, 65)
+        @event.add_food_truck(@food_truck1)
+        @event.add_food_truck(@food_truck2)
+        @event.add_food_truck(@food_truck3)
+
+        expect(@event.food_trucks_that_sell(@item1)).to eq([@food_truck1, @food_truck3])
+        expect(@event.food_trucks_that_sell(@item4)).to eq([@food_truck2])
+      end
+
+
+
+
 
     end
 
