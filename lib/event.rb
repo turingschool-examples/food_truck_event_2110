@@ -32,16 +32,16 @@ class Event
   end
 
   def total_inventory
-    collector = []
+    @collector = []
     @food_trucks.each do |truck|
       truck.inventory.each do |item, amount|
-        if !collector.include?(item)
-          collector << item
+        if !@collector.include?(item)
+          @collector << item
         end
       end
     end
 
-    collector.each do |indv_item|
+    @collector.each do |indv_item|
       hash = Hash.new(0)
       hash[:quantity] = 0
       hash[:food_trucks] = []
@@ -67,6 +67,14 @@ class Event
       end
     end
     return collector
+  end
+
+  def sorted_item_list
+    name_collector = []
+    @collector.each do |item|
+      name_collector << item.name
+    end
+    return name_collector.sort
   end
 
 end
