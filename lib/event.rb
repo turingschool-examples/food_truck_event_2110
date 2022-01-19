@@ -67,4 +67,8 @@ class Event
     item_names = item_list.map {|item| item.name}
     item_names.sort_by {|item| item[0]}
   end
+
+  def date
+    Date.today.strftime("%d/%m/%Y")
+  end
 end
