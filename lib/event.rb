@@ -21,7 +21,7 @@ class Event
   end
 
   def total_inventory
-    s = items_array.each_with_object({}) do |item,hash|
+    items_array.each_with_object({}) do |item,hash|
       hash[item] = {
         quantity: item_quantity_in_food_trucks(item),
         food_trucks: food_trucks_that_sell(item)
@@ -31,7 +31,7 @@ class Event
 
   def item_quantity_in_food_trucks(item)
     food_trucks = food_trucks_that_sell(item)
-    sum = food_trucks.sum do |food_truck|
+    food_trucks.sum do |food_truck|
       food_truck.inventory[item]
     end
   end
@@ -44,5 +44,12 @@ class Event
       end
     end
     items = all_items_array.uniq
+  end
+
+
+  def overstocked_items
+    total_inventory.each_with_object([]) do |(item,value), array|
+      array << item if value[:quantity] > 50 && value[:food_trucks].size > 1
+    end
   end
 end
