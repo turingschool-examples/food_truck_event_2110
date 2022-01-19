@@ -109,9 +109,9 @@ RSpec.describe 'Iteration 3' do
   end
 
   it "collects all items sold at an event" do
-    expect(@event.collect_items).to be_instance_of Array
-    expect(@event.collect_items.length).to eq(4)
-    expect(@event.collect_items).to eq([
+    expect(@event.items_list).to be_instance_of Array
+    expect(@event.items_list.length).to eq(4)
+    expect(@event.items_list).to eq([
       @item1,
       @item2,
       @item4,
@@ -119,7 +119,18 @@ RSpec.describe 'Iteration 3' do
       ])
   end
 
-  xit "returns total inventory" do
+  it "collects total quantity by item" do
+    expect(@event.qty_by_item).to be_instance_of Hash
+    expect(@event.qty_by_item.size).to eq(4)
+    expect(@event.qty_by_item).to eq({
+      @item1 => 100,
+      @item2 => 7,
+      @item4 => 50,
+      @item3 => 35
+    })
+  end
+
+  it "returns total inventory" do
     expect(@event.total_inventory).to be_instance_of Hash
     expect(@event.total_inventory.size).to eq(4)
     expect(@event.total_inventory[@item1]).to be_instance_of Hash
