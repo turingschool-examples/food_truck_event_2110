@@ -39,7 +39,7 @@ RSpec.describe Event do
     expect(@event.food_trucks).to eq([@food_truck1, @food_truck2, @food_truck3])
   end
 
-  xit 'can list food truck names' do
+  it 'can list food truck names' do
     @event.add_food_truck(@food_truck1)
     @event.add_food_truck(@food_truck2)
     @event.add_food_truck(@food_truck3)
