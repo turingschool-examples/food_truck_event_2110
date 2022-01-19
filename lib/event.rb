@@ -15,4 +15,10 @@ class Event
     @food_trucks.map {|food_truck| food_truck.name}
   end
 
+  def food_trucks_that_sell(item)
+    @food_trucks.select {|truck| truck.inventory.has_key?(item)}
+  end
+
+
+
 end
