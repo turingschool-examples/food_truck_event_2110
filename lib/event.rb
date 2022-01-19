@@ -22,6 +22,18 @@ class Event
     end
   end
 
+  def total_quantity(item)
+    quantity = 0
+    @food_trucks.each do |truck|
+      truck.inventory.each do |truck_item, truck_amount|
+        if truck_item == item
+          quantity += truck_amount
+        end
+      end
+    end
+    quantity
+  end
+
   def total_inventory
     @food_trucks.reduce({}) do |acc, truck|
       truck.inventory.each do |item, amount|
