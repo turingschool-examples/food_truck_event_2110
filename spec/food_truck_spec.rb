@@ -3,9 +3,21 @@ require './lib/food_truck'
 
 RSpec.describe FoodTruck do
 
-  it 'Item 2 name exists' do
-    item1 = Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})
-    item2 = Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})
-    expect(item2.name).to eq('Apple Pie (Slice)')
+  it 'food truck class exists' do
+    food_truck = FoodTruck.new("Rocky Mountain Pies")
+    expect(food_truck).to be_an_instance_of(FoodTruck)
   end
+
+  it 'food truck name' do
+    food_truck = FoodTruck.new("Rocky Mountain Pies")
+    expect(food_truck.name).to eq("Rocky Mountain Pies")
+  end
+
+  it 'check if food inventory is a empty hash' do
+    food_truck = FoodTruck.new("Rocky Mountain Pies")
+    expect(food_truck.inventory).to eq({})
+  end
+
+
+
 end
