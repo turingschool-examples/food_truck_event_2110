@@ -1,3 +1,5 @@
+require 'date'
+
 class Event
  	attr_reader :name,
               :food_trucks
@@ -38,4 +40,18 @@ class Event
      end
      inventory
    end
+
+ def overstocked_items
+   overstocked_items = []
+   total_inventory.each do |key, value|
+     if value[:quantity] > 50 && value[:food_trucks].count >= 2
+       overstocked_items.push(key)
+     end
+   end
+   overstocked_items
+ end
+
+ def sorted_item_list
+    for_sale_items.map {|item| item.name}.sort
+ end
 end

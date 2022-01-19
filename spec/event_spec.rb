@@ -93,16 +93,20 @@ RSpec.describe Event do
   		expect(@event.total_inventory).to eq (expected)
   	end
 
-  	xit 'can find #overstocked_items' do
+  	it 'can find #overstocked_items' do
 
-  		expect(@event.overstocked_items).to eq (@item_1)
+      # An item is overstocked if it is sold by more than 1 food truck
+      # AND the total quantity is greater than 50.
+
+
+  		expect(@event.overstocked_items).to eq ([@item1])
   	end
 
-  	xit 'can do a #sorted_item_list' do
+  	it 'can do a #sorted_item_list' do
 
       expected = ["Apple Pie (Slice)", "Banana Nice Cream", "Peach Pie (Slice)", "Peach-Raspberry Nice Cream"]
 
-  		expect(@event.overstocked_items).to eq (expected)
+  		expect(@event.sorted_item_list).to eq (expected)
   	end
 
   end
@@ -114,6 +118,8 @@ RSpec.describe Event do
     end
 
     xit 'can list todays #date' do
+
+      #need a stub here
 
   		expect(@event.date).to eq ("24/02/2020")
   	end
