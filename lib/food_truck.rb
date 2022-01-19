@@ -15,4 +15,11 @@ class FoodTruck
       # require "pry"; binding.pry
       if self.inventory[item].nil? then self.inventory[item] = amount else self.inventory[item] += amount end
     end
+
+  def potential_revenue
+    @inventory.sum do |key, value|
+      key.price * value
+          # require "pry"; binding.pry
+    end
+  end
 end
