@@ -15,4 +15,14 @@ RSpec.describe FoodTruck do
   it "can #check_stock" do
     expect(subject.check_stock(item1)).to eq(0)
   end
+
+  it "can #stock in @inventory" do
+    subject.stock(item1, 30)
+    expect(subject.inventory).to eq({item1 => 30})
+    expect(subject.check_stock(item1)).to eq(30)
+    subject.stock(item1, 25)
+    expect(subject.check_stock(item1)).to eq(55)
+    subject.stock(item2, 12)
+    expect(subject.inventory).to eq({item1 => 55, item2 => 12})
+  end
 end
