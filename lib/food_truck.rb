@@ -4,4 +4,10 @@ def initialize(name)
   @name = name
   @inventory = {}
   end
+
+  def check_stock(item)
+    if inventory.include?(item) == false
+      0
+    end
+  end
 end
