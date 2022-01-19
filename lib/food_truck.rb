@@ -16,4 +16,14 @@ class FoodTruck
       @inventory[item] = quantity
     end
   end
+
+  def potential_revenue
+    potential_revenue = 0.0
+    @inventory.each do |all_items|
+      stock = all_items[1]
+      price = all_items[0].price.delete("$")
+      potential_revenue += (stock*price.to_f)
+    end
+    return potential_revenue
+  end
 end
