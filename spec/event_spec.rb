@@ -18,10 +18,20 @@ RSpec.describe Event do
     expect(subject.food_trucks).to eq([])
   end
 
-  it "can #add_food_truck" do
-    subject.add_food_truck(food_truck1)
-    subject.add_food_truck(food_truck2)
-    subject.add_food_truck(food_truck3)
-    expect(subject.food_trucks).to eq([food_truck1, food_truck2, food_truck3])
+  context "Adding and getting data from foodtrucks in event" do
+    before (:each) do
+      subject.add_food_truck(food_truck1)
+      subject.add_food_truck(food_truck2)
+      subject.add_food_truck(food_truck3)
+    end
+
+    it "can #add_food_truck" do
+      expect(subject.food_trucks).to eq([food_truck1, food_truck2, food_truck3])
+    end
+
+    it "can display #food_truck_names" do
+      expected = ["Rocky Mountain Pies", "Ba-Nom-a-Nom", "Palisade Peach Shack"]
+      expect(subject.food_truck_names).to eq(expected)
+    end
   end
 end
