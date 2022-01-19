@@ -34,4 +34,19 @@ class Event
     end
     inv
   end
+
+  def overstocked_items
+    items = total_inventory.select do |item, item_info|
+      item if (item_info[:quantity] > 50) && (item_info[:food_trucks].length >= 2)
+    end
+    items.keys
+  end
+
+  def sorted_item_list
+    items = []
+    total_inventory.each_key do |key|
+      items << key.name
+    end
+    items.sort
+  end
 end

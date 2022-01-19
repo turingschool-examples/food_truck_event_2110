@@ -98,4 +98,13 @@ describe Event do
               }
     expect(@event.total_inventory).to eq(expected)
   end
+
+  it '#overstocked_items' do
+    expect(@event.overstocked_items).to eq([@item1])
+  end
+
+  it '#sorted_item_list' do
+    expected = ["Apple Pie (Slice)", "Banana Nice Cream", "Peach Pie (Slice)", "Peach-Raspberry Nice Cream"]
+    expect(@event.sorted_item_list).to eq(expected)
+  end
 end
