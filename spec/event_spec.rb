@@ -105,6 +105,10 @@ RSpec.describe "Iteration 3" do
     expect(event.overstocked_items).to eq([item1])
   end
 
+  it "can get all items" do
+    expect(event.item_list).to eq([item1, item2, item4, item3])
+  end
+
   it "can list items alphaberticly" do
     expect(event.sorted_item_list).to eq(["Apple Pie (Slice)", "Banana Nice Cream", "Peach Pie (Slice)", "Peach-Raspberry Nice Cream"])
   end

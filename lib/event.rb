@@ -57,5 +57,14 @@ class Event
     overstocked.uniq
   end
 
-  
+  def item_list
+
+  end
+  def sorted_item_list
+    @food_trucks.sort_by do |truck|
+      truck.inventory.map do |item, amount|
+        item.name
+      end
+    end
+  end
 end
