@@ -23,6 +23,11 @@ RSpec.describe Event do
       subject.add_food_truck(food_truck1)
       subject.add_food_truck(food_truck2)
       subject.add_food_truck(food_truck3)
+      food_truck1.stock(item1, 35)
+      food_truck1.stock(item2, 7)
+      food_truck2.stock(item4, 50)
+      food_truck2.stock(item3, 25)
+      food_truck3.stock(item1, 65)
     end
 
     it "can #add_food_truck" do
@@ -32,6 +37,11 @@ RSpec.describe Event do
     it "can display #food_truck_names" do
       expected = ["Rocky Mountain Pies", "Ba-Nom-a-Nom", "Palisade Peach Shack"]
       expect(subject.food_truck_names).to eq(expected)
+    end
+
+    it "checks #food_trucks_that_sell a certain item" do
+      expect(subject.food_trucks_that_sell(item1)).to eq([food_truck1, food_truck3])
+      expect(subject.food_trucks_that_sell(item4)).to eq([food_truck2])
     end
   end
 end
