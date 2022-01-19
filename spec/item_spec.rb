@@ -8,4 +8,9 @@ RSpec.describe Item do
   it 'exists' do
     expect(@item1).to be_a(Item)
   end
+
+  it 'has a name and price' do
+    expect(@item2.name).to eq("Apple Pie (Slice)")
+    expect(@item2.price).to eq(2.50)
+  end
 end
