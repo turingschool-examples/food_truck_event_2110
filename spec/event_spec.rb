@@ -1,6 +1,7 @@
 require './lib/item'
 require './lib/food_truck'
 require './lib/event'
+require 'pry'
 
 RSpec.describe Event do
   food_truck1 = FoodTruck.new("Rocky Mountain Pies")
@@ -19,29 +20,52 @@ RSpec.describe Event do
   end
 
   context "Adding and getting data from foodtrucks in event" do
-    before (:each) do
-      subject.add_food_truck(food_truck1)
-      subject.add_food_truck(food_truck2)
-      subject.add_food_truck(food_truck3)
+      event = Event.new("South Pearl Street Farmers Market")
+      event.add_food_truck(food_truck1)
+      event.add_food_truck(food_truck2)
+      event.add_food_truck(food_truck3)
       food_truck1.stock(item1, 35)
       food_truck1.stock(item2, 7)
       food_truck2.stock(item4, 50)
       food_truck2.stock(item3, 25)
       food_truck3.stock(item1, 65)
-    end
+      food_truck3.stock(item3, 10)
+
 
     it "can #add_food_truck" do
-      expect(subject.food_trucks).to eq([food_truck1, food_truck2, food_truck3])
+      expect(event.food_trucks).to eq([food_truck1, food_truck2, food_truck3])
     end
 
     it "can display #food_truck_names" do
       expected = ["Rocky Mountain Pies", "Ba-Nom-a-Nom", "Palisade Peach Shack"]
-      expect(subject.food_truck_names).to eq(expected)
+      expect(event.food_truck_names).to eq(expected)
     end
 
     it "checks #food_trucks_that_sell a certain item" do
-      expect(subject.food_trucks_that_sell(item1)).to eq([food_truck1, food_truck3])
-      expect(subject.food_trucks_that_sell(item4)).to eq([food_truck2])
+      expect(event.food_trucks_that_sell(item1)).to eq([food_truck1, food_truck3])
+      expect(event.food_trucks_that_sell(item4)).to eq([food_truck2])
+    end
+
+    it "can display #total_inventory" do
+      expected = {
+                    item1 => {
+                      quantity: 100,
+                      food_trucks: [food_truck1, food_truck3]
+                    },
+                    item2 => {
+                      quantity: 7,
+                      food_trucks: [food_truck1]
+                    },
+                    item4 => {
+                      quantity: 50,
+                      food_trucks: [food_truck2]
+                    },
+                    item3 => {
+                      quantity: 35,
+                      food_trucks: [food_truck2, food_truck3]
+                    },
+                  }
+      expect(event.total_inventory).to match(expected)
     end
   end
 end
