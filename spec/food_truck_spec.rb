@@ -39,6 +39,18 @@ RSpec.describe FoodTruck do
         expect(@food_truck.check_stock(@item1)).to be_an Integer
         expect(@food_truck.check_stock(@item1)).to be 30
       end
+
+      it 'will add to an already existing item quantity' do
+        @food_truck.stock(@item1, 25)
+        expect(@food_truck.check_stock(@item1)).to be 55
+      end
+
+      it 'will contain multiple items and quantities' do
+        @food_truck.stock(@item1, 25)
+        @food_truck.stock(@item2, 12)
+        expected = { @item1 => 55, @item2 => 12 }
+        expect(@food_truck.inventory).to eq expected
+      end
     end
   end
 end
