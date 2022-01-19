@@ -20,7 +20,7 @@ RSpec.describe Event do
     @food_truck2.stock(@item3, 25)
 
     @food_truck3.stock(@item1, 65)
-    @food_truck3.stock(@item1, 10)
+    @food_truck3.stock(@item3, 10)
   end
 
   it 'is initialized with a name and an empty collection of food trucks' do
@@ -63,28 +63,30 @@ RSpec.describe Event do
     end
 
     describe 'total_inventory' do
-      # it 'returns a hash of every trucks inventory' do
-      #   require 'pry-byebug'; binding.pry
-      # end
-   #    expected = {
-   #   <Item:0x007f9c56740d48...> => {
-   #     quantity: 100,
-   #     food_trucks: [<FoodTruck:0x00007fe1348a1160...>, <FoodTruck:0x00007fe134910650...>]
-   #   },
-   #   <Item:0x007f9c565c0ce8...> => {
-   #     quantity: 7,
-   #     food_trucks: [<FoodTruck:0x00007fe1348a1160...>]
-   #   },
-   #   <Item:0x007f9c56343038...> => {
-   #     quantity: 50,
-   #     food_trucks: [<FoodTruck:0x00007fe1349bed40...>]
-   #   },
-   #   <Item:0x007f9c562a5f18...> => {
-   #     quantity: 35,
-   #     food_trucks: [<FoodTruck:0x00007fe1349bed40...>, <FoodTruck:0x00007fe134910650...>]
-   #   },
-   # }
+      it 'returns a hash of every trucks inventory' do
+ #        expected ={{#<Item:0x00000001261040d8 @name="Peach Pie (Slice)", @price="$3.75">=>35, #<Item:0x0000000126104650 @name="Apple Pie (Slice)", @price="$2.50">=>7}=>
+ #  {:food_trucks=>[], :quantity=>3},
+ # {#<Item:0x00000001260ffda8 @name="Banana Nice Cream", @price="$4.25">=>50,
+ #  #<Item:0x00000001260ffe70 @name="Peach-Raspberry Nice Cream", @price="$5.30">=>25}=>{:food_trucks=>[], :quantity=>3},
+ # {#<Item:0x00000001261040d8 @name="Peach Pie (Slice)", @price="$3.75">=>75}=>{:food_trucks=>[], :quantity=>3}}
+        expect(@event.total_inventory).to be_a Hash
+        expect(@event.total_inventory.keys).to eq [@item1, @item2, @item4, @item3]
+        @event.total_inventory.values.each do |value|
+          expect(value).to be_a Hash
+        end
+      end
+    end
 
+    describe '#overstocked_items' do
+      it 'returns a collection of all overstocked items' do
+        expect(@event.overstocked_items).to eq [@item1]
+      end
+    end
+
+    describe '#sorted_item_list' do
+      it 'returns the names of the items sorted by alphabetical order(?)' do
+        expect(@event.sorted_items_list).to eq ["Apple Pie (Slice)", "Banana Nice Cream", "Peach Pie (Slice)", "Peach-Raspberry Nice Cream"]
+      end
     end
   end
 end
