@@ -1,7 +1,9 @@
 require './lib/food_truck'
+require './lib/item'
+
 RSpec.describe do FoodTruck
   context 'iteration1' do
-    let(:food_truck) {food_truck = FoodTruck.new("Rocky Mountain Pies")}
+    let(:food_truck) {FoodTruck.new("Rocky Mountain Pies")}
     let(:item1) {Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})}
     let(:item2) {Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})}
 
@@ -10,7 +12,7 @@ RSpec.describe do FoodTruck
     end
 
     it 'has a name' do
-      expect(food_truck.name).to be_a("Rocky Mountain Pies")
+      expect(food_truck.name).to eq("Rocky Mountain Pies")
     end
 
     it 'inventory' do
@@ -39,7 +41,7 @@ RSpec.describe do FoodTruck
       food_truck.stock(item1, 25)
       food_truck.stock(item2, 12)
       output = {item1 => 30, item2 => 12}
-      expect(food_truck.inventory.to eq(output)
+      expect(food_truck.inventory).to eq(output)
     end
   end
 end
