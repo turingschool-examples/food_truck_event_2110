@@ -23,5 +23,19 @@ class Event
     end
   end
 
-  
+  def sum_quantities(item)
+    @food_trucks.map do |food_truck|
+        food_truck.inventory[item]
+    end.compact.sum
+  end
+
+  def total_inventory
+    result = {}
+    @food_trucks.each do |food_truck|
+      food_truck.inventory.each do |item, quantity|
+        result[item] = {quantity: 1 , food_trucks: food_trucks_that_sell(item)}
+      end
+    end
+    result
+  end
 end
