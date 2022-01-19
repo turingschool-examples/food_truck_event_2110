@@ -41,6 +41,15 @@ class Event
     overstocked_items
   end
 
+  def sorted_item_list
+    total_inventory.map {|item| item[0].name}.sort
+    # sorted_item_list = []
+    # total_inventory.each_pair do |item, data|
+    #   sorted_item_list << item.name
+    # end
+    # sorted_item_list.sort
+  end
+
 
 
 end
