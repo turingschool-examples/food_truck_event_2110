@@ -1,13 +1,13 @@
 require './lib/food_truck'
 require 'pry'
 
-RSpec.describe Food_truck do
+RSpec.describe FoodTruck do
   before(:each) do
     @food_truck = FoodTruck.new("Rocky Mountain Pies")
   end
 
   it 'exists' do
-    expect(@food_truck).to be_a(Food_truck)
+    expect(@food_truck).to be_a(FoodTruck)
   end
 
   it 'has a name' do
