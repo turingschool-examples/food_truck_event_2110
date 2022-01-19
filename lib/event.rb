@@ -1,9 +1,14 @@
 class Event
-  attr_reader :name, :food_trucks
+  attr_reader :name, :food_trucks, :date
 
   def initialize(name)
     @name = name
     @food_trucks = []
+    @date = assign_date
+  end
+
+  def assign_date
+    Date::today.strftime.split("-").reverse.join("/")
   end
 
   def add_food_truck(food_truck)
@@ -38,5 +43,21 @@ class Event
 
   def sorted_item_list
     total_inventory.map { |item, info| item.name }.sort
+  end
+
+  def sell(item, quantity)
+    if total_inventory[item] == nil || total_inventory[item][:quantity] < quantity
+      false
+    else
+      total_inventory[item][:food_trucks].each do |food_truck|
+        if food_truck.check_stock(item) > quantity
+          food_truck.inventory[item] -= quantity
+        elsif food_truck.check_stock(item) < quantity
+          quantity -= food_truck.inventory[item]
+          food_truck.inventory[item] = 0
+        end
+      end
+      true
+    end
   end
 end
