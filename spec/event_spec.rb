@@ -56,7 +56,7 @@ RSpec.describe Event do
 end
 
 #it3
-descirbe Event do
+ RSpec.describe Event do
   before(:each) do
     @event = Event.new("South Pearl Street Farmers Market")
     @item1 = Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})
@@ -86,4 +86,7 @@ descirbe Event do
     expect(@event.total_inventory).to eq(expected)
   end
 
+  it 'knows when overstocked' do
+    expect(@event.overstocked_items).to eq([@item1])
+  end
 end
