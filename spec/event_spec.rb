@@ -127,7 +127,22 @@ RSpec.describe Event do
       event.add_food_truck(food_truck3)
       expect(event.total_inventory).to be_a(Hash)
       expect(event.total_inventory.count).to eq(4)
-      expect(event.total_inventory.keys).to eq([item1, item2, item4, item3])
+      expect(event.total_inventory.keys).to eq([item1, item2, item4, item3]) #this order was how they were stocked
+    end
+  end
+
+  context 'iteration IV' do
+
+    let(:item1) {Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})}
+    let(:item2) {Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})}
+    let(:item3) {Item.new({name: "Peach-Raspberry Nice Cream", price: "$5.30"})}
+    let(:item4) {Item.new({name: "Banana Nice Cream", price: "$4.25"})}
+    let(:item5) {Item.new({name: 'Onion Pie', price: '$25.00'})}
+    let(:event) {Event.new("South Pearl Street Farmers Market")}
+
+    it 'date' do
+
+      expect(event.date).to eq("19/02/2022")
     end
   end
 end

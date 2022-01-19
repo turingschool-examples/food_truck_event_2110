@@ -73,4 +73,6 @@ class Event
     inventory_hash
   end
 
+  
+
 end
