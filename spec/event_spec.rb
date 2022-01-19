@@ -73,6 +73,12 @@ RSpec.describe "Iteration 3" do
     event.add_food_truck(food_truck3)
   end
 
+  it "can get total quantitys of items" do
+    expect(event.total_quantity(item1)).to eq(100)
+    expect(event.total_quantity(item2)).to eq(7)
+    expect(event.total_quantity(item3)).to eq(35)
+  end
+
   it "can list total inventory" do
     expected = {
       item1 => {
