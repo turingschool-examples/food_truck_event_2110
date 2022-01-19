@@ -1,11 +1,13 @@
+require 'date'
 class Event
-  attr_reader :name, :food_trucks
+  attr_reader :name, :food_trucks, :date
   attr_accessor
 
   def initialize(name)
     @name = name
     @food_trucks = []
     @total_inventory = Hash.new(0)
+    @date = Time.now.strftime("%d/%m/20%y")
   end
 
 
@@ -75,6 +77,14 @@ class Event
       name_collector << item.name
     end
     return name_collector.sort
+  end
+
+  def sell(item, amount)
+    total_inventory.each do |item, info|
+      if info[:quantity] < amount
+        return false
+      end
+    end
   end
 
 end
