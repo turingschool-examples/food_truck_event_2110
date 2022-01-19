@@ -59,5 +59,14 @@ class Event
     return @total_inventory
   end
 
+  def overstocked_items
+    collector = []
+    total_inventory.each do |item, info|
+      if info[:quantity] >= 100
+        collector << item
+      end
+    end
+    return collector
+  end
 
 end
