@@ -1,3 +1,4 @@
+require 'date'
 class Event
   attr_reader :name, :food_trucks
 
@@ -60,5 +61,14 @@ class Event
   def sorted_item_list
     obj_arr = total_inventory.keys.sort_by {|item| item.name}
     obj_arr.map {|item| item.name}
+  end
+
+  def date
+    today = Date.today.to_s
+    date_str = ""
+    date_str << "#{today[8..9]}/"
+    date_str << "#{today[5..6]}/"
+    date_str << "#{today[0..3]}"
+    date_str
   end
 end

@@ -1,6 +1,7 @@
 require './lib/event'
 require './lib/food_truck'
 require './lib/item'
+require 'date'
 
 RSpec.describe do Event
   context 'iteration 1 & 2' do
@@ -78,7 +79,7 @@ RSpec.describe do Event
     end
   end
 
-  context 'iteration 3' do
+  context 'iteration 3 and 4' do
     let(:event) {Event.new("South Pearl Street Farmers Market")}
     let(:food_truck1) {FoodTruck.new("Rocky Mountain Pies")}
     let(:food_truck2) {FoodTruck.new("Ba-Nom-a-Nom")}
@@ -87,6 +88,7 @@ RSpec.describe do Event
     let(:item2) {Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})}
     let(:item3) {Item.new({name: "Peach-Raspberry Nice Cream", price: "$5.30"})}
     let(:item4) {Item.new({name: "Banana Nice Cream", price: "$4.25"})}
+    let(:item5) {Item.new({name: 'Onion Pie', price: '$25.00'})}
 
     it 'gives total inventory' do
       food_truck1.stock(item1, 35)
@@ -146,5 +148,26 @@ RSpec.describe do Event
       output = ["Apple Pie (Slice)", "Banana Nice Cream", "Peach Pie (Slice)", "Peach-Raspberry Nice Cream"]
       expect(event.sorted_item_list).to eq(output)
     end
+
+    it 'gives sorted items' do
+      food_truck1.stock(item1, 35)
+      food_truck1.stock(item2, 7)
+      food_truck2.stock(item4, 50)
+      food_truck2.stock(item3, 25)
+      food_truck3.stock(item1, 65)
+      food_truck3.stock(item3, 10)
+      event.add_food_truck(food_truck1)
+      event.add_food_truck(food_truck2)
+      event.add_food_truck(food_truck3)
+      output = ["Apple Pie (Slice)", "Banana Nice Cream", "Peach Pie (Slice)", "Peach-Raspberry Nice Cream"]
+      expect(event.sorted_item_list).to eq(output)
+    end
+
+    it 'gives a date' do
+      output = "24/02/2020"
+      allow(event).to receive(:date).and_return(output)
+      expect(event.date).to eq(output)
+    end
+
   end
 end
