@@ -27,27 +27,15 @@ class Event
     outside = Hash.new(0)
     inside = Hash.new(0)
     @food_trucks.each do |truck|
-      truck.inventory.each do |item, quantity|
-        if inside[:quantity].nil?
-          inside[:quantity] = truck.check_stock(item)
-        else
-          inside[:quantity] += truck.check_stock(item)
-        end
-
-        # require "pry"; binding.pry
+      truck.inventory.reduce(0) do |sum, (item, quantity)|
+        # inside[:quantity] += quantity
+        inside[:quantity] += truck.check_stock(item)
+        inside[:food_trucks] = food_trucks_that_sell(item)
+        outside[item] = inside
       end
     end
   end
 
-  # @food_trucks.each do |truck|
-  #   truck.inventory.each do |item, quantity|
-  #     inside[:quantity] = truck.check_stock(item)
-  #     inside[:food_trucks] = food_trucks_that_sell(item)
-  #     outside[item] = inside
-  #     require "pry"; binding.pry
-  #   end
-  # end
-  # outside
   def overstocked_items
     items = []
     @food_trucks.each do |truck|
