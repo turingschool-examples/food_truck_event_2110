@@ -49,4 +49,5 @@ class Event
     end
     items.sort
   end
+
 end
