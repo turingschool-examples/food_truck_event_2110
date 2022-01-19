@@ -105,7 +105,6 @@ RSpec.describe Event do
     food_truck3.stock(item1, 65)
     food_truck3.stock(item3, 10)
     expect(event.item_sum_at_event(item1)).to eq(100)
-    expect(event.overstocked_items.to eq(item1)
+    expect(event.overstocked_items).to eq([item1])
   end
-
 end

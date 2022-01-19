@@ -48,4 +48,16 @@ class Event
     end
     hash
   end
+
+  def overstocked_items
+    overstocked_item = []
+    food_trucks.each do |food_truck|
+      food_truck.inventory.each do |item, quantity|
+        if item_sum_at_event(item) > 50 == true and food_trucks_that_sell(item).count > 1 == true
+          overstocked_item << item
+        end
+      end
+    end
+    overstocked_item.uniq
+  end
 end
