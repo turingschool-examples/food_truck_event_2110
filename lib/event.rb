@@ -23,4 +23,39 @@ class Event
     end
     trucks_with
   end
+
+  def total_inventory
+    event_inventory = Hash.new
+    @food_trucks.each do |food_truck|
+      food_truck.inventory.each do |item, amount|
+        if !event_inventory.key?(item)
+          event_inventory[item] = {quantity: 0, food_trucks: []}
+          event_inventory[item][:quantity] += amount
+          event_inventory[item][:food_trucks] << food_truck
+        elsif
+          event_inventory.key?(item)
+          event_inventory[item][:quantity] += amount
+          event_inventory[item][:food_trucks] << food_truck
+        end
+      end
+    end
+    event_inventory
+    #binding.pry
+  end
+
+  def overstocked_items
+    overstocked = []
+    total_inventory.each do |item, count_trucks|
+      if count_trucks[:quantity] > 50 && count_trucks[:food_trucks].count > 1
+          overstocked << item
+      end
+    end
+    overstocked
+  end
+
+  def sorted_item_list
+    bulk =  (total_inventory.keys.map { |item| item.name }).sort
+    bulk.uniq
+    #binding.pry
+  end
 end
