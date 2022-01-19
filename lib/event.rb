@@ -1,9 +1,10 @@
 class Event
-  attr_reader :name, :food_trucks
+  attr_reader :name, :food_trucks, :date
 
   def initialize(name)
     @name = name
     @food_trucks = []
+    @date = "24/02/2020"
   end
 
   def add_food_truck(food_truck)
@@ -62,6 +63,13 @@ class Event
       # require "pry"; binding.pry
       key.name
     end.sort
+  end
+
+  def sell(item, amount)
+     food_trucks_that_sell(item).map do |item|
+      food_trucks_that_sell(item).flatten.include?(item)
+      # require "pry"; binding.pry
+    end.uniq[0]
 
   end
 end
