@@ -16,4 +16,10 @@ class FoodTruck
     @amount[item] += amount
   end
 
+  def potential_revenue
+    prices = @inventory.keys.map {|item| item.price.gsub('$','').to_f}
+    array = @inventory.values.zip(prices)
+    array.map {|pair| pair.inject(:*)}.inject(:+)
+  end
+
 end
