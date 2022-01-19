@@ -4,6 +4,11 @@ class Event
   def initialize(name)
     @name = name
     @food_trucks = []
+    @date = Date.today
+  end
+
+  def date
+    @date.strftime("%d/%m/%Y")
   end
 
   def add_food_truck(truck)
@@ -45,14 +50,14 @@ class Event
       quantity: 0,
       food_trucks: []
     }
-    hash = {}
+    @hash = {}
 
     items.each do |item|
       sub_hash[:food_trucks] << food_trucks_that_sell(item)
       sub_hash[:quantity] = total_quantity(item)
-      hash[item] = sub_hash.dup
+      @hash[item] = sub_hash.dup
     end
-    hash
+    @hash
   end
 
   def overstocked_items
@@ -60,5 +65,10 @@ class Event
       info[:quantity] > 50 && info[:food_trucks].count > 1
     end
     os.keys
+  end
+
+  def sell(item, quantity)
+    total_inventory
+    return false if @hash[item][:quantity] < quantity
   end
 end
