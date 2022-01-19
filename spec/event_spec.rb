@@ -21,4 +21,9 @@ describe Event do
   it 'has attributes' do
     expect(@event.name).to eq("South Pearl Street Farmers Market")
   end
+
+  it 'starts w empty food truck array' do
+    expect(@event.food_trucks).to eq([])
+  end 
+
 end
