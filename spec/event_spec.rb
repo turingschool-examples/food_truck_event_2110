@@ -5,7 +5,7 @@ require './lib/event'
 
 RSpec.describe Event do
 	before(:each) do
-		@event = Event.new("South Pearl Street Farmers Market")
+    @event = Event.new("South Pearl Street Farmers Market")
 
     @food_truck1 = FoodTruck.new("Rocky Mountain Pies")
     @food_truck2 = FoodTruck.new("Ba-Nom-a-Nom")
@@ -40,23 +40,18 @@ RSpec.describe Event do
       @event.add_food_truck(@food_truck3)
     end
 
-
   	it 'can #add_food_trucks' do
-
 
   		expect(@event.food_trucks).to eq ([@food_truck1, @food_truck2, @food_truck3])
   	end
 
   	it 'can list #food_truck_names' do
-
-
-  		expect(@event.food_truck_names).to eq (["Rocky Mountain Pies", "Ba-Nom-a-Nom", "Palisade Peach Shack"])
+      expect(@event.food_truck_names).to eq (["Rocky Mountain Pies", "Ba-Nom-a-Nom", "Palisade Peach Shack"])
   	end
 
   	it 'can list #food_trucks_that_sell a specific item' do
 
-
-  		expect(@event.food_trucks_that_sell(@item1)).to eq ([@food_truck1, @food_truck3])
+      expect(@event.food_trucks_that_sell(@item1)).to eq ([@food_truck1, @food_truck3])
   		expect(@event.food_trucks_that_sell(@item4)).to eq ([@food_truck2])
   	end
 
@@ -97,9 +92,7 @@ RSpec.describe Event do
 
       # An item is overstocked if it is sold by more than 1 food truck
       # AND the total quantity is greater than 50.
-
-
-  		expect(@event.overstocked_items).to eq ([@item1])
+      expect(@event.overstocked_items).to eq ([@item1])
   	end
 
   	it 'can do a #sorted_item_list' do
@@ -108,7 +101,6 @@ RSpec.describe Event do
 
   		expect(@event.sorted_item_list).to eq (expected)
   	end
-
   end
   describe 'Iteration IIII' do
     before(:each) do
@@ -120,7 +112,6 @@ RSpec.describe Event do
     xit 'can list todays #date' do
 
       #need a stub here
-
   		expect(@event.date).to eq ("24/02/2020")
   	end
 
