@@ -21,7 +21,6 @@ RSpec.describe Event do
     @food_truck2.stock(@item4, 50)
     @food_truck2.stock(@item3, 25)
     @food_truck3.stock(@item1, 65)
-
 	end
 
 	it 'exists' do
@@ -41,8 +40,7 @@ RSpec.describe Event do
     end
 
   	it 'can #add_food_trucks' do
-
-  		expect(@event.food_trucks).to eq ([@food_truck1, @food_truck2, @food_truck3])
+      expect(@event.food_trucks).to eq ([@food_truck1, @food_truck2, @food_truck3])
   	end
 
   	it 'can list #food_truck_names' do
@@ -50,56 +48,36 @@ RSpec.describe Event do
   	end
 
   	it 'can list #food_trucks_that_sell a specific item' do
-
       expect(@event.food_trucks_that_sell(@item1)).to eq ([@food_truck1, @food_truck3])
   		expect(@event.food_trucks_that_sell(@item4)).to eq ([@food_truck2])
   	end
 
   	it 'can find #potential_revenue for each truck' do
-
-  		expect(@food_truck1.potential_revenue).to eq (148.75)
+      expect(@food_truck1.potential_revenue).to eq (148.75)
   		expect(@food_truck2.potential_revenue).to eq (345.00)
   		expect(@food_truck3.potential_revenue).to eq (243.75)
   	end
 
   	it 'can find #total_inventory for each truck' do
-
       @food_truck3.stock(@item3, 10)
-
       expected = {
-          @item1 => {
-            quantity: 100,
-            food_trucks: [@food_truck1, @food_truck3]
-          },
-          @item2 => {
-            quantity: 7,
-            food_trucks: [@food_truck1]
-          },
-          @item4 => {
-            quantity: 50,
-            food_trucks: [@food_truck2]
-          },
-          @item3 => {
-            quantity: 35,
-            food_trucks: [@food_truck2, @food_truck3]
-          },
+          @item1 => {quantity: 100, food_trucks: [@food_truck1, @food_truck3]},
+          @item2 => {quantity: 7, food_trucks: [@food_truck1]},
+          @item4 => {quantity: 50, food_trucks: [@food_truck2]},
+          @item3 => {quantity: 35, food_trucks: [@food_truck2, @food_truck3]},
         }
-
-  		expect(@event.total_inventory).to eq (expected)
-  	end
+      expect(@event.total_inventory).to eq (expected)
+    end
 
   	it 'can find #overstocked_items' do
-
       # An item is overstocked if it is sold by more than 1 food truck
       # AND the total quantity is greater than 50.
       expect(@event.overstocked_items).to eq ([@item1])
   	end
 
   	it 'can do a #sorted_item_list' do
-
       expected = ["Apple Pie (Slice)", "Banana Nice Cream", "Peach Pie (Slice)", "Peach-Raspberry Nice Cream"]
-
-  		expect(@event.sorted_item_list).to eq (expected)
+      expect(@event.sorted_item_list).to eq (expected)
   	end
   end
   describe 'Iteration IIII' do
